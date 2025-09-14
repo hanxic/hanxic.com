@@ -1,0 +1,47 @@
+--- # Teaching
+- location: University of Pennsylvania
+  courses: 
+    - numbers:
+        - CIS 5521
+      name: Compilers and Interpreters
+      location: University of Pennsylvania
+      description: A graduate course on compilers in OCaml. Topics include lexical analysis, grammars, parsing, intermediate representations, syntax- directed translation, code generation, type checking, dataflow and control-flow analyses, and optimizations.
+      terms:
+        - Sp25
+    - numbers:
+        - CIS 5520
+      name: Advanced Programming
+      location: University of Pennsylvania
+      description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers. Taught 4 lectures.
+      terms:
+        - Fa24
+    - numbers:
+        - CIS 5020
+        - CIT 5960
+        - CIS 3200
+      name: Analysis of Algorithms
+      location: University of Pennsylvania
+      description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
+      terms:
+        - Su22
+        - Fa22
+        - Sp23
+        - Su23
+        - Fa23
+        - Su24
+    - numbers:
+        - NETS 3120
+      name: Theory of Networks
+      location: University of Pennsylvania
+      description: A course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
+      terms:
+        - Sp24
+    - numbers:
+        - CIS 5000
+      name: Software Foundations
+      location: University of Pennsylvania
+      description: A graduate course on basic concepts and techniques of programming languages. Topics include operational techniques for formal definition of language features, type systems and type safety properties, polymorphism, constructive logic, and the Rocq Proof Assistant.
+      terms:
+        - Fa23
+
+...

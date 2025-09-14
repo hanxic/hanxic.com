@@ -1,0 +1,70 @@
+# --- # The list of publications
+- id: beck2025a
+  authors:
+    - Calvin Beck
+    - Hanxi Chen
+    - Steve Zdancewic
+  title: "Vellvm: Formalizing the Informal LLVM: (Experience Report)"
+  year: 2025
+  journal: "Nasa Formal Methods: 17th International Symposium, (NFM)"
+  pages: "91-99"
+  publisher: "Springer Nature Switzerland"
+  url: "https://doi.org/10.1007/978-3-031-93706-4_6"
+
+- id: beck2025b
+  authors:
+    - Calvin Beck
+    - Hanxi Chen
+    - Steve Zdancewic
+  title: "Vellvm: Formalizing the Informal [Presentation]"
+  year: 2025
+  month: January
+  day: 25
+  type: "presentation"
+  journal: "The Eleventh International Workshop on Coq for Programming Languages (CoqPL)"
+  location: "Denver, CO, USA"
+  url: "https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal"
+  status: "published"
+
+- id: beck2024
+  authors:
+    - Calvin Beck
+    - Irene Yoon
+    - Hanxi Chen
+    - Yannick Zakowski
+    - Steve Zdancewic
+  title: "A Two-Phase Infinite/Finite Low-Level Memory Model: Reconciling Integer–Pointer Casts, Finite Space, and undef at the LLVM IR Level of Abstraction"
+  year: 2024
+  type: "article"
+  journal: "Proceedings of the ACM on Programming Languages, 8(ICFP)"
+  pages: "789-817"
+  url: "https://doi.org/10.1145/3674652"
+  status:  "published"
+
+# unpublished:
+# - id: chen_thesis
+#   authors:
+#     - Chen, Hanxi.
+#   title: "Random Differential Testing at the LLVM IR Level"
+#   year: null
+#   type: "thesis"
+#   annotation: "Approved CIS Undergraduate Thesis"
+#   url: null
+
+# - id: chen_knapsack
+#   authors:
+#     - Chen, Hanxi.
+#   title: "Knapsack Problem with Prcedence Constraints"
+#   year: 2024
+#   type: "thesis"
+#   annotation: "Approved Wharton Research Scholars Thesis"
+
+# work:
+# - id: chen_testing
+#   authors:
+#     - Beck, Calvin.
+#     - Yoon, Irene.
+#     - Chen, Hanxi
+#   title: "GenLLVM: Randomized Differential Testing for LLVM IR"
+#   type: "article"
+# ...

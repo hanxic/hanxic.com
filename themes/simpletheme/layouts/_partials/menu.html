@@ -1,0 +1,46 @@
+{{- /*
+Renders a menu for the given menu ID.
+
+@context {page} page The current page.
+@context {string} menuID The menu ID.
+
+@example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+*/}}
+
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+
+{{- with index site.Menus $menuID }}
+  <nav class="menu-container">
+      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+  </nav>
+{{- end }}
+
+{{- define "_partials/inline/menu/walk.html" }}
+{{- $page := .page }}
+{{- $length := len .menuEntries }}
+
+{{- range $index, $item := .menuEntries }}
+  {{- $attrs := dict "href" $item.URL }}
+
+  {{- if $page.IsMenuCurrent $item.Menu $item }}
+    {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+  {{- else if $page.HasMenuCurrent $item.Menu $item }}
+    {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+  {{- end }}
+
+  <a
+    {{- range $k, $v := $attrs }}
+      {{- with $v }}
+        {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+      {{- end }}
+    {{- end -}}
+  >{{ $item.Name }}</a>
+
+  {{- if lt (add $index 1) $length }} / {{ end }}
+
+  {{- with $item.Children }}
+    {{- partial "inline/menu/walk-horizontal.html" (dict "page" $page "menuEntries" .) }}
+  {{- end }}
+{{- end }}
+{{- end }}

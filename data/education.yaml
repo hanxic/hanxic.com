@@ -1,0 +1,25 @@
+--- # Education
+- school: Cornell University
+  years: 2025-
+  location: Ithaca, NY, USA
+  degrees:
+    - Ph.D. in Computer Science
+- school: University of Pennsylvania
+  years: 2020-2025
+  location: Philadelphia, PA, USA
+  degrees:
+    - M.S.E. in Computer and Information Science
+    - B.S.E. in Computer Science
+    - B.S. in Economics
+  honors:
+    - Summa Cum Laude
+    - Wharton Research Scholars
+    - MCIT TA Award
+    - CIS Faculty Appreciation Award
+    - Eta Kappa Nu Honors Society
+    - Tau Beta Pi Honors Society
+    - Beta Gamma Sigma Honors Society
+  gpa: 3.97/4.00
+  courses:
+    - CIS 6700
+...

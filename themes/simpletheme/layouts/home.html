@@ -1,0 +1,96 @@
+{{ define "main" }}
+<section id="about" class="home-section">
+  <h2>About</h2>
+  {{ with site.GetPage "" "_index.md" }}
+  {{ .Content }}
+  {{ else }}
+  <p>About info goes here.</p>
+  {{ end }}
+</section>
+
+
+{{ $me := or .Page.Params.pubname site.Params.pubname}}
+<section id="research" class="home-section">
+  <h2>Research</h2>
+  <ul>
+	  {{ range .Site.Data.publications }}
+	  <li>
+	    {{ $authors := .authors }}
+	    {{ range $i, $a := $authors }}
+	    {{- if eq $a $me }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end -}}
+	    {{- if lt (add $i 1) (len $authors) }}, {{ end -}}
+	    {{ end }}.
+      <a href="{{ .url }}">{{ .title }}</a>.
+      <em>{{ .journal }}</em>, {{ .year }}.
+	  </li>
+	  {{ end }}
+  </ul>
+</section>
+
+<section id="news" class="home-section">
+  <h2>News</h2>
+  <ul>
+	  {{ range sort .Site.Data.news "date" "desc" }}
+	  <li>
+	    <strong class="date">{{ .date }}</strong>
+	    {{ if .url }}
+	    <a href="{{ .url }}">{{ .title }}</a>
+	    {{ else }}
+	    {{ .title }}
+	    {{ end }}
+	  </li>
+	  {{ end }}
+  </ul>
+</section>
+
+<section id="teaching" class="home-section">
+  <h2>Teaching</h2>
+  <ul>
+    {{ range .Site.Data.teaching }}
+    <li>
+      <div class="location">{{ .location }}</div>
+      {{ range .courses}}
+      <div class="course">
+        <div class="number-name-place">
+          <span class="number"><strong>{{ delimit .numbers "/" }}</strong></span>: <span class="name">{{.name}}</span><span class="location"></span>
+        </div>
+        <div class="terms">
+          {{ delimit .terms ", " }}
+        </div>
+      </div>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
+<section id="education" class="home-section">
+  <h2>Education</h2>
+  <ul>
+    {{ range .Site.Data.education }}
+    <li>
+      <div class="school-years">
+        <span class="school">{{ .school }}</span>
+        <span class="years">{{ .years }}</span>
+      </div>
+      <div class="degrees">
+        {{ range .degrees}}
+        <div class="degree">{{ . }}</div>
+        {{ end }}
+      </div>
+      {{ if .honors }}
+      <div class="honors">
+        <strong>Honors</strong>: {{ delimit .honors ", " }}
+      </div>
+      {{ end }}
+      {{ if .gpa }}
+      <div class="gpa">
+        <strong>GPA</strong>: {{ .gpa }}
+      </div>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+

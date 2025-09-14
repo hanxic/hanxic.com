@@ -1,0 +1,13 @@
+<h1 class="site-title">{{ site.Title }}</h1>
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<div class="contact-info">
+  {{ with .Params.github }}
+  <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>
+  {{ end }}
+  {{ with .Params.email }}
+  <a href="mailto:{{ . }}">Email</a>
+  {{ end }}
+  {{ with .Params.linkedin }}
+  <a href="{{ . }}" target="_blank" rel="noopener">LinkedIn</a>
+  {{ end }}
+</div>
