@@ -1,0 +1,215 @@
+:root {
+    --profile-picture-max-width: 250px;
+    --global-bg-color: #f5efe7;
+    /* --global-bg-color: #f0f4f8; */
+    --global-code-bg-color: rgba(181, 9, 172, 0.05);
+    /* --global-text-color: #213555; */
+    --global-text-color: #2a4568;
+    --global-text-color-dark: #233040;
+    --global-text-color-light: #d8c4b6;
+    --global-theme-color: #007acc;
+    --global-hover-color: #b509ac;
+    --global-hover-text-color: #fff;
+    --global-footer-bg-color: #f5efe7;
+    --global-footer-text-color: #3e5879;
+    --global-footer-link-color: #3e5879;
+    --global-distill-app-color: #828282;
+    --global-divider-color: rgba(0, 0, 0, 0.1);
+    --global-card-bg-color: #fff;
+    --global-highlight-color: #b71c1c;
+    --global-back-to-top-bg-color: rgba(0, 0, 0, 0.4);
+    --global-back-to-top-text-color: #fff;
+    --global-newsletter-bg-color: #fff;
+    --global-newsletter-text-color: #000;
+    --global-tip-block: #42b983;
+    --global-tip-block-bg: #e2f5ec;
+    --global-tip-block-text: #215d42;
+    --global-tip-block-title: #359469;
+    --global-warning-block: #e7c000;
+    --global-warning-block-bg: #fff8d8;
+    --global-warning-block-text: #6b5900;
+    --global-warning-block-title: #b29400;
+    --global-danger-block: #c00;
+    --global-danger-block-bg: #ffe0e0;
+    --global-danger-block-text: #600;
+    --global-danger-block-title: #c00;
+    --global-border-line: 2px solid #ccc;
+}
+* {
+    /* outline: 1px solid red; */
+    font-family: 'Iosevka Web', monospace;
+}
+
+body {
+    background-color: var(--global-bg-color);
+    color: var(--global-text-color);
+    line-height: 1.5;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a {
+    color: var(--global-theme-color);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--global-hover-color);
+    transition: color 0.2s ease;
+}
+main, header, footer {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* header */
+header *:not(h1){
+    font-size: 0.75rem;
+}
+/* header { */
+/*     border-bottom: var(--global-border-line); */
+/* } */
+.site-title {
+    color: var(--global-text-color);
+    font-size: 1.5rem;
+}
+.menu-container {
+    font-size: 0.85rem;
+    text-align: center;
+}
+.menu-container a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--global-theme-color);
+    display: inline-block;
+}
+.contact-info {
+    font-size: 0.85rem;
+}
+
+
+
+/* sites */
+.site-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* font size */
+/* body */
+main *:not(h2) {
+    font-size: 0.75rem;
+}
+
+.home-section, .cv-section {
+    border-bottom: var(--global-border-line);
+    padding-bottom: 1rem;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.about-photo {
+    max-width: var(--profile-picture-max-width);
+    border-radius: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profile-picture {
+    max-width: var(--profile-picture-max-width);
+    height: auto;
+    border-radius: 0%;
+}
+.about-content {
+    flex: 1;
+    font-weight: 600;
+}
+
+#research header {
+    font-weight: 600;
+}
+#research .myname {
+    color: var(--global-theme-color);
+}
+
+#contact .contact-table {
+    display: grid;
+    /* edit this for larger space */
+    grid-template-columns: 100px 1fr;
+    gap: 0.5rem 1rem;
+    align-items: center;
+}
+
+#contact .contact-row {
+    display: contents;
+}
+
+#contact .contact-type {
+    font-weight: bold;
+    text-align: left;
+}
+
+.publication {
+    margin-bottom: 0.5em;
+}
+
+/* education */
+#education header {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+#education header .year {
+    margin-left: auto;
+}
+#education header .separator {
+    content: "-";
+    margin: 0 0.5rem;
+    color: var(--global-text-color);
+}
+#education .gpa,
+#education summary{
+    font-weight: 600;
+}
+
+summary{
+    margin-left: 0.1rem;
+}
+
+#teaching .school {
+    font-size: 1rem;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+#teaching ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+#teaching li::before {
+    content: ">"
+}
+#teaching li .type{
+    font-weight: 550;
+}
+
+/* footer */
+footer {
+    text-color: var(--global-footer-text-color);
+}
+footer * {
+    
+    font-size: 0.5rem;
+}
+footer {
+}

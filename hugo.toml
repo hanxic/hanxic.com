@@ -1,4 +1,27 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Hanxi (Gary) Chen'
-theme = 'simpletheme'
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Info'
+    pageRef = '/info/'
+    weight = 20
+
+  [[menus.main]]
+    name = 'CV'
+    url = '/cv/hanxi-chen-cv-07222025.pdf'
+    weight = 30
+
+  # [[menus.main]]
+  #   name = 'Tags'
+  #   pageRef = '/tags'
+  #   weight = 30
+
+[params]
+  profilePicture = "images/profile picture.jpg"

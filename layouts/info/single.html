@@ -1,0 +1,117 @@
+{{ define "main" }}
+<!-- education -->
+<section id="education" class="cv-section">
+  <h2>Education</h2>
+  {{ range .Site.Data.education }}
+  <article class="education">
+    <header>
+      <span class="school">
+        {{ .school }}
+      </span>
+      <span class="separator">-</span>
+      <span class="location">
+        {{ .location }}
+      </span>
+      <span class="year">
+        {{ .years }}
+      </span>
+    </header>
+    <div class="degrees">
+      {{ range .degrees }}
+      <div class="degree">
+        {{ . }}
+      </div>
+      {{ end }}
+    </div>
+    {{ if .gpa }}
+    <div class="gpa">
+      [GPA]: {{ .gpa }}
+    </div>
+    {{ end }}
+    {{ if .honors }}
+    <details class="honors">
+      <summary>[Honors]</summary>
+      <div class="content">
+        {{ delimit .honors ", " }}
+      </div>
+    </details>
+    {{ end }}
+  </article>
+  {{ end }}
+</section>
+
+{{ $me := or .Page.Params.pubname site.Params.pubname}}
+<section id="research" class="cv-section">
+  <h2>Publications</h2>
+  {{ range .Site.Data.publications }}
+  <article class="publication">
+    <header>
+      <span class="tag">
+        {{ with .tag }}
+        [{{ . }}]
+        {{ else }}
+        [Self]
+        {{ end }}
+      </span>
+      <span class="title">
+        {{ if .url }}
+        <a href="{{ .url }}">{{ .title }}</a>
+        {{ else }}
+        {{ .title }}
+        {{ end }}
+      </span>
+    </header>
+    <div class="authors">
+	    {{ $authors := .authors }}
+	    {{ range $i, $a := $authors }}
+	    {{- if eq $a $me }}<strong class="myname">{{ $a }}</strong>{{ else }}{{ $a }}{{ end -}}
+	    {{- if lt (add $i 1) (len $authors) }}, {{ end -}}
+	    {{ end }}
+    </div>
+    {{ with .abstract }}
+    <details class="abstract">
+      <summary>[Abstract]</summary>
+      <div class="content">
+        <p>{{ . }}</p>
+      </div>
+    </details>
+    {{ end }}
+    <div>
+  </article>
+  {{ end }}
+</section>
+
+<!-- teaching -->
+<section id="teaching" class="cv-section">
+  <h2>Teaching</h2>
+  {{ range .Site.Data.teaching }}
+  <div class="school">{{ .location }}</div>
+  {{ range .courses }}
+  <article class="course">
+    <header>
+      <span class="number"><strong>[{{ delimit .numbers "/" }}]</strong></span>
+      <span class="name">{{ .name }}</span>
+    </header>
+    {{ with .positions }}
+    <ul>
+      {{ range . }}
+      <li>
+        <span class="type">
+          {{- "[" -}}
+          {{ .type }}
+          {{- "]" -}}
+        </span>
+        <span class="terms">
+          {{ delimit .terms "," }}
+        </span>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </article>
+  {{ end }}
+  {{ end }}
+</section>
+{{ end }}
+
+
