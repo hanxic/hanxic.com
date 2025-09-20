@@ -6,18 +6,28 @@
       <span class="school">
         {{ .school }}
       </span>
-      <span class="separator">-</span>
-      <span class="location">
-        {{ .location }}
-      </span>
-      <span class="year">
+    <span class="separator">-</span>
+    <span class="location">
+      {{ .location }}
+    </span>
+    <span class="year">
         {{ .years }}
       </span>
     </header>
+    {{ if .note }}
+    <div class="note">
+      {{ .note }}
+    </div>
+    {{ end }}
     <div class="degrees">
       {{ range .degrees }}
       <div class="degree">
-        {{ . }}
+        <span class="title">{{- .title -}}</span>
+        {{- if .attributes -}}
+        <span class="attributes">
+          {{ delimit .attributes ", " }}
+        </span>
+        {{ end }}
       </div>
       {{ end }}
     </div>

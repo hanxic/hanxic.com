@@ -5,6 +5,7 @@
     --global-code-bg-color: rgba(181, 9, 172, 0.05);
     /* --global-text-color: #213555; */
     --global-text-color: #2a4568;
+    --global-text-color-small: #4c6f96;
     --global-text-color-dark: #233040;
     --global-text-color-light: #d8c4b6;
     --global-theme-color: #007acc;
@@ -63,7 +64,7 @@ main, header, footer {
 }
 
 /* header */
-header *:not(h1){
+header :not(h1){
     font-size: 0.75rem;
 }
 /* header { */
@@ -101,7 +102,7 @@ header *:not(h1){
 
 /* font size */
 /* body */
-main *:not(h2) {
+main :not(h2) {
     font-size: 0.75rem;
 }
 
@@ -123,7 +124,7 @@ main *:not(h2) {
     align-items: center;
 }
 #profile-picture {
-    max-width: var(--profile-picture-max-width);
+    max-width: 100%;
     height: auto;
     border-radius: 0%;
 }
@@ -166,6 +167,15 @@ main *:not(h2) {
     display: flex;
     align-items: center;
 }
+#education header .school,
+#education header .separator,
+#education header .location {
+    /* font-size: 1.1em; */
+}
+#education .note {
+    color: var(--global-text-color-small);
+    font-size: 0.75em;
+}
 #education header .year {
     margin-left: auto;
 }
@@ -174,6 +184,7 @@ main *:not(h2) {
     margin: 0 0.5rem;
     color: var(--global-text-color);
 }
+
 #education .gpa,
 #education summary{
     font-weight: 600;
@@ -183,6 +194,12 @@ summary{
     margin-left: 0.1rem;
 }
 
+#education .attributes {
+    font-size: 0.75em;
+    color: var(--global-text-color-small)
+}
+
+/* Teaching */
 #teaching .school {
     font-size: 1rem;
     margin-bottom: 0.5em;
@@ -194,7 +211,7 @@ summary{
     margin: 0;
 }
 #teaching li::before {
-    content: ">"
+    content: "▷"
 }
 #teaching li .type{
     font-weight: 550;
@@ -209,4 +226,36 @@ footer * {
     font-size: 0.5rem;
 }
 footer {
+}
+
+@media (max-width: 500px) {
+    body {
+        margin: 0.9rem;
+    }
+    header h1 {
+        font-size: 1.3rem !important;
+    }
+    header :not(h1){
+        font-size: 0.60rem;
+    }
+    main :not(h2) {
+        font-size: 0.60rem;
+    }
+    .about-container  {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .about-content {
+        width: 100%;
+    }
+    .about-photo {
+        max-width: 60%;
+        margin: 0 auto;
+        border-radius: 0%;
+    }
+    #profile-picture {
+        max-width: 80%;
+        margin: 0 auto;
+        display: block;
+    }
 }

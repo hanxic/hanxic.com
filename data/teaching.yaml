@@ -1,4 +1,14 @@
 --- # Teaching
+- location: Cornell University
+  courses:
+    - numbers:
+      - CS 4110
+      name: Programming Languages and Logics
+      location: Cornell University
+      positions:
+      - type: "Teaching Assistant"
+        terms:
+          - 25Fa
 - location: University of Pennsylvania
   courses: 
     - numbers:

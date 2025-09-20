@@ -1,18 +1,26 @@
 --- # Education
 - school: Cornell University
+  note: Ann S. Bowers College of Computing and Information Science
   years: 2025-
   location: Ithaca, NY, USA
   degrees:
-    - Ph.D. in Computer Science
+    - title: Ph.D. in Computer Science
+      
 - school: University of Pennsylvania
+  note: Uncoordinated Dual Bachelor's Degree & Master's Degree between Penn Engineering & The Wharton School
   years: 2020-2025
   location: Philadelphia, PA, USA
   degrees:
-    - M.S.E. in Computer and Information Science
-    - B.S.E. in Computer Science
-    - B.S. in Economics
+    - title: M.S.E. in Computer and Information Science
+    - title: B.S.E. in Computer Science
+      attributes:
+      - Mathematics Minor
+      - Summa Cum Laude
+    - title: B.S. in Economics
+      attributes:
+      - Business Analytics Concentration
+      - Summa Cum Laude
   honors:
-    - Summa Cum Laude
     - Wharton Research Scholars
     - MCIT TA Award
     - CIS Faculty Appreciation Award
@@ -23,3 +31,4 @@
   courses:
     - CIS 6700
 ...
+
