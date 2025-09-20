@@ -1,0 +1,40 @@
+{{ $me := or .Page.Params.pubname site.Params.pubname}}
+<section id="publications" class="section">
+  <h2>Publications</h2>
+  {{ range .Site.Data.publications }}
+  <article class="publication">
+    <header>
+      <span class="tag">
+        {{ with .tag }}
+        [{{ . }}]
+        {{ else }}
+        [Self]
+        {{ end }}
+      </span>
+      <span class="title">
+        {{ if .url }}
+        <a href="{{ .url }}">{{ .title }}</a>
+        {{ else }}
+        {{ .title }}
+        {{ end }}
+      </span>
+    </header>
+    <div class="authors">
+	    {{ $authors := .authors }}
+	    {{ range $i, $a := $authors }}
+	    {{- if eq $a $me }}<strong class="myname">{{ $a }}</strong>{{ else }}{{ $a }}{{ end -}}
+	    {{- if lt (add $i 1) (len $authors) }}, {{ end -}}
+	    {{ end }}
+    </div>
+    {{ with .abstract }}
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="content">
+        <p>{{ . }}</p>
+      </div>
+    </details>
+    {{ end }}
+    <div>
+  </article>
+  {{ end }}
+</section>

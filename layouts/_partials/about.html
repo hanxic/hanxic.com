@@ -1,0 +1,17 @@
+  <section id="about" class="section">
+    <h2>About</h2>
+    <div class="about-container">
+      <div class="about-photo">
+        {{ with .Site.Params.profilePicture }}
+        <img src="{{ . | relURL }}" alt="Profile picture" class="photo" id="profile-picture">
+        {{ end }}
+      </div>
+      <div class="about-content">
+        {{ with site.GetPage "home" }}
+        {{ .Content }}
+        {{ else }}
+        <p>About info goes here.</p>
+        {{ end }}
+      </div>
+    </div>
+  </section>

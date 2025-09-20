@@ -1,0 +1,39 @@
+<section id="education" class="cv-section">
+  <h2>Education</h2>
+  {{ range .Site.Data.education }}
+  <article class="education">
+    <header>
+      <span class="school">
+        {{ .school }}
+      </span>
+      <span class="separator">-</span>
+      <span class="location">
+        {{ .location }}
+      </span>
+      <span class="year">
+        {{ .years }}
+      </span>
+    </header>
+    <div class="degrees">
+      {{ range .degrees }}
+      <div class="degree">
+        {{ . }}
+      </div>
+      {{ end }}
+    </div>
+    {{ if .gpa }}
+    <div class="gpa">
+      [GPA]: {{ .gpa }}
+    </div>
+    {{ end }}
+    {{ if .honors }}
+    <details class="honors">
+      <summary>[Honors]</summary>
+      <div class="content">
+        {{ delimit .honors ", " }}
+      </div>
+    </details>
+    {{ end }}
+  </article>
+  {{ end }}
+</section>

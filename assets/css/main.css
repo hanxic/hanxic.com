@@ -83,9 +83,6 @@ header *:not(h1){
     text-decoration-color: var(--global-theme-color);
     display: inline-block;
 }
-.contact-info {
-    font-size: 0.85rem;
-}
 
 
 
@@ -108,7 +105,7 @@ main *:not(h2) {
     font-size: 0.75rem;
 }
 
-.home-section, .cv-section {
+.section, .section {
     border-bottom: var(--global-border-line);
     padding-bottom: 1rem;
 }
@@ -135,14 +132,14 @@ main *:not(h2) {
     font-weight: 600;
 }
 
-#research header {
+#publications header {
     font-weight: 600;
 }
-#research .myname {
+#publications .myname {
     color: var(--global-theme-color);
 }
 
-#contact .contact-table {
+#contacts .contact-table {
     display: grid;
     /* edit this for larger space */
     grid-template-columns: 100px 1fr;
@@ -150,11 +147,11 @@ main *:not(h2) {
     align-items: center;
 }
 
-#contact .contact-row {
+#contacts .contact-row {
     display: contents;
 }
 
-#contact .contact-type {
+#contacts .contact-type {
     font-weight: bold;
     text-align: left;
 }

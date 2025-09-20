@@ -1,0 +1,24 @@
+{{ with .Params.contact }}
+<section id="contacts" class="section">
+  <h2>Contact</h2>
+  <div class="contact-table">
+    {{ range . }}
+    <div class="contact-row">
+      <div class="contact-type">
+        {{- "[" -}}{{ .type }}{{- "]" -}}
+      </div>
+      <div class="contact-value">
+        {{ if eq .type "Email" }}
+        <a href="mailto:{{ .value }}">{{ .value }}</a>
+        {{ else if eq .type "GitHub" }}
+        <a href="https://github.com/{{ .value }}" target="_blank" rel="noopener">{{ .value }}</a>
+        {{ else }}
+        <a href="{{ .value }}" target="_blank" rel="noopener">{{ .value }}</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+

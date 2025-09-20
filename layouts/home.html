@@ -1,88 +1,11 @@
 {{ define "main" }}
-<section id="about" class="home-section">
-  <h2>About</h2>
-  <div class="about-container">
-    <div class="about-photo">
-      {{ with .Site.Params.profilePicture }}
-      <img src="{{ . | relURL }}" alt="Profile picture" class="photo" id="profile-picture">
-      {{ end }}
-    </div>
-    <div class="about-content">
-      {{ with site.GetPage "" "_index.md" }}
-      {{ .Content }}
-      {{ else }}
-      <p>About info goes here.</p>
-      {{ end }}
-    </div>
-  </div>
-</section>
+<div class="home">
+  {{ partial "about.html" . }}
 
-{{ $me := or .Page.Params.pubname site.Params.pubname}}
-<section id="research" class="home-section">
-  <h2>Publications</h2>
-  {{ range .Site.Data.publications }}
-  <article class="publication">
-    <header>
-      <span class="tag">
-        {{ with .tag }}
-        [{{ . }}]
-        {{ else }}
-        [Self]
-        {{ end }}
-      </span>
-      <span class="title">
-        {{ if .url }}
-        <a href="{{ .url }}">{{ .title }}</a>
-        {{ else }}
-        {{ .title }}
-        {{ end }}
-      </span>
-    </header>
-    <div class="authors">
-	    {{ $authors := .authors }}
-	    {{ range $i, $a := $authors }}
-	    {{- if eq $a $me }}<strong class="myname">{{ $a }}</strong>{{ else }}{{ $a }}{{ end -}}
-	    {{- if lt (add $i 1) (len $authors) }}, {{ end -}}
-	    {{ end }}
-    </div>
-    {{ with .abstract }}
-    <details class="abstract">
-      <summary>Abstract</summary>
-      <div class="content">
-        <p>{{ . }}</p>
-      </div>
-    </details>
-    {{ end }}
-    <div>
-  </article>
-  {{ end }}
-</section>
+  {{ partial "publications.html" . }}
+  <!-- Contact -->
 
-<!-- Contact -->
-{{ with .Params.contact }}
-<section id="contact" class="home-section">
-  <h2>Contact</h2>
-  <div class="contact-table">
-    {{ range . }}
-      <div class="contact-row">
-        <div class="contact-type">
-          {{- "[" -}}{{ .type }}{{- "]" -}}
-        </div>
-        <div class="contact-value">
-          {{ if eq .type "Email" }}
-            <a href="mailto:{{ .value }}">{{ .value }}</a>
-          {{ else if eq .type "GitHub" }}
-            <a href="https://github.com/{{ .value }}" target="_blank" rel="noopener">{{ .value }}</a>
-          {{ else }}
-            <a href="{{ .value }}" target="_blank" rel="noopener">{{ .value }}</a>
-          {{ end }}
-        </div>
-      </div>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-
-
+  {{ partial "contacts.html" . }}
+</div>
 {{ end }}
 
