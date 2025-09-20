@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.150.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Hanxi (Gary) Chen</title>
+
+      <link rel="stylesheet" href="/css/main.min.54f79c19016f3a74c99a84b248cc3f47bd665a079dfd6f359651d9b097f8ec1c.css" integrity="sha256-VPecGQFvOnTJmoSySMw/R71mWged/W81llHZsJf47Bw=" crossorigin="anonymous">
+
+
+        <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href=$fontFile>
+
+
+
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title">Hanxi (Gary) Chen</h1>
+
+  <nav class="menu-container">[<a aria-current="page" class="active" href="/">Home</a>][<a href="/info/">Info</a>][<a href="/cv/hanxi-chen-cv-07222025.pdf">CV</a>]
+  </nav>
+
+
+  </header>
+  <main>
+    <div class="site-container">
+      
+<div class="home">
+    <section id="about" class="section">
+    <h2>About</h2>
+    <div class="about-container">
+      <div class="about-photo">
+        
+        <img src="/images/profile%20picture.jpg" alt="Profile picture" class="photo" id="profile-picture">
+        
+      </div>
+      <div class="about-content">
+        
+        <p>I am a first-year CS Ph.D. student at <a href="https://bowers.cornell.edu/">Cornell University</a>, broadly interested in programming language semantics, proofs, mechanization, and logics.</p>
+<p>I recently graduated Summa Cum Laude from <a href="https://www.upenn.edu/">University of Pennsylvania</a> with an <a href="https://undergrad-inside.wharton.upenn.edu/dual-degree/">uncoordinated dual bachelor&rsquo;s degree</a> between Computer Science from <a href="https://www.cis.upenn.edu/">Engineering</a> and Economics from <a href="https://www.wharton.upenn.edu/">the Wharton School</a>, and an accelerated master&rsquo;s degree in Computer and Information Science. I was extremely fortunate to research in Penn&rsquo;s <a href="https://www.cis.upenn.edu/~plclub/">PLClub</a> under the supervision of my amazing advisor, <a href="https://www.cis.upenn.edu/~stevez/">Prof. Steve Zdancewic</a>. I worked on <a href="https://github.com/vellvm/vellvm">Verifying LLVM</a>, linear logic, testing, and other program semantics using Rocq and OCaml. I was also a <a href="https://undergrad-inside.wharton.upenn.edu/wrs/">Wharton Research Scholar</a> supervised by <a href="https://www.cis.upenn.edu/~sanjeev/">Prof. Sanjeev Khanna</a> on the Knapsack problems with Precedence Constraints.</p>
+
+        
+      </div>
+    </div>
+  </section>
+
+
+  
+<section id="publications" class="section">
+  <h2>Publications</h2>
+  
+  <article class="publication">
+    <header>
+      <span class="tag">
+        
+        [NFM&#39;25]
+        
+      </span>
+      <span class="title">
+        
+        <a href="https://doi.org/10.1007/978-3-031-93706-4_6">Vellvm: Formalizing the Informal LLVM: (Experience Report)</a>
+        
+      </span>
+    </header>
+    <div class="authors">
+	    
+	    Calvin Beck, <strong class="myname">Hanxi Chen</strong>, Steve Zdancewic
+    </div>
+    
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="content">
+        <p>This report presents our methodology for and experience with formalizing a specification of LLVM IR in the Verified LLVM Project (Vellvm). Vellvm provides a specification for a large, practical subset of LLVM IR in the Rocq Proof Assistant in the support of verified compilers and program transformations. Program transformations often rely on the subtle details, and as a result Vellvm’s semantics are quite comprehensive: for instance we provide a sophisticated low-level memory model to support low-level operations, such as casts between pointers and integers, and justify optimizations in their presence. Our approach implements the semantics via monadic interpreters, which rely on a coinductively-defined data structure called ITrees. Crucially, this methodology supports the extraction of an executable interpreter, proved to refine the specification. We use the reference interpreter to validate the accuracy of the formalization, employing random differential testing between Clang and Vellvm implemented in our own LLVM IR program generator (GenLLVM), as well as via state-of-the-art C compiler testing frameworks (CSmith and YARPGen). Such testing has found bugs in both the Vellvm semantics and Clang. We believe that tools from the Vellvm project can be useful for other LLVM IR-related projects, and that the overall methodology applies to other formal verification efforts.
+</p>
+      </div>
+    </details>
+    
+    <div>
+  </article>
+  
+  <article class="publication">
+    <header>
+      <span class="tag">
+        
+        [CoqPL&#39;25]
+        
+      </span>
+      <span class="title">
+        
+        <a href="https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal">Vellvm: Formalizing the Informal</a>
+        
+      </span>
+    </header>
+    <div class="authors">
+	    
+	    Calvin Beck, <strong class="myname">Hanxi Chen</strong>, Steve Zdancewic
+    </div>
+    
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="content">
+        <p>The Vellvm project is an extensive undertaking to formalize a large subset of LLVM IR in the Coq proof assistant. LLVM IR is an intermediate language that is widely used as a common target for front-end compilers. Compilers for different languages can share the LLVM infrastructure for performing optimizations and generating target code for various instruction set architectures. The bedrock of many languages is LLVM IR, and formalizing it gives us an important tool for compiler verification efforts. In this talk we will explore the difficulties that come up when attempting to formalize a large real world language. We’ll touch upon how proof assistants like Coq can reveal issues in informal specifications, how testing tools like QuickChick can help bridge the gap between informal real world implementations and our formal Coq semantics, and we will also touch upon aspects of the LLVM IR could be updated to better suit verification efforts. Furthermore, we’ll discuss some of the challenges we have encountered along the way, including limitations with the Coq type system, extraction bugs, and performance issues for proofs and extracted code.
+</p>
+      </div>
+    </details>
+    
+    <div>
+  </article>
+  
+  <article class="publication">
+    <header>
+      <span class="tag">
+        
+        [ICFP&#39;24]
+        
+      </span>
+      <span class="title">
+        
+        <a href="https://doi.org/10.1145/3674652">A Two-Phase Infinite/Finite Low-Level Memory Model: Reconciling Integer–Pointer Casts, Finite Space, and undef at the LLVM IR Level of Abstraction</a>
+        
+      </span>
+    </header>
+    <div class="authors">
+	    
+	    Calvin Beck, Irene Yoon, <strong class="myname">Hanxi Chen</strong>, Yannick Zakowski, Steve Zdancewic
+    </div>
+    
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="content">
+        <p>This paper provides a novel approach to reconciling complex low-level memory model features, such as pointer--integer casts, with desired refinements that are needed to justify the correctness of program transformations. The idea is to use a &#34;two-phase&#34; memory model, one with an unbounded memory and corresponding unbounded integer type, and one with a finite memory; the connection between the two levels is made explicit by a notion of refinement that handles out-of-memory behaviors. This approach allows for more optimizations to be performed and establishes a clear boundary between the idealized semantics of a program and the implementation of that program on finite hardware. The two-phase memory model has been incorporated into an LLVM IR semantics, demonstrating its utility in practice in the context of a low-level language with features like undef and bitcast. This yields infinite and finite memory versions of the language semantics that are proven to be in refinement with respect to out-of-memory behaviors. Each semantics is accompanied by a verified executable reference interpreter. The semantics justify optimizations, such as dead-alloca-elimination, that were previously impossible or difficult to prove correct.
+</p>
+      </div>
+    </details>
+    
+    <div>
+  </article>
+  
+</section>
+
+  
+
+  
+<section id="contacts" class="section">
+  <h2>Contact</h2>
+  <div class="contact-table">
+    
+    <div class="contact-row">
+      <div class="contact-type">[Github]</div>
+      <div class="contact-value">
+        
+        <a href="https://github.com/hanxic" target="_blank" rel="noopener">https://github.com/hanxic</a>
+        
+      </div>
+    </div>
+    
+    <div class="contact-row">
+      <div class="contact-type">[Email]</div>
+      <div class="contact-value">
+        
+        <a href="mailto:hanxic@cs.cornell.edu">hanxic@cs.cornell.edu</a>
+        
+      </div>
+    </div>
+    
+    <div class="contact-row">
+      <div class="contact-type">[LinkedIn]</div>
+      <div class="contact-value">
+        
+        <a href="https://www.linkedin.com/in/hanxic" target="_blank" rel="noopener">https://www.linkedin.com/in/hanxic</a>
+        
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+
+</div>
+
+    </div>
+  </main>
+  <footer>
+    <p>Last updated: August 2025. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
