@@ -5,7 +5,8 @@
     --global-code-bg-color: rgba(181, 9, 172, 0.05);
     /* --global-text-color: #213555; */
     --global-text-color: #2a4568;
-    --global-text-color-small: #4c6f96;
+    --global-text-color-small: #4e3269;
+    --global-font-size-small: 0.75em;
     --global-text-color-dark: #233040;
     --global-text-color-light: #d8c4b6;
     --global-theme-color: #007acc;
@@ -173,8 +174,9 @@ main :not(h2) {
     /* font-size: 1.1em; */
 }
 #education .note {
+    font-size: var(--global-font-size-small);
     color: var(--global-text-color-small);
-    font-size: 0.75em;
+    /* color: var(--global-hover-color); */
 }
 #education header .year {
     margin-left: auto;
@@ -195,8 +197,9 @@ summary{
 }
 
 #education .attributes {
-    font-size: 0.75em;
+    font-size: var(--global-font-size-small);
     color: var(--global-text-color-small)
+    /* color: var(--global-hover-color); */
 }
 
 /* Teaching */
@@ -215,6 +218,10 @@ summary{
 }
 #teaching li .type{
     font-weight: 550;
+}
+#teaching .terms {
+    font-size: var(--global-font-size-small);
+    color: var(--global-text-color-small);
 }
 
 /* footer */

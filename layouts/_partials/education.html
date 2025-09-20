@@ -15,7 +15,7 @@
       </span>
     </header>
     {{ if .note }}
-    <div class="note">
+    <div class="note small">
       {{ .note }}
     </div>
     {{ end }}
@@ -24,7 +24,7 @@
       <div class="degree">
         <span class="title">{{- .title -}}</span>
         {{- if .attributes -}}
-        <span class="attributes">
+        <span class="attributes small">
           {{ delimit .attributes ", " }}
         </span>
         {{ end }}
