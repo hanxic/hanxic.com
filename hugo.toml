@@ -26,3 +26,7 @@ title = 'Hanxi (Gary) Chen'
 [params]
   profilePicture = "images/profile picture.jpg"
   updateTime = "August 2025"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
