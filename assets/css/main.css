@@ -79,6 +79,9 @@ header :not(h1){
     font-size: 0.85rem;
     text-align: center;
 }
+.menu-container a {
+    font-size: 1.1em;
+}
 /* .menu-container a { */
 /*     color: inherit; */
 /*     text-decoration: underline; */
@@ -236,6 +239,9 @@ footer {
 }
 
 @media (max-width: 500px) {
+    .menu-container a {
+        font-size: 0.9em;
+    }
     body {
         margin: 0.9rem;
     }
