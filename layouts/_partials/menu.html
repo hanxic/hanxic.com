@@ -29,15 +29,13 @@ Renders a menu for the given menu ID.
     {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
   {{- end }}
 
-  {{- "[" -}}
   <a
     {{- range $k, $v := $attrs }}
       {{- with $v }}
         {{- printf " %s=%q" $k $v | safeHTMLAttr }}
       {{- end }}
     {{- end -}}
-  >{{ $item.Name }}</a>
-  {{- "]" -}}
+  >[{{ $item.Name }}]</a>
 
   <!-- {{- if lt (add $index 1) $length }} / {{ end }} -->
 

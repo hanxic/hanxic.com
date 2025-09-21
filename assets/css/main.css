@@ -79,12 +79,12 @@ header :not(h1){
     font-size: 0.85rem;
     text-align: center;
 }
-.menu-container a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: var(--global-theme-color);
-    display: inline-block;
-}
+/* .menu-container a { */
+/*     color: inherit; */
+/*     text-decoration: underline; */
+/*     text-decoration-color: var(--global-theme-color); */
+/*     display: inline-block; */
+/* } */
 
 
 
