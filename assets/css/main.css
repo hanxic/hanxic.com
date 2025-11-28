@@ -166,6 +166,9 @@ main :not(h2) {
 }
 
 /* education */
+#education .education {
+    margin-bottom: 1em
+}
 #education header {
     font-weight: 600;
     display: flex;
@@ -206,15 +209,19 @@ summary{
 }
 
 /* Teaching */
+#teaching .teaching-school {
+    margin-bottom:1em;
+}
 #teaching .school {
     font-size: 1rem;
-    margin-bottom: 0.5em;
+    margin-bottom: 0em;
     font-weight: 600;
 }
 #teaching ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
+    margin-bottom: 0.3em;
 }
 #teaching li::before {
     content: "▷"
