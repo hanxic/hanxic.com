@@ -25,4 +25,6 @@ $(SITE_CV): $(MAIN).pdf
 
 clean:
 	latexmk -C $(MAIN)
-	rm -f $(GENERATED)
+	rm -f $(MAIN).aux $(MAIN).bbl $(MAIN).bcf $(MAIN).blg $(MAIN).fdb_latexmk
+	rm -f $(MAIN).fls $(MAIN).log $(MAIN).out $(MAIN).pdf $(MAIN).run.xml $(MAIN)-blx.bib
+	rm -rf generated
