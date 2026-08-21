@@ -1,0 +1,96 @@
+@inproceedings{beck2025a,
+  author       = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
+  firstauthors = {Hanxi Chen and Calvin Beck},
+  title        = {Vellvm: Formalizing the Informal LLVM (An Experience Report)},
+  booktitle    = {Nasa Formal Methods: 17th International Symposium (NFM)},
+  year         = {2025},
+  pages        = {91--99},
+  publisher    = {Springer Nature Switzerland},
+  doi          = {10.1007/978-3-031-93706-4_6},
+  url          = {https://doi.org/10.1007/978-3-031-93706-4_6},
+  tag          = {NFM'25},
+  keywords     = {published},
+  showweb      = {true},
+  abstract     = {This report presents our methodology for and experience with formalizing a specification of LLVM IR in the Verified LLVM Project (Vellvm). Vellvm provides a specification for a large, practical subset of LLVM IR in the Rocq Proof Assistant in the support of verified compilers and program transformations. Program transformations often rely on the subtle details, and as a result Vellvm's semantics are quite comprehensive: for instance we provide a sophisticated low-level memory model to support low-level operations, such as casts between pointers and integers, and justify optimizations in their presence. Our approach implements the semantics via monadic interpreters, which rely on a coinductively-defined data structure called ITrees. Crucially, this methodology supports the extraction of an executable interpreter, proved to refine the specification. We use the reference interpreter to validate the accuracy of the formalization, employing random differential testing between Clang and Vellvm implemented in our own LLVM IR program generator (GenLLVM), as well as via state-of-the-art C compiler testing frameworks (CSmith and YARPGen). Such testing has found bugs in both the Vellvm semantics and Clang. We believe that tools from the Vellvm project can be useful for other LLVM IR-related projects, and that the overall methodology applies to other formal verification efforts.}
+}
+
+@inproceedings{beck2025b,
+  author       = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
+  firstauthors = {Hanxi Chen and Calvin Beck},
+  title        = {Vellvm: Formalizing the Informal},
+  booktitle    = {The Eleventh International Workshop on Coq for Programming Languages (CoqPL)},
+  year         = {2025},
+  month        = {1},
+  day          = {25},
+  note         = {Presentation, published, Denver, CO, USA},
+  url          = {https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal},
+  tag          = {CoqPL'25},
+  keywords     = {published},
+  type         = {presentation},
+  showweb      = {true},
+  abstract     = {The Vellvm project is an extensive undertaking to formalize a large subset of LLVM IR in the Coq proof assistant. LLVM IR is an intermediate language that is widely used as a common target for front-end compilers. Compilers for different languages can share the LLVM infrastructure for performing optimizations and generating target code for various instruction set architectures. The bedrock of many languages is LLVM IR, and formalizing it gives us an important tool for compiler verification efforts. In this talk we will explore the difficulties that come up when attempting to formalize a large real world language. We'll touch upon how proof assistants like Coq can reveal issues in informal specifications, how testing tools like QuickChick can help bridge the gap between informal real world implementations and our formal Coq semantics, and we will also touch upon aspects of the LLVM IR could be updated to better suit verification efforts. Furthermore, we'll discuss some of the challenges we have encountered along the way, including limitations with the Coq type system, extraction bugs, and performance issues for proofs and extracted code.}
+}
+
+@article{beck2024,
+  author       = {Calvin Beck and Irene Yoon and Hanxi Chen and Yannick Zakowski and Steve Zdancewic},
+  firstauthors = {Calvin Beck},
+  title        = {A Two-Phase Infinite/Finite Low-Level Memory Model: Reconciling Integer--Pointer Casts, Finite Space, and undef at the LLVM IR Level of Abstraction},
+  journaltitle = {Proceedings of the ACM on Programming Languages, 8 (ICFP)},
+  year         = {2024},
+  pages        = {789--817},
+  doi          = {10.1145/3674652},
+  url          = {https://doi.org/10.1145/3674652},
+  tag          = {ICFP'24},
+  keywords     = {published},
+  type         = {article},
+  showweb      = {true},
+  abstract     = {This paper provides a novel approach to reconciling complex low-level memory model features, such as pointer--integer casts, with desired refinements that are needed to justify the correctness of program transformations. The idea is to use a "two-phase" memory model, one with an unbounded memory and corresponding unbounded integer type, and one with a finite memory; the connection between the two levels is made explicit by a notion of refinement that handles out-of-memory behaviors. This approach allows for more optimizations to be performed and establishes a clear boundary between the idealized semantics of a program and the implementation of that program on finite hardware. The two-phase memory model has been incorporated into an LLVM IR semantics, demonstrating its utility in practice in the context of a low-level language with features like undef and bitcast. This yields infinite and finite memory versions of the language semantics that are proven to be in refinement with respect to out-of-memory behaviors. Each semantics is accompanied by a verified executable reference interpreter. The semantics justify optimizations, such as dead-alloca-elimination, that were previously impossible or difficult to prove correct.}
+}
+
+@thesis{chen2024cis,
+  author      = {Hanxi Chen},
+  title       = {Random Differential Testing at the LLVM IR Level},
+  type        = {CIS Undergraduate Thesis},
+  institution = {University of Pennsylvania},
+  year        = {2024},
+  keywords    = {unpublished},
+  showweb     = {false},
+  note        = {Reviewed by Prof. Steve Zdancewic (advisor) and Prof. Benjamin C. Pierce. Received grade A.}
+}
+
+@thesis{chen2024wharton,
+  author      = {Hanxi Chen},
+  title       = {Knapsack Problems with Precedence Constraints},
+  type        = {Wharton Undergraduate Thesis},
+  institution = {University of Pennsylvania},
+  year        = {2024},
+  keywords    = {unpublished},
+  showweb     = {false},
+  note        = {Supervised by Prof. Sanjeev Khanna. Received grade A.}
+}
+
+@inprogress{beck2025genllvm,
+  author   = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
+  title    = {GenLLVM: Randomized Differential Testing for LLVM IR},
+  year     = {2025},
+  keywords = {inprogress},
+  showweb  = {false}
+}
+
+@inprogress{ren2026type,
+  author   = {Silei Ren and Suraaj Kanniwadi and Hanxi Chen and Andrew C. Myers},
+  title    = {Type-Confusion Security},
+  year     = {2026},
+  keywords = {inprogress},
+  note     = {Resubmit to POPL},
+  showweb  = {false}
+}
+
+@inprogress{chen2026oblivious,
+  author   = {Hanxi Chen and Noam Zilberstein and Alexandra Silva and Andrew C. Myers},
+  title    = {An Oblivious Outcome Logic for Probabilistic Nondeterministic Programs},
+  year     = {2026},
+  keywords = {inprogress},
+  note     = {In Progress},
+  showweb  = {false}
+}

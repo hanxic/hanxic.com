@@ -1,0 +1,389 @@
+---
+_tex:
+  index_by:
+    groups: id
+  join:
+    tags: ", "
+groups:
+  - id: cs-graduate
+    title: Computer Science (Graduate)
+    tags:
+      - CSG
+  - id: cs-undergraduate
+    title: Computer Science (Undergraduate)
+    tags:
+      - CSUG
+  - id: business
+    title: Business
+    tags:
+      - BSUG
+courses:
+  - number: CS 6861
+    name: Kleene Algebra
+    level: Graduate
+    school: Cornell
+    instructor: Alexandra Silva
+    grade: TBD
+    field: PL/FM
+    short: Kleene Algebra
+    tags: [CSG]
+  - number: CS 6117
+    name: Category Theory for Computer Scientists
+    level: Graduate
+    school: Cornell
+    instructor: Justin Hsu
+    grade: TBD
+    field: PL/FM
+    short: Category Theory
+    tags: [CSG]
+  - number: CIS 7000
+    name: Compilers
+    level: Graduate
+    school: Penn
+    instructor: Steve Zdancewic
+    grade: A+
+    field: PL/FM
+    short: Compilers
+    tags: [CSG]
+  - number: CIS 6820
+    name: Friendly Logics
+    level: Graduate
+    school: Penn
+    instructor: Val Tannen
+    grade: A+
+    field: PL/FM
+    short: Friendly Logics
+    tags: [CSG]
+  - number: CIS 6770
+    name: Advanced Topics in Algorithms and Complexity
+    level: Graduate
+    school: Penn
+    instructor: Sanjeev Khanna
+    grade: A
+    field: Theory
+    short: Randomized and Sublinear Algorithms
+    tags: [CSG]
+  - number: CIS 6700
+    name: Advanced Topics in Programming Languages
+    level: Graduate
+    school: Penn
+    instructor: Benjamin Pierce
+    grade: A-
+    field: PL/FM
+    short: Separation Logics
+    tags: [CSG]
+  - number: CIS 6700
+    name: Advanced Topics in Programming Languages
+    level: Graduate
+    school: Penn
+    instructor: Stephanie Weirich
+    grade: A
+    field: PL/FM
+    short: Type Theory, Lambda Calculus, and Effect
+    tags: [CSG]
+  - number: CIS 5990
+    name: Independent Study for Masters Students
+    level: Graduate
+    school: Penn
+    instructor: Steve Zdancewic
+    grade: A
+    field: PL/FM
+    short: Formal Verification
+    tags: [CSG]
+  - number: CIS 5710
+    name: Computer Organization and Design
+    level: Graduate
+    school: Penn
+    instructor: Joe Devietti
+    grade: A
+    field: Architecture
+    short: Computer Organization and Design
+    tags: [CSG]
+  - number: CIS 5530
+    name: Networked Systems
+    level: Graduate
+    school: Penn
+    instructor: Vincent Liu
+    grade: A-
+    field: System
+    short: Networked Systems
+    tags: [CSG]
+  - number: CIS 5520
+    name: Advanced Programming
+    level: Graduate
+    school: Penn
+    instructor: Stephanie Weirich
+    grade: A
+    field: PL/FM
+    short: Advanced Programming
+    tags: [CSG]
+  - number: CIS 5500
+    name: Database and Information Systems
+    level: Graduate
+    school: Penn
+    instructor: Susan Davidson
+    grade: A
+    field: System
+    short: Database and Information Systems
+    tags: [CSG]
+  - number: CIS 5480
+    name: Operating Systems Design and Implementation
+    level: Graduate
+    school: Penn
+    instructor: Boon Thau Loo
+    grade: A
+    field: System
+    short: Operating Systems
+    tags: [CSG]
+  - number: CIS 5470
+    name: Software Analysis
+    level: Graduate
+    school: Penn
+    instructor: Mayur Naik
+    grade: A+
+    field: PL/FM
+    short: Software Analysis
+    tags: [CSG]
+  - number: CIS 545
+    name: Big Data Analytics
+    level: Graduate
+    school: Penn
+    instructor: Susan Davidson
+    grade: A
+    field: ML
+    short: Big Data Analytics
+    tags: [CSG]
+  - number: CIS 5200
+    name: Machine Learning
+    level: Graduate
+    school: Penn
+    instructor: Jacob Gardner
+    grade: A
+    field: ML
+    short: Machine Learning
+    tags: [CSG]
+  - number: CIS 5110
+    name: Theory of Computation
+    level: Graduate
+    school: Penn
+    instructor: Jean Gallier
+    grade: A+
+    field: PL/FM
+    short: Theory of Computation
+    tags: [CSG]
+  - number: CIS 5000
+    name: Software Foundations
+    level: Graduate
+    school: Penn
+    instructor: Steve Zdancewic
+    grade: A+
+    field: PL/FM
+    short: Software Foundations in Rocq
+    tags: [CSG]
+  - number: ESE 504
+    name: Linear, Nonlinear, and Integer Optimization
+    level: Graduate
+    school: Penn
+    instructor: Michael Carchidi
+    grade: A
+    field: ML
+    short: Optimization
+    tags: [CSG]
+  - number: STAT 5200
+    name: Applied Econometrics
+    level: Graduate
+    school: Penn
+    instructor: Minchul Shin
+    grade: A+
+    field: ML
+    short: Applied Econometrics
+    tags: [CSG]
+  - number: NETS 412
+    name: Algorithmic Game Theory
+    level: Undergraduate
+    school: Penn
+    instructor: Aaron Roth
+    grade: A-
+    field: Theory
+    short: Algorithmic Game Theory
+    tags: [CSUG]
+  - number: NETS 3120
+    name: Network Theory
+    level: Undergraduate
+    school: Penn
+    instructor: Victor Preciado
+    grade: A
+    field: Theory
+    short: Network Theory
+    tags: [CSUG]
+  - number: NETS 212
+    name: Distributed Cloud Programming
+    level: Undergraduate
+    school: Penn
+    instructor: Andreas Haeberlen
+    grade: A
+    field: System
+    short: Distributed Cloud Programming
+    tags: [CSUG]
+  - number: CIS 320
+    name: Algorithms
+    level: Undergraduate
+    school: Penn
+    instructor: Aaron Roth
+    grade: A
+    field: Theory
+    short: Algorithms
+    tags: [CSUG]
+  - number: CIS 2400
+    name: Introduction to Computer Systems
+    level: Undergraduate
+    school: Penn
+    instructor: Travis McGaha
+    grade: A+
+    field: Architecture
+    short: Intro to Computer Systems
+    tags: [CSUG]
+  - number: CIS 160
+    name: Discrete Math
+    level: Undergraduate
+    school: Penn
+    instructor: Rajiv Gandhi
+    grade: A
+    field: Theory
+    short: Discrete Math
+    tags: [CSUG]
+  - number: ESE 3050
+    name: Foundations of Data Science
+    level: Undergraduate
+    school: Penn
+    instructor: Victor Preciado
+    grade: A
+    field: ML
+    short: Foundations of Data Science
+    tags: [CSUG]
+  - number: STAT 4420
+    name: Bayesian Statistics
+    level: Undergraduate
+    school: Penn
+    instructor: Shane Jensen
+    grade: A+
+    field: ML
+    short: Bayesian Statistics
+    tags: [CSUG]
+  - number: STAT 431
+    name: Statistical Inference
+    level: Undergraduate
+    school: Penn
+    instructor: Ye Zhang
+    grade: A+
+    field: ML
+    short: Statistical Inference
+    tags: [CSUG]
+  - number: STAT 430
+    name: Probability
+    level: Undergraduate
+    school: Penn
+    instructor: Winston Lin
+    grade: A+
+    field: Math
+    short: Probability
+    tags: [CSUG]
+  - number: MATH 313 / MATH 240
+    name: Linear Algebra
+    level: Undergraduate
+    school: Penn
+    instructor: Dennis DeTurck
+    grade: A
+    field: Math
+    short: Linear Algebra
+    tags: [CSUG]
+  - number: MATH 114
+    name: Multivariable Calculus
+    level: Undergraduate
+    school: Penn
+    instructor: Andrew Cooper
+    grade: A+
+    field: Math
+    short: Multivariable Calculus
+    tags: [CSUG]
+  - number: ECON 001 / ECON 002
+    name: Introduction to Microeconomics / Introduction to Macroeconomics
+    level: Undergraduate
+    school: Penn
+    grade: A+
+    field: Economics
+    short: Economics
+    tags: [BSUG]
+  - number: FNCE 100
+    name: Corporate Finance
+    level: Undergraduate
+    school: Penn
+    grade: A
+    field: Finance
+    short: Corporate Finance
+    tags: [BSUG]
+  - number: FNCE 100
+    name: Monetary Economics and the Global Economy
+    level: Undergraduate
+    school: Penn
+    grade: A
+    field: Finance
+    short: Monetary Economics
+    tags: [BSUG]
+  - number: ACCT 101
+    name: Accounting & Financial Report
+    level: Undergraduate
+    school: Penn
+    grade: A+
+    field: Accounting
+    short: Accounting
+    tags: [BSUG]
+  - number: ACCT 1020
+    name: Strategic Cost Analysis
+    level: Undergraduate
+    school: Penn
+    grade: A+
+    field: Accounting
+    short: Cost Analysis
+    tags: [BSUG]
+  - number: ACCT 2700
+    name: Forensic Analytics
+    level: Undergraduate
+    school: Penn
+    grade: A
+    field: Accounting
+    short: Forensic Analytics
+    tags: [BSUG]
+  - number: ACCT 2420
+    name: Accounting and Business Analysis
+    level: Undergraduate
+    school: Penn
+    grade: A-
+    field: Accounting
+    short: Business Analytics
+    tags: [BSUG]
+  - number: MGMT 2910
+    name: Negotiations
+    level: Undergraduate
+    school: Penn
+    grade: A
+    field: Management
+    short: Negotiations
+    tags: [BSUG]
+  - number: OIDD 3140
+    name: Enabling Technologies
+    level: Undergraduate
+    school: Penn
+    grade: A+
+    field: Operation
+    short: Technical Analysis
+    tags: [BSUG]
+  - number: ECON 4101
+    name: Game Theory Honors
+    level: Undergraduate
+    school: Penn
+    grade: A-
+    field: Economics
+    short: Game Theory
+    tags: [BSUG]
+...

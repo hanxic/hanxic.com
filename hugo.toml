@@ -15,7 +15,7 @@ title = 'Hanxi (Gary) Chen'
 
   [[menus.main]]
     name = 'CV'
-    url = '/cv/hanxi-chen-cv-07222025.pdf'
+    url = '/cv/hanxi-chen-cv.pdf'
     weight = 30
 
   # [[menus.main]]
@@ -25,7 +25,7 @@ title = 'Hanxi (Gary) Chen'
 
 [params]
   profilePicture = "images/profile picture.jpg"
-  updateTime = "August 2025"
+  updateTime = "August 2026"
 
 [caches]
   [caches.images]

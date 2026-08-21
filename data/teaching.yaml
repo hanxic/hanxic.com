@@ -1,68 +1,131 @@
---- # Teaching
-- location: Cornell University
-  courses:
-    - numbers:
-      - CS 4110
-      name: Programming Languages and Logics
-      location: Cornell University
-      positions:
-      - type: "Teaching Assistant"
-        terms:
-          - 25Fa
-- location: University of Pennsylvania
-  courses: 
-    - numbers:
-        - CIS 5521
-      name: Compilers and Interpreters
-      location: University of Pennsylvania
-      description: A graduate course on compilers in OCaml. Topics include lexical analysis, grammars, parsing, intermediate representations, syntax- directed translation, code generation, type checking, dataflow and control-flow analyses, and optimizations.
-      positions:
-        - type: "Teaching Assistant"
+---
+_tex:
+  raw_fields:
+    - cv_number
+  join:
+    numbers: " / "
+    terms: ", "
+entries:
+  - location: Cornell University
+    courses:
+      - numbers:
+        - CS 4160
+        - CS 5160
+        cv_number: CS \sfrac{4}{5}160
+        name: Formal Verification
+        location: Cornell University
+        description: An undergraduate/graduate course on formal verification and mechanization in Rocq. Topics include logic, programming language semantics, and verification of algorithms and data structures.
+        instructors:
+          - Prof. Michael Clarkson
+        positions:
+        - type: Graduate Teaching Assistant
           terms:
-            - 25Sp
-    - numbers:
-        - CIS 5520
-      name: Advanced Programming
-      location: University of Pennsylvania
-      description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers. Taught 4 lectures.
-      positions:
-        - type: "Teaching Assistant"
+            - 26Sp
+      - numbers:
+        - CS 4110
+        - CS 5110
+        cv_number: CS \sfrac{4}{5}110
+        name: Programming Languages and Logics
+        location: Cornell University
+        description: An undergraduate/graduate course on the theory, design, and implementation of programming languages. Topics include operational semantics, denotational semantics, axiomatic semantics, program logics, lambda calculus, dependent type systems, type safety, and logical relations.
+        instructors:
+          - Prof. Nate Foster
+        positions:
+        - type: Graduate Teaching Assistant
           terms:
-            - 24Fa
-    - numbers:
-        - CIS 5020
-        - CIT 5960
-        - CIS 3200
-      name: Analysis of Algorithms
-      location: University of Pennsylvania
-      description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
-      positions:
-        - type: "Head Teaching Assistant"
-          terms:
-            - 23Sp
-            - 23Su
-            - 23Fa
-            - 24Su
-        - type: "Teaching Assistant"
-          terms:
-            - 22Su
-            - 22Fa
-    - numbers:
-        - NETS 3120
-      name: Theory of Networks
-      location: University of Pennsylvania
-      description: A course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
-      positions:
-        - type: "Head Teaching Assistant"
-          terms:
-            - 24Sp
-    - numbers:
-        - CIS 5000
-      name: Software Foundations
-      location: University of Pennsylvania
-      description: A graduate course on basic concepts and techniques of programming languages. Topics include operational techniques for formal definition of language features, type systems and type safety properties, polymorphism, constructive logic, and the Rocq Proof Assistant.
-      positions:
-        - type: "Teaching Assistant"
-          terms:
-            - 23Fa
+            - 25Fa
+  - location: University of Pennsylvania
+    courses:
+      - numbers:
+          - CIS 5521
+        name: Compilers and Interpreters
+        location: University of Pennsylvania
+        description: A graduate course on compilers in OCaml. Topics include lexical analysis, grammars, parsing, intermediate representations, syntax- directed translation, code generation, type checking, dataflow and control-flow analyses, and optimizations.
+        instructors:
+          - Prof. Steve Zdancewic
+        positions:
+          - type: "Teaching Assistant"
+            terms:
+              - 25Sp
+      - numbers:
+          - CIS 5520
+        name: Advanced Programming
+        location: University of Pennsylvania
+        description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers. Taught 4 lectures.
+        cv_description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers, dependent type, refinement type. Taught 4 lectures. Mentored 4 project groups.
+        instructors:
+          - Prof. Stephanie Weirich
+        positions:
+          - type: "Teaching Assistant"
+            terms:
+              - 24Fa
+      - numbers:
+          - CIS 5020
+          - CIT 5960
+          - CIS 3200
+        name: Analysis of Algorithms
+        location: University of Pennsylvania
+        description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
+        cv_description: An undergraduate/graduate course on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
+        instructors:
+          - Prof. Sanjeev Khanna
+        cv_role: Head Teaching Assistant
+        cv_terms:
+          - 22Su
+          - 22Fa
+          - 23Sp
+          - 23Su
+          - 23Fa
+          - 24Su
+        positions:
+          - type: "Head Teaching Assistant"
+            terms:
+              - 23Sp
+              - 23Su
+              - 23Fa
+              - 24Su
+          - type: "Teaching Assistant"
+            terms:
+              - 22Su
+              - 22Fa
+      - numbers:
+          - NETS 3120
+        name: Theory of Networks
+        location: University of Pennsylvania
+        description: A course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
+        cv_description: An undergraduate course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
+        instructors:
+          - Prof. Victor Preciado
+        positions:
+          - type: "Head Teaching Assistant"
+            terms:
+              - 24Sp
+      - numbers:
+          - CIS 5000
+        name: Software Foundations
+        location: University of Pennsylvania
+        description: A graduate course on basic concepts and techniques of programming languages. Topics include operational techniques for formal definition of language features, type systems and type safety properties, polymorphism, constructive logic, and the Rocq Proof Assistant.
+        cv_description: A graduate course on basic concepts and techniques of programming languages. Topics include Rocq Proof Assistant, constructive logic, Hoare Logic, lambda calculus, type system, type safety, and mutable reference. Taught 1 lecture about maps in mechanization.
+        instructors:
+          - Prof. Benjamin Pierce
+        positions:
+          - type: "Teaching Assistant"
+            terms:
+              - 23Fa
+  - location: University of Pennsylvania
+    courses:
+      - name: STEM Tutor
+        location: The Weingarten Center
+        description: Taught Programming Languages and Techniques I (CIS 1200), Programming Languages and Techniques II (CIS 1210), Mathematical Foundations of Computer Science (CIS 1600), Introduction to Algorithms (CIS 3200), Calculus II (MATH 1410), Calculus III (MATH 2400).
+        show:
+          web: false
+          cv: true
+        positions:
+          - type: STEM Tutor
+            terms:
+              - 21Sp
+              - 21Su
+              - 21Fa
+              - 22Sp
+              - 22Su
 ...

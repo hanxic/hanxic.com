@@ -1,34 +1,61 @@
---- # Education
-- school: Cornell University
-  note: Ann S. Bowers College of Computing and Information Science
-  years: 2025-
-  location: Ithaca, NY, USA
-  degrees:
-    - title: Ph.D. in Computer Science
-      
-- school: University of Pennsylvania
-  note: Uncoordinated Dual Bachelor's Degree & Master's Degree between Penn Engineering & The Wharton School
-  years: 2020-2025
-  location: Philadelphia, PA, USA
-  degrees:
-    - title: M.S.E. in Computer and Information Science
-    - title: B.S.E. in Computer Science
-      attributes:
-      - Mathematics Minor
-      - Summa Cum Laude
-    - title: B.S. in Economics
-      attributes:
-      - Business Analytics Concentration
-      - Summa Cum Laude
-  honors:
-    - Wharton Research Scholars
-    - MCIT TA Award
-    - CIS Faculty Appreciation Award
-    - Eta Kappa Nu Honors Society
-    - Tau Beta Pi Honors Society
-    - Beta Gamma Sigma Honors Society
-  gpa: 3.97/4.00
-  courses:
-    - CIS 6700
+---
+_tex:
+  index_by: id
+  url_fields:
+    - url
+entries:
+  - id: cornell
+    school: Cornell University
+    note: Ann S. Bowers College of Computing and Information Science
+    years: 2025-
+    cv_years: Present
+    location: Ithaca, NY, USA
+    cv_location: Ithaca, NY
+    degrees:
+      - title: Ph.D. in Computer Science
+        focus: Programming Languages
+    advisors:
+      - name: Alexandra Silva
+        title: Prof.
+        url: https://alexandrasilva.org/
+      - name: Andrew C. Myers
+        title: Prof.
+        url: https://www.cs.cornell.edu/andru/
+  - id: penn
+    school: University of Pennsylvania
+    note: Uncoordinated Dual Bachelor's Degree & Master's Degree between Penn Engineering & The Wharton School
+    years: 2020-2025
+    cv_years: 2025
+    location: Philadelphia, PA, USA
+    cv_location: Philadelphia, PA
+    cv_note: Penn Engineering & The Wharton School
+    degrees:
+      - title: M.S.E. in Computer and Information Science
+      - title: B.S.E. in Computer Science
+        focus: Mathematics minor
+        attributes:
+        - Mathematics Minor
+        - Summa Cum Laude
+      - title: B.S. in Economics
+        attributes:
+        - Business Analytics Concentration
+        - Summa Cum Laude
+    advisors:
+      - name: Steve Zdancewic
+        title: Prof.
+        url: https://www.cis.upenn.edu/~stevez/
+      - name: Sanjeev Khanna
+        title: Prof.
+        url: https://www.cis.upenn.edu/~sanjeev/
+        note: Wharton Research Scholars
+    honors:
+      - Wharton Research Scholars
+      - MCIT TA Award
+      - CIS Faculty Appreciation Award
+      - Eta Kappa Nu Honors Society
+      - Tau Beta Pi Honors Society
+      - Beta Gamma Sigma Honors Society
+    gpa: 3.97/4.00
+    courses:
+      - CIS 6700
 ...
-

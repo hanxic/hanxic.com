@@ -1,0 +1,29 @@
+---
+entries:
+  - role: Administrator & Lecturer
+    organization: Gateways Summer Program
+    supervisors:
+      - Steve Downes
+    period: Feb 2025 -- Jul 2025
+    institution: Tabor Academy
+    bullets:
+      - Co-organized a summer program hosting 65 students from Shenzhen Nanshan Foreign Language School across two eight-day sessions, providing exposure to U.S. boarding high school life and STEM courses, including marine science, computer science, and global economies.
+      - Taught seminars on business negotiation using interactive group activities, covering concepts such as fixed-pie perception, deal breakers, bargaining zones, and practical negotiation strategies.
+  - role: Research Assistant
+    organization: The Knowledge Puzzle Project
+    supervisors:
+      - Prof. Andrew Carton
+    period: Feb 2021 -- Sep 2021
+    institution: University of Pennsylvania
+    unit: The Wharton School
+    bullets:
+      - Conducted research on automating knowledge database construction through PDF data extraction.
+  - role: Research Intern (Volunteer)
+    organization: Cybersecurity & Legislation
+    period: Jun 2019 -- Aug 2019
+    institution: Massachusetts State House
+    unit: House Committee on Technology and Intergovernmental Affairs
+    bullets:
+      - Researched and submitted a report for the Committee hearing regarding telehealth security, analyzing telehealth cybersecurity strategies at the federal and state levels, and suggesting potential improvements for legislation.
+      - Researched and wrote proposals regarding solutions to the cybersecurity workforce shortage in Massachusetts.
+...

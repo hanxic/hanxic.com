@@ -1,0 +1,48 @@
+---
+entries:
+  - role: Research Assistant
+    group: Cornell PL Group
+    supervisors:
+      - Prof. Alexandra Silva
+      - Prof. Andrew C. Myers
+    period: Sep 2025 --
+    institution: Cornell University
+    unit: Computer Science
+    bullets:
+      - Conducting research on probabilistic concurrent outcome logic and probabilistic nondeterministic outcome logic under an oblivious scheduler, exploring applications in randomized distributed protocols, information flow systems, and machine learning optimization.
+      - Developing a Lean mechanization library for the logics, including a monadic semantics for probabilistic nondeterministic programs, a probabilistic assertion language, semantic and syntactic outcome triples, and new probability space constructions and automation using Mathlib and metaprogramming.
+  - role: Research Assistant
+    group: PLClub
+    supervisors:
+      - Prof. Steve Zdancewic
+    period: Jun 2021 -- Aug 2025
+    institution: University of Pennsylvania
+    unit: Computer and Information Science
+    bullets:
+      - Contributed to the Verified LLVM (Vellvm) Project, formalizing LLVM IR semantics in Rocq. Formalized nontrivial lemmas such as serialization. Participated in the development of a low-level memory model in Rocq to facilitate pointer-integer casting.
+      - Developed a Rocq-based LLVM differential testing framework, as part of the Vellvm project, using QuickChick, capable of generating UB-free LLVM programs with nontrivial features like pointer manipulations. Reported novel bugs to the LLVM development team.
+      - Developed a program tracer using OCaml and Rocq for generating the dynamic trace via Vellvm interpreter. The tracer can generate annotated program trace, as well as well-formed LLVM IR program, for efficiently detecting bugs according to Vellvm's semantics.
+      - Developed a permutation library and proved the equivalence of seven variations of list permutations based on type class. Building a complete solver using MetaCoq for solving associativity-commutativity-unification on lists.
+      - Formalized the multiplicative, exponential first-order classical linear logic in Rocq with properties like cut elimination as a potential use case for the permutation library and a related formalization of opportunistically parallel, linear-resource programming language with asynchronous queries.
+      - Contributed to a newer version of Software Foundations, appeared at the Oregon Programming Language Summer School (OPLSS) at Boston University 2024, as part of the DeepSpec project.
+  - role: Research Assistant
+    group: Wharton Research Scholars
+    supervisors:
+      - Prof. Sanjeev Khanna
+    period: Jan 2023 -- Dec 2024
+    institution: University of Pennsylvania
+    unit: The Wharton School
+    bullets:
+      - Researched and proved the existence of a pseudo-polynomial solution for precedence constraints knapsack problems with two different graph classes, union of three paths and one-directional bipartite poset with consecutive children.
+      - Gave a talk in Wharton Research Scholars seminar. Submitted a 48-page undergraduate technical report to Wharton Research Scholars Program in December 2024. Approved with grade A.
+  - role: Research Assistant
+    group: Penn Computational Intelligence Lab
+    supervisors:
+      - Prof. Jing Li
+    period: Feb 2021 -- Sep 2021
+    institution: University of Pennsylvania
+    unit: Electrical and Systems Engineering
+    bullets:
+      - Co-designed and developed a novel simulator prototype, written in C++, that models the functionality of Intel's Optane Memory.
+      - Researched a C# solution in modifying PDFSplit, a PowerPoint add-in in Linux, to Microsoft.
+...

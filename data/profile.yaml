@@ -1,0 +1,22 @@
+---
+_tex:
+  url_fields:
+    - website
+    - linkedin
+    - github
+name:
+  full: Hanxi (Gary) Chen
+  short: Hanxi Chen
+  given: Hanxi
+  family: Chen
+contact:
+  phone: "(201) 406-1327"
+  email: hanxic@cs.cornell.edu
+  website: https://www.hanxic.com
+  website_label: www.hanxic.com
+  linkedin: https://www.linkedin.com/in/hanxic
+  github: https://github.com/hanxic
+cv:
+  filename: hanxi-chen-cv.pdf
+  updated: August 2026
+...

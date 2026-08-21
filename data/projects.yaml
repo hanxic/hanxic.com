@@ -1,0 +1,71 @@
+---
+_tex:
+  join:
+    technologies: ", "
+    keywords: ", "
+entries:
+  - title: RISC-V Pipelined Processor with cache
+    technologies:
+      - SystemVerilog
+      - Python
+    keywords:
+      - RTL design
+      - Formal Verification
+    period: Feb 2025 -- May 2025
+    institution: University of Pennsylvania
+    course: CIS 5710 Computer Organization and Design
+    supervisor: Prof. Joe Devietti
+    bullets:
+      - Independently developed a fully functioning RISC-V pipelined processor project individually, including AXI-Lite-style caching, multi-cycle execution units, and basic branch prediction.
+      - Verified the processor using extensive custom testbenches, optimized the design for low LUT usage and timing performance, and synthesized it onto an FPGA to run real programs, including a Candy-Crush-style game.
+  - title: "OAT-Compiler: From C-like Lang to Assembly"
+    technologies:
+      - OCaml
+      - C
+      - LLVM
+      - X86
+      - Clang
+      - Dune
+    keywords:
+      - Code Generation
+      - Static Analysis
+      - Optimization
+    period: Feb 2024 -- May 2024
+    institution: University of Pennsylvania
+    course: CIS 7000 Compilers and Interpreters
+    supervisor: Prof. Steve Zdancewic
+    bullets:
+      - Independently developed a workable full-stack compiler with linter, parser, frontend, and backend capable of compiling Oat, a C-like language with pointer manipulation and complex data structures, down to LLVM IR and X86.
+      - Validated with thousands of student test cases. The compiler contains a type system, analyses, and optimizations including mem2reg and dead-code elimination.
+  - title: "SQL-Interp: Haskell Library for SQL Interpretation and Parsing"
+    technologies:
+      - Haskell
+      - MySQL
+      - Cabal
+    keywords:
+      - Functional Abstraction
+      - Type Systems
+      - Monadic Effects
+    period: Sep 2023 -- Dec 2023
+    institution: University of Pennsylvania
+    course: CIS 5520 Advanced Programming
+    supervisor: Prof. Stephanie Weirich
+    bullets:
+      - Led a team in developing a model for MySQL syntax as well as a tested Haskell library for parsing, interpreting, optimizing, and pretty-printing SQL scripts, using GADTs, monad transformers, applicative parsers, and property-based testing.
+      - Formalized abstract datatypes covering most SQL features. Developed an interface for locally executing queries.
+  - title: "PennOS: Unix-like Operating System"
+    technologies:
+      - C
+      - Valgrind
+    keywords:
+      - Concurrency
+      - Process Management
+      - File Systems
+    period: Jan 2023 -- May 2023
+    institution: University of Pennsylvania
+    course: CIS 5480 Operating Systems
+    supervisor: Prof. Boon Thau Loo
+    bullets:
+      - Led a team in designing a fault-tolerant, multi-thread operating system with kernel and file system components and no memory leaks.
+      - Co-developed kernel components including threads, signals, foreground/background execution, scheduler, API, and user-level functions, and integrated the file system.
+...
