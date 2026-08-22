@@ -30,21 +30,24 @@ Use YAML for structured profile/CV/site data:
 
 Use BibTeX/BibLaTeX for publications:
 
-- `cv/refs.bib`
+- `assets/data/refs.bib`
 
 The BibTeX file may include extra nonstandard fields for richer website output, such as:
 
-- `url`
 - `doi`
-- `arxiv`
-- `pdf`
-- `code`
-- `slides`
-- `project`
-- `artifact`
+- `urlpaper`
+- `urlpdf`
+- `urlarxiv`
+- `urlconference`
+- `urlcode`
+- `urlslides`
+- `urlproject`
+- `urlartifact`
 - `tag`
-- `showweb`
-- `showcv`
+- `award`
+
+Use the standard BibTeX `url` field as the default BibLaTeX/CV URL. Use `keywords`
+to place website-visible entries into `publication` or `manuscript` groups.
 
 ## Data File Shape
 
@@ -143,7 +146,7 @@ Keep `cv/cv.tex` as a hand-authored LaTeX template.
 It should:
 
 - `\input{generated/data.tex}` for YAML-derived data.
-- Use `refs.bib` directly through BibLaTeX.
+- Use `assets/data/refs.bib` directly through BibLaTeX.
 - Define the CV typography, spacing, section order, loops, and rendering macros.
 
 Build flow:
@@ -155,7 +158,7 @@ data/*.yaml
   -> cv/cv.pdf
   -> static/cv/hanxi-chen-cv.pdf
 
-cv/refs.bib
+assets/data/refs.bib
   -> BibLaTeX inside cv/cv.tex
 ```
 
@@ -163,20 +166,20 @@ cv/refs.bib
 
 Hugo should read YAML directly from `data/*.yaml`.
 
-Website publications can initially continue to use `data/publications.yaml`. Later, if desired, add a small one-purpose adapter:
+Website publications are generated from the canonical BibTeX file by a small one-purpose adapter:
 
 ```text
-cv/refs.bib -> data/publications.yaml
+assets/data/refs.bib -> data/publications.yaml
 ```
 
-That adapter should only translate publication metadata for Hugo; it should not participate in the LaTeX CV build.
+That adapter should only translate publication metadata for Hugo; the LaTeX CV should read the BibTeX file directly.
 
 ## Implementation Phases
 
 1. Normalize data files into root maps with `entries`, `groups`, or other clear top-level keys.
 2. Add the generic YAML-to-TeX data serializer.
 3. Add `cv/generated/data.tex` to the CV build as a generated artifact.
-4. Rewrite `cv/cv.tex` as a hand-authored template that reads the generated data macros and `refs.bib`.
+4. Rewrite `cv/cv.tex` as a hand-authored template that reads the generated data macros and `assets/data/refs.bib`.
 5. Update Hugo partials to use the normalized data shapes.
 6. Build and verify both outputs:
    - LaTeX CV PDF

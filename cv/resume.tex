@@ -1,0 +1,218 @@
+\documentclass[9pt]{extarticle}
+
+\usepackage[letterpaper,top=0.45in,bottom=0.45in,left=0.65in,right=0.65in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=RoyalBlue,urlcolor=RoyalBlue,citecolor=MediumBlue]{hyperref}
+\usepackage{etoolbox}
+\usepackage{ifthen}
+\usepackage{pgffor}
+
+\input{generated/data.tex}
+
+\hypersetup{
+  pdftitle={\CVData{profile.name.short} Resume},
+  pdfauthor={\CVData{profile.name.full}}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+\titlespacing*{\section}{0pt}{*1.4}{*0.6}
+\setlist[itemize]{noitemsep,topsep=0.05em,leftmargin=1.4em,labelsep=0.55em}
+
+\makeatletter
+\newcommand{\CVIfSet}[3]{\@ifundefined{cvdata@#1}{#3}{#2}}
+\makeatother
+\newcommand{\CVRawData}[1]{\csname cvdata@#1\endcsname}
+
+\newcommand{\Emptyline}{\vspace{0.55em}}
+\newcommand{\ResumeSection}[2]{%
+  \vspace{0.65em}
+  {\centering
+    \textbf{\MakeUppercase{#1}}\\[-0.45em]
+    \rule{\textwidth}{1.6pt}
+    \par}
+  \vspace{0.15em}
+  #2
+}
+
+\newcommand{\CVPrintList}[2]{%
+  \foreach \cvitem in {1,...,\CVLen{#1}}{%
+    \CVData{#1.\cvitem}%
+    \ifnum\cvitem<\CVLen{#1}\relax#2\fi
+  }%
+}
+
+\newcommand{\ResumeHeader}{%
+  {\centering
+    {\LARGE \textbf{\CVData{profile.name.full}}}\\
+    \CVData{profile.contact.phone}
+    \;\textbar{}\;
+    \href{mailto:\CVData{profile.contact.email}}{\CVData{profile.contact.email}}
+    \;\textbar{}\;
+    \CVData{profile.contact.website_label}
+  \par}
+}
+
+\newcommand{\ResumeSchool}[3][]{%
+  \textbf{#2}%
+  \if\relax\detokenize{#1}\relax
+  \else
+    , \textit{#1}%
+  \fi%
+  \hfill #3%
+}
+
+\newcommand{\ResumeEducationEntry}[1]{%
+  \CVIfSet{education.entries.#1.cv_note}{%
+    \ResumeSchool[\CVData{education.entries.#1.cv_note}]
+      {\CVData{education.entries.#1.school}}
+      {\CVData{education.entries.#1.cv_location}}%
+  }{%
+    \ResumeSchool
+      {\CVData{education.entries.#1.school}}
+      {\CVData{education.entries.#1.cv_location}}%
+  }\\
+  \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
+    \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
+    \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
+    \hfill \CVData{education.entries.#1.cv_years}\par
+  }%
+  \CVIfSet{education.entries.#1.gpa}{%
+    Cumulative GPA: \CVData{education.entries.#1.gpa}%
+    \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
+    \par
+  }{}%
+  \CVIfSet{education.entries.#1.advisors.@len}{%
+    Advisor: %
+    \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
+      \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
+      \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
+    }%
+    \par
+  }{}%
+}
+
+\newcommand{\Education}{%
+  \ResumeSection{Education}{%
+    \ResumeEducationEntry{1}
+    \Emptyline
+    \ResumeEducationEntry{2}
+  }%
+}
+
+\usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
+\addbibresource{../assets/data/refs.bib}
+\nocite{*}
+
+\DeclareNameFormat{default}{%
+  \nameparts{#1}%
+  \namepartgiven\space\namepartfamily%
+  \ifthenelse{\value{listcount}<\value{liststop}}{\addcomma\space}{}%
+  \usebibmacro{name:andothers}%
+}
+\DeclareNameAlias{author}{default}
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{journaltitle}{#1}
+\DeclareFieldFormat*{booktitle}{#1}
+\AtEveryBibitem{%
+  \clearfield{abstract}%
+  \clearfield{doi}%
+  \clearfield{month}%
+  \clearfield{day}%
+  \clearfield{award}%
+  \clearfield{url}%
+  \clearfield{urlpaper}%
+  \clearfield{urlpdf}%
+  \clearfield{urlarxiv}%
+  \clearfield{urlconference}%
+  \clearfield{urlcode}%
+  \clearfield{urlgithub}%
+  \clearfield{urlartifact}%
+  \clearfield{urlslides}%
+  \clearfield{urlposter}%
+  \clearfield{urlvideo}%
+  \clearfield{urlproject}%
+}
+
+\defbibenvironment{resumebibliography}
+  {\begin{itemize}[leftmargin=*,label={},itemsep=0.12em,parsep=0pt,topsep=0pt]}
+  {\end{itemize}}
+  {\item}
+
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}\adddot\space
+  \printfield{title}\adddot\space
+  \printfield{journaltitle}\addcomma\space
+  \printfield{year}\adddot
+}
+\DeclareBibliographyDriver{inproceedings}{%
+  \printnames{author}\adddot\space
+  \printfield{title}\adddot\space
+  \printfield{booktitle}\addcomma\space
+  \printfield{year}\adddot
+}
+\DeclareBibliographyDriver{misc}{%
+  \printnames{author}\adddot\space
+  \printfield{title}\adddot\space
+  \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
+  \printfield{year}\adddot
+}
+
+\newcommand{\SelectedPublications}{%
+  \ResumeSection{Selected Publications}{%
+    \printbibliography[keyword={publication},heading=none,env=resumebibliography]%
+  }%
+}
+
+\newcommand{\ResumeResearchEntry}[1]{%
+  \begin{minipage}{\textwidth}
+    \textbf{\CVData{research.entries.#1.role}}, \emph{\CVData{research.entries.#1.group}}%
+    \CVIfSet{research.entries.#1.supervisors.@len}{, supervised by \CVPrintList{research.entries.#1.supervisors}{ and }}{}%
+    \hfill \CVData{research.entries.#1.period}
+
+    \textbf{\CVData{research.entries.#1.institution}}%
+    \CVIfSet{research.entries.#1.unit}{, \CVData{research.entries.#1.unit}}{}
+
+    \begin{itemize}
+      \foreach \bullet in {1,...,\CVLen{research.entries.#1.resume_bullets}}{%
+        \item \CVData{research.entries.#1.resume_bullets.\bullet}
+      }%
+    \end{itemize}
+  \end{minipage}\par
+}
+
+\newcommand{\ResearchExperience}{%
+  \ResumeSection{Relevant Research Experience}{%
+    \ResumeResearchEntry{1}
+    \Emptyline
+    \ResumeResearchEntry{2}
+    \Emptyline
+    \ResumeResearchEntry{3}
+  }%
+}
+
+\newcommand{\TechnicalSkills}{%
+  \ResumeSection{Technical Skills}{%
+    \foreach \entry in {1,...,\CVLen{skills.entries}}{%
+      \textbf{\CVData{skills.entries.\entry.category}:}
+      \CVData{skills.entries.\entry.items.@joined}\par
+    }%
+  }%
+}
+
+\begin{document}
+\ResumeHeader
+
+\Education
+\SelectedPublications
+\ResearchExperience
+\TechnicalSkills
+
+\end{document}

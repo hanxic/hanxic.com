@@ -1,0 +1,77 @@
+---
+_tex:
+  skip: true
+sections:
+  - id: current
+    title: Current Projects
+    entries:
+      - id: opol
+        title: Oblivious Probabilistic Outcome Logic
+        prefix: OPOL
+        image: image/opol.png
+        description: >
+          Practical randomized protocols in distributed systems and hardware
+          often rely on oblivious adversaries, but randomization + control flow can
+          leak entropy through schedule consumption, making their correctness
+          subtle to reason about. OPOL develops a program logic, mechanized in Lean for verifying probabilistic programs against
+          oblivious adversaries.
+        refs:
+          - chen2026obliviousprobabilisticoutcomelogic
+
+      - id: type-confusion-security
+        title: Type-Confusion Security
+        image: image/type-confusion.png
+        description: >
+          In decentralized systems, untrusted components can ignore the type
+          system and lie about the interfaces they provide, causing type
+          confusion to surface as confused-deputy and reentrancy attacks.
+          This project, led by [Dr. Silei Ren](https://www.sileiren.com/), develops a formal notion of type-confusion security,
+          along with static and dynamic information-flow checks to enforce it.
+        refs:
+          - ren2026type
+
+      - id: autoformalization
+        title: Autoformalization
+        image: image/mathai.png
+        description: >
+          Autoformalization asks AI systems to translate mathematical
+          statements and proofs into Lean code. Cornell's ongoing Math+AI project, led by [Prof. Daniel Halpern-Leistner](https://danielhl.github.io/)
+          develops challenging research-level benchmarks, a survey for comparing
+          Lean proofs, a collection of formalization problems, and
+          LaTeX-to-Lean proof tooling.
+        links:
+          - label: Math+AI
+            url: https://danielhl.github.io/math-ai.html
+
+  - id: past
+    title: Selected Past Projects
+    entries:
+      - id: vellvm-differential-testing
+        title: Differential Testing for LLVM
+        prefix: Vellvm
+        image: image/VellvmSlide-new.svg
+        description: >
+          LLVM IR is a widely used compiler intermediate representation whose
+          official semantics are informal. Developed in [Prof. Steve Zdancewic](https://www.cis.upenn.edu/~stevez/)'s
+          group, [Vellvm](https://vellvm.github.io/vellvm/) formalizes a practical subset of LLVM IR in Rocq,
+          including a memory model for optimization reasoning and differential
+          testing to validate the semantics and find LLVM bugs.
+        refs:
+          - beck2025a
+          - beck2025b
+          - beck2024
+          - beck2025genllvm
+          - chen2024cis
+
+      - id: precedence-constraints
+        title: Knapsack Problems with Precedence Constraints
+        image: image/precedence.png
+        description: >
+          Real-world knapsack problems, including cryptocurrency mining and
+          inventory planning, often involve dependencies. However,
+          precedence-constrained knapsack is strongly NP-hard in general. This
+          project studies special graph classes where exact pseudo-polynomial
+          algorithms are possible.
+        refs:
+          - chen2024wharton
+...

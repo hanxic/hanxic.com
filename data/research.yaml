@@ -11,6 +11,9 @@ entries:
     bullets:
       - Conducting research on probabilistic concurrent outcome logic and probabilistic nondeterministic outcome logic under an oblivious scheduler, exploring applications in randomized distributed protocols, information flow systems, and machine learning optimization.
       - Developing a Lean mechanization library for the logics, including a monadic semantics for probabilistic nondeterministic programs, a probabilistic assertion language, semantic and syntactic outcome triples, and new probability space constructions and automation using Mathlib and metaprogramming.
+    resume_bullets:
+      - Developing program logics for verifying probabilistic programs under oblivious schedulers, with applications to randomized distributed protocols and hardware.
+      - Building a Lean mechanization library for probabilistic reasoning, including probability-space constructions, outcome triples, and proof automation.
   - role: Research Assistant
     group: PLClub
     supervisors:
@@ -25,6 +28,9 @@ entries:
       - Developed a permutation library and proved the equivalence of seven variations of list permutations based on type class. Building a complete solver using MetaCoq for solving associativity-commutativity-unification on lists.
       - Formalized the multiplicative, exponential first-order classical linear logic in Rocq with properties like cut elimination as a potential use case for the permutation library and a related formalization of opportunistically parallel, linear-resource programming language with asynchronous queries.
       - Contributed to a newer version of Software Foundations, appeared at the Oregon Programming Language Summer School (OPLSS) at Boston University 2024, as part of the DeepSpec project.
+    resume_bullets:
+      - Contributed to Vellvm in Steve Zdancewic's group, formalizing LLVM IR semantics and low-level memory models in Rocq.
+      - Built Rocq/OCaml differential-testing tools for validating Vellvm's semantics and finding bugs in LLVM implementations.
   - role: Research Assistant
     group: Wharton Research Scholars
     supervisors:
@@ -35,6 +41,9 @@ entries:
     bullets:
       - Researched and proved the existence of a pseudo-polynomial solution for precedence constraints knapsack problems with two different graph classes, union of three paths and one-directional bipartite poset with consecutive children.
       - Gave a talk in Wharton Research Scholars seminar. Submitted a 48-page undergraduate technical report to Wharton Research Scholars Program in December 2024. Approved with grade A.
+    resume_bullets:
+      - Studied precedence-constrained knapsack problems, proving pseudo-polynomial algorithms for structured graph classes.
+      - Wrote a 48-page undergraduate technical report and presented the work in the Wharton Research Scholars seminar.
   - role: Research Assistant
     group: Penn Computational Intelligence Lab
     supervisors:

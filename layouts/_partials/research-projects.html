@@ -1,0 +1,72 @@
+{{ $pubs := dict }}
+{{ $visiblePubs := dict }}
+{{ with .Site.Data.publications.sections }}
+  {{ range . }}
+    {{ $sectionID := .id }}
+    {{ range .entries }}
+      {{ $pubs = merge $pubs (dict .id .) }}
+      {{ if eq $sectionID "publication" }}
+      {{ $visiblePubs = merge $visiblePubs (dict .id .) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ with .Site.Data.research_projects.sections }}
+<section id="research" class="section">
+  <h2>Research</h2>
+  {{ range . }}
+  <h3>{{ .title }}</h3>
+  <div class="research-project-list">
+    {{ range .entries }}
+    {{ $project := . }}
+    <article class="research-project">
+      <div class="research-project-media research-project-media-{{ default "default" .visual }}">
+        {{ with $project.image }}
+        {{ $image := resources.Get . }}
+        {{ if $image }}
+        <img src="{{ $image.RelPermalink }}" alt="">
+        {{ else }}
+        <img src="{{ . | relURL }}" alt="">
+        {{ end }}
+        {{ else }}
+        <div class="research-visual" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        {{ end }}
+      </div>
+      <div class="research-project-body">
+        <header>
+          {{ with .prefix }}<span class="project-prefix">{{ . }}:</span>{{ end }}
+          <span class="title">{{ .title }}</span>
+        </header>
+        {{ with .description }}
+        <div class="research-project-description">{{ . | markdownify }}</div>
+        {{ end }}
+        {{ if or .refs .links }}
+        <div class="research-project-links">
+          {{ range .refs }}
+            {{ $ref := index $pubs . }}
+            {{ $visibleRef := index $visiblePubs . }}
+            {{ if $visibleRef }}
+            <a href="#pub-{{ $ref.id }}" title="{{ $ref.title }}">{{ printf "[%v]" (or $ref.tag $ref.year) }}</a>
+            {{ else if $ref }}
+            <span>[{{ or $ref.tag $ref.year }}]</span>
+            {{ else }}
+            <span>[{{ . }}]</span>
+            {{ end }}
+          {{ end }}
+          {{ range .links }}
+          <a href="{{ .url | safeURL }}" target="_blank" rel="noopener">[{{ .label }}]</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+{{ end }}

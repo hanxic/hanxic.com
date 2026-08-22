@@ -35,11 +35,7 @@ entries:
         focus: Mathematics minor
         attributes:
         - Mathematics Minor
-        - Summa Cum Laude
       - title: B.S. in Economics
-        attributes:
-        - Business Analytics Concentration
-        - Summa Cum Laude
     advisors:
       - name: Steve Zdancewic
         title: Prof.
@@ -56,6 +52,7 @@ entries:
       - Tau Beta Pi Honors Society
       - Beta Gamma Sigma Honors Society
     gpa: 3.97/4.00
+    distinction: Summa Cum Laude
     courses:
       - CIS 6700
 ...

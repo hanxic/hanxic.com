@@ -1,0 +1,14 @@
+<nav class="site-contact-links" aria-label="Contact links">
+  {{ with site.Data.profile.contact.handle }}
+  <span class="site-contact-handle">@{{ . }}</span>
+  {{ end }}
+  {{ with site.Data.profile.contact.email }}
+  <a href="mailto:{{ . }}">[Email]</a>
+  {{ end }}
+  {{ with site.Data.profile.contact.github }}
+  <a href="{{ . }}" target="_blank" rel="noopener">[GitHub]</a>
+  {{ end }}
+  {{ with site.Data.profile.contact.linkedin }}
+  <a href="{{ . }}" target="_blank" rel="noopener">[LinkedIn]</a>
+  {{ end }}
+</nav>

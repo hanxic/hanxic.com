@@ -1,0 +1,15 @@
+<!-- service -->
+<section id="service" class="section">
+  <h2>Service</h2>
+  <div class="service-list">
+    {{ range .Site.Data.service.entries }}
+    <article class="service-entry">
+      <span class="service-main">
+        <span class="service-venue">[{{ .organization }}]</span>
+        <span class="role">{{ .role }}</span>
+      </span>
+      <span class="time">{{ .time }}</span>
+    </article>
+    {{ end }}
+  </div>
+</section>

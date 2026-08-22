@@ -93,7 +93,7 @@
   }%
   \CVIfSet{education.entries.#1.gpa}{%
     Cumulative GPA: \CVData{education.entries.#1.gpa}%
-    \CVIfSet{education.entries.#1.degrees.2.attributes.2}{, \emph{\CVData{education.entries.#1.degrees.2.attributes.2}}}{}%
+    \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
     \par
   }{}%
   \CVIfSet{education.entries.#1.advisors.@len}{%
@@ -116,7 +116,7 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
-\addbibresource{refs.bib}
+\addbibresource{../assets/data/refs.bib}
 \nocite{*}
 
 \DeclareNameFormat{default}{%
@@ -126,18 +126,27 @@
   \usebibmacro{name:andothers}%
 }
 \DeclareNameAlias{author}{default}
-\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{title}{\iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 \DeclareFieldFormat*{journaltitle}{#1}
 \DeclareFieldFormat*{booktitle}{#1}
-\DeclareFieldFormat{url}{}
 \AtEveryBibitem{%
   \clearfield{abstract}%
-  \clearfield{url}%
   \clearfield{doi}%
   \clearfield{month}%
   \clearfield{day}%
-  \clearfield{showweb}%
   \clearfield{tag}%
+  \clearfield{award}%
+  \clearfield{urlpaper}%
+  \clearfield{urlpdf}%
+  \clearfield{urlarxiv}%
+  \clearfield{urlconference}%
+  \clearfield{urlcode}%
+  \clearfield{urlgithub}%
+  \clearfield{urlartifact}%
+  \clearfield{urlslides}%
+  \clearfield{urlposter}%
+  \clearfield{urlvideo}%
+  \clearfield{urlproject}%
 }
 
 \defbibenvironment{cvbibliography}
@@ -180,9 +189,8 @@
 
 \newcommand{\Publications}{%
   \CVSection{Publications}{%
-    \PublicationGroup{Published Papers}{published}
-    \PublicationGroup{Unpublished Manuscripts}{unpublished}
-    \PublicationGroup{Works in Progress}{inprogress}
+    \PublicationGroup{Publications}{publication}
+    \PublicationGroup{Manuscripts}{manuscript}
   }%
 }
 

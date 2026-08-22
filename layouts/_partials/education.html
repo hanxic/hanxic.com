@@ -1,4 +1,4 @@
-<section id="education" class="cv-section">
+<section id="education" class="section">
   <h2>Education</h2>
   {{ range .Site.Data.education.entries }}
   <article class="education">
@@ -34,15 +34,14 @@
     {{ if .gpa }}
     <div class="gpa">
       [GPA]: {{ .gpa }}
+      {{- with .distinction -}}, {{ . }}{{- end -}}
     </div>
     {{ end }}
     {{ if .honors }}
-    <details class="honors">
-      <summary>[Honors]</summary>
-      <div class="content">
-        {{ delimit .honors ", " }}
-      </div>
-    </details>
+    <div class="education-meta honors">
+      <span class="education-meta-label">[Honors]:</span>
+      <span class="education-meta-content">{{ delimit .honors ", " }}</span>
+    </div>
     {{ end }}
   </article>
   {{ end }}

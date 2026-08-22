@@ -1,0 +1,35 @@
+---
+_tex:
+  join:
+    items: ", "
+entries:
+  - category: Proof Assistants
+    items:
+      - Lean
+      - Rocq/Coq
+      - Mathlib
+      - QuickChick
+  - category: Programming
+    items:
+      - OCaml
+      - Haskell
+      - C/C++
+      - Python
+      - SQL
+      - SystemVerilog
+  - category: Systems and Tools
+    items:
+      - LLVM IR
+      - Clang
+      - Dune
+      - Git
+      - Unix
+      - LaTeX
+  - category: Research Methods
+    items:
+      - mechanized semantics
+      - program logics
+      - differential testing
+      - property-based testing
+      - randomized algorithms
+...
