@@ -9,12 +9,12 @@ entries:
     institution: Cornell University
     unit: Computer Science
     bullets:
-      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs under oblivious adversaries, using schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
-      - Mechanized opOL in Lean 4, including monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
-      - Contributed Lean mechanization for Type-Confusion Security, formalizing static and dynamic information-flow checks for decentralized systems with untrusted components.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
+      - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
+      - Contributed Lean mechanization for Type-Confusion Security, formalizing static and dynamic information-flow checks for decentralized systems whose untrusted components can misrepresent dynamic types.
     resume_bullets:
-      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs under oblivious adversaries, using schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
-      - Mechanized opOL in Lean 4, including monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
+      - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
       - Contributed Lean mechanization for Type-Confusion Security, formalizing information-flow checks for decentralized systems where untrusted components can lie about types and induce confused-deputy attacks.
   - role: Research Mentor
     group: Cornell Math+AI
@@ -24,10 +24,10 @@ entries:
     institution: Cornell University
     unit: Mathematics
     bullets:
-      - Mentoring autoformalization on research-level mathematical problems and proofs gathered for translation into Lean 4.
-      - Co-developing tools for evaluating Lean proof quality through proof-structure comparison and converting LaTeX proofs into Lean.
+      - Mentoring and building an autoformalization benchmark for translating research-level mathematical statements and proofs into Lean 4.
+      - Curating problem/proof pairs and co-developing proof-quality evaluation and LaTeX-to-Lean translation tools.
     resume_bullets:
-      - Mentoring autoformalization for research-level mathematics in Lean 4, curating problem/proof pairs and co-developing proof-quality comparison and LaTeX-to-Lean translation tools.
+      - Mentoring and building an autoformalization benchmark for translating research-level mathematical statements and proofs into Lean 4; curating problem/proof pairs and co-developing proof-quality evaluation and LaTeX-to-Lean tools.
   - role: Research Assistant
     group: PLClub
     supervisors:
@@ -57,13 +57,13 @@ entries:
     resume_bullets:
       - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
       - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
-  - role: Research Assistant
-    group: Penn Computational Intelligence Lab
-    supervisors:
-      - Prof. Jing Li
-    period: Feb 2021 -- Sep 2021
-    institution: University of Pennsylvania
-    unit: Electrical and Systems Engineering
-    bullets:
-      - Built a C++ simulator prototype for modeling Intel Optane Memory behavior.
+  # - role: Research Assistant
+  #   group: Penn Computational Intelligence Lab
+  #   supervisors:
+  #     - Prof. Jing Li
+  #   period: Feb 2021 -- Sep 2021
+  #   institution: University of Pennsylvania
+  #   unit: Electrical and Systems Engineering
+  #   bullets:
+  #     - Built a C++ simulator prototype for modeling Intel Optane Memory behavior.
 ...

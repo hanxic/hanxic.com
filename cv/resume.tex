@@ -52,11 +52,11 @@
 \newcommand{\ResumeHeader}{%
   {\centering
     {\LARGE \textbf{\CVData{profile.name.full}}}\\
-    \CVData{profile.contact.phone}
-    \;\textbar{}\;
     \href{mailto:\CVData{profile.contact.email}}{\CVData{profile.contact.email}}
     \;\textbar{}\;
-    \CVData{profile.contact.website_label}
+    \href{\CVData{profile.contact.website}}{\CVData{profile.contact.website_label}}
+    \;\textbar{}\;
+    \href{\CVData{profile.contact.github}}{\CVData{profile.contact.github_label}}
   \par}
 }
 
@@ -85,18 +85,20 @@
     \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi\par
   }%
   \CVIfSet{education.entries.#1.gpa}{%
-    Cumulative GPA: \CVData{education.entries.#1.gpa}%
+    GPA: \CVData{education.entries.#1.gpa}%
     \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
     \par
   }{}%
-  \CVIfSet{education.entries.#1.advisors.@len}{%
-    Advisor: %
-    \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
-      \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
-      \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
-    }%
-    \par
-  }{}%
+  \ifnum#1=1\relax
+    \CVIfSet{education.entries.#1.advisors.@len}{%
+      Advisors: %
+      \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
+        \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
+        \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
+      }%
+      \par
+    }{}%
+  \fi
 }
 
 \newcommand{\Education}{%
@@ -108,12 +110,17 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
+\DeclareDatamodelFields[type=field,datatype=literal]{tag}
+\DeclareDatamodelEntryfields{tag}
 \addbibresource{../assets/data/refs.bib}
 \nocite{*}
 
 \DeclareNameFormat{default}{%
   \nameparts{#1}%
-  \namepartgiven\space\namepartfamily%
+  \ifboolexpr{
+    test {\ifdefstring{\namepartgiven}{Hanxi}} and
+    test {\ifdefstring{\namepartfamily}{Chen}}
+  }{\mkbibbold{\namepartgiven\space\namepartfamily}}{\namepartgiven\space\namepartfamily}%
   \ifthenelse{\value{listcount}<\value{liststop}}{\addcomma\space}{}%
   \usebibmacro{name:andothers}%
 }
@@ -149,19 +156,21 @@
 \DeclareBibliographyDriver{article}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \printfield{journaltitle}\addcomma\space
+  \iffieldundef{tag}{\printfield{journaltitle}}{\printfield{tag}}\addcomma\space
   \printfield{year}\adddot
 }
 \DeclareBibliographyDriver{inproceedings}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \printfield{booktitle}\addcomma\space
+  \iffieldundef{tag}{\printfield{booktitle}}{\printfield{tag}}\addcomma\space
   \printfield{year}\adddot
 }
 \DeclareBibliographyDriver{misc}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
+  \iffieldundef{tag}{%
+    \iffieldundef{eprinttype}{}{\printfield{eprinttype}\space preprint\addcomma\space}%
+  }{\printfield{tag}\space preprint\addcomma\space}%
   \printfield{year}\adddot
 }
 
