@@ -13,8 +13,9 @@ entries:
       - Mechanized opOL in Lean 4, including monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
       - Contributed Lean mechanization for Type-Confusion Security, formalizing static and dynamic information-flow checks for decentralized systems with untrusted components.
     resume_bullets:
-      - Developed opOL, a Lean-mechanized program logic for probabilistic nondeterminism under oblivious adversaries, with verified caching and leader-election case studies.
-      - Contributed Lean mechanization for Type-Confusion Security, focusing on static and dynamic information-flow checks for decentralized systems with untrusted components.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs under oblivious adversaries, using schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
+      - Mechanized opOL in Lean 4, including monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
+      - Contributed Lean mechanization for Type-Confusion Security, formalizing information-flow checks for decentralized systems where untrusted components can lie about types and induce confused-deputy attacks.
   - role: Research Mentor
     group: Cornell Math+AI
     supervisors:
@@ -26,7 +27,7 @@ entries:
       - Mentoring autoformalization on research-level mathematical problems and proofs gathered for translation into Lean 4.
       - Co-developing tools for evaluating Lean proof quality through proof-structure comparison and converting LaTeX proofs into Lean.
     resume_bullets:
-      - Mentoring Math+AI autoformalization work on research-level Lean 4 benchmarks, proof-quality evaluation, and LaTeX-to-Lean proof conversion.
+      - Mentoring autoformalization for research-level mathematics in Lean 4, curating problem/proof pairs and co-developing proof-quality comparison and LaTeX-to-Lean translation tools.
   - role: Research Assistant
     group: PLClub
     supervisors:
@@ -35,13 +36,14 @@ entries:
     institution: University of Pennsylvania
     unit: Computer and Information Science
     bullets:
-      - Contributed to Vellvm in Prof. Steve Zdancewic's group, formalizing LLVM IR operational semantics in Rocq, proving semantic lemmas including serialization, and developing low-level memory-model support for pointer-integer casts.
-      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and differential tests that found novel LLVM bugs.
+      - Contributed to the ICFP 2024 Vellvm memory-model paper in Prof. Steve Zdancewic's group, helping design a low-level memory model for LLVM optimization reasoning, verifying serialization lemmas in Rocq, and implementing tests for the memory model.
+      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential testing framework that found novel LLVM bugs.
       - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
       - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
     resume_bullets:
-      - Contributed to Vellvm in Steve Zdancewic's group, formalizing LLVM IR operational semantics and low-level memory models in Rocq.
-      - Built Rocq/OCaml validation tools for Vellvm, including QuickChick-based LLVM generation, interpreter tracing, and differential testing that found LLVM bugs.
+      - Contributed to the ICFP 2024 Vellvm memory-model paper in Prof. Steve Zdancewic's group, helping design a low-level memory model for LLVM optimization reasoning, verifying serialization lemmas in Rocq, and implementing tests for the memory model.
+      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential testing framework that found novel LLVM bugs.
+      - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
   - role: Research Assistant
     group: Wharton Research Scholars
     supervisors:
@@ -53,7 +55,7 @@ entries:
       - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
       - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
     resume_bullets:
-      - Proved pseudo-polynomial algorithms for precedence-constrained knapsack problems on structured poset classes.
+      - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
       - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
   - role: Research Assistant
     group: Penn Computational Intelligence Lab

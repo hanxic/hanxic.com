@@ -1,6 +1,6 @@
 \documentclass[9pt]{extarticle}
 
-\usepackage[letterpaper,top=0.45in,bottom=0.45in,left=0.65in,right=0.65in]{geometry}
+\usepackage[letterpaper,top=0.38in,bottom=0.38in,left=0.65in,right=0.65in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{libertine}
 \usepackage{mathptmx}
@@ -23,22 +23,22 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \pagestyle{empty}
-\titlespacing*{\section}{0pt}{*1.4}{*0.6}
-\setlist[itemize]{noitemsep,topsep=0.05em,leftmargin=1.4em,labelsep=0.55em}
+\titlespacing*{\section}{0pt}{*1.2}{*0.45}
+\setlist[itemize]{noitemsep,topsep=0pt,partopsep=0pt,parsep=0pt,leftmargin=1.35em,labelsep=0.5em}
 
 \makeatletter
 \newcommand{\CVIfSet}[3]{\@ifundefined{cvdata@#1}{#3}{#2}}
 \makeatother
 \newcommand{\CVRawData}[1]{\csname cvdata@#1\endcsname}
 
-\newcommand{\Emptyline}{\vspace{0.55em}}
+\newcommand{\Emptyline}{\vspace{0.3em}}
 \newcommand{\ResumeSection}[2]{%
-  \vspace{0.65em}
+  \vspace{0.45em}
   {\centering
     \textbf{\MakeUppercase{#1}}\\[-0.45em]
     \rule{\textwidth}{1.6pt}
     \par}
-  \vspace{0.15em}
+  \vspace{0.05em}
   #2
 }
 
@@ -195,6 +195,42 @@
     \ResumeResearchEntry{2}
     \Emptyline
     \ResumeResearchEntry{3}
+    \Emptyline
+    \ResumeResearchEntry{4}
+  }%
+}
+
+\newcommand{\ResumeProjectBullets}[1]{%
+  \CVIfSet{projects.entries.#1.resume_bullets.@len}{%
+    \foreach \bullet in {1,...,\CVLen{projects.entries.#1.resume_bullets}}{%
+      \item \CVData{projects.entries.#1.resume_bullets.\bullet}
+    }%
+  }{%
+    \foreach \bullet in {1,...,\CVLen{projects.entries.#1.bullets}}{%
+      \item \CVData{projects.entries.#1.bullets.\bullet}
+    }%
+  }%
+}
+
+\newcommand{\ResumeProjectEntry}[1]{%
+  \begin{minipage}{\textwidth}
+    \textbf{\CVData{projects.entries.#1.title}} -- \emph{\CVData{projects.entries.#1.technologies.@joined}}%
+    \hfill \CVData{projects.entries.#1.period}
+
+    \textbf{\CVData{projects.entries.#1.institution}}%
+    \CVIfSet{projects.entries.#1.course}{, \emph{\CVData{projects.entries.#1.course}}}{}
+
+    \begin{itemize}
+      \ResumeProjectBullets{#1}
+    \end{itemize}
+  \end{minipage}\par
+}
+
+\newcommand{\SelectedTechnicalProjects}{%
+  \ResumeSection{Selected Technical Projects}{%
+    \ResumeProjectEntry{1}
+    \Emptyline
+    \ResumeProjectEntry{2}
   }%
 }
 
@@ -213,6 +249,7 @@
 \Education
 \SelectedPublications
 \ResearchExperience
+\SelectedTechnicalProjects
 \TechnicalSkills
 
 \end{document}

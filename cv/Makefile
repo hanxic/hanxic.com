@@ -11,31 +11,24 @@ SITE_RESUME=../static/cv/hanxi-chen-resume.pdf
 
 all: install
 
-generate: $(GENERATED)
+generate:
+	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) --output $(GENERATED)
 
 $(GENERATED): $(DATA) ../scripts/yaml_to_tex_data.py
 	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) --output $(GENERATED)
 
-pdf: $(MAIN).pdf
+pdf: generate
+	latexmk -pdf -g $(MAIN)
 
-$(MAIN).pdf: $(MAIN).tex $(BIB) $(GENERATED)
-	latexmk -pdf $(MAIN)
-
-install: $(SITE_CV)
-
-$(SITE_CV): $(MAIN).pdf
+install: pdf
 	cp $(MAIN).pdf $(SITE_CV)
 
 resume: resume-install
 
-resume-pdf: $(RESUME).pdf
+resume-pdf: generate
+	latexmk -pdf -g $(RESUME)
 
-$(RESUME).pdf: $(RESUME).tex $(BIB) $(GENERATED)
-	latexmk -pdf $(RESUME)
-
-resume-install: $(SITE_RESUME)
-
-$(SITE_RESUME): $(RESUME).pdf
+resume-install: resume-pdf
 	cp $(RESUME).pdf $(SITE_RESUME)
 
 clean:

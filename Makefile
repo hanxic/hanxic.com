@@ -10,7 +10,7 @@ PUBLICATIONS_SCRIPT ?= scripts/bib_to_publications_yaml.py
 
 all: build
 
-build: cv site
+build: cv resume site
 
 site: publications-data
 	$(HUGO) $(HUGO_FLAGS)
@@ -48,7 +48,7 @@ clean-cv:
 
 help:
 	@echo "Targets:"
-	@echo "  make          Refresh the CV PDF and build the Hugo site"
+	@echo "  make          Refresh the CV and resume PDFs, then build the Hugo site"
 	@echo "  make build    Same as make"
 	@echo "  make site     Build the Hugo site only"
 	@echo "  make serve    Start the Hugo development server with drafts"

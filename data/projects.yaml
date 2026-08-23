@@ -13,8 +13,8 @@ entries:
     course: CIS 5710 Computer Organization and Design
     supervisor: Prof. Joe Devietti
     bullets:
-      - Implemented a RISC-V pipelined processor with AXI-Lite-style caching, multi-cycle execution units, branch prediction, and memory-mapped I/O.
-      - Built custom verification testbenches, optimized LUT usage and timing behavior, and synthesized the design to FPGA to run compiled programs.
+      - Implemented a RISC-V pipelined processor with AXI-Lite-style caching, multi-cycle units, branch prediction, and memory-mapped I/O.
+      - Built verification testbenches, optimized LUT usage and timing behavior, and synthesized the design to FPGA to run compiled programs.
   - title: Oat Compiler
     technologies:
       - OCaml

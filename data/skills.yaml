@@ -25,11 +25,11 @@ entries:
       - Git
       - Unix
       - LaTeX
-  - category: Research Methods
-    items:
-      - mechanized semantics
-      - program logics
-      - differential testing
-      - property-based testing
-      - randomized algorithms
+#  - category: Research Methods
+#    items:
+#      - mechanized semantics
+#      - program logics
+#      - differential testing
+#      - property-based testing
+#      - randomized algorithms
 ...
