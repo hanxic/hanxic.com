@@ -2,6 +2,7 @@
 *#
 auto/
 data/*-old.yaml
+data/publications.yaml
 *public/
 cv/*.aux
 cv/*.bbl

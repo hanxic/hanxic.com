@@ -9,7 +9,7 @@ parts of the website.
 - `data/`: shared YAML data for profile, education, teaching, coursework,
   projects, service, honors, experience, research, and related site sections.
 - `assets/data/refs.bib`: canonical BibLaTeX data for publications.
-- `data/publications.yaml`: generated Hugo publication data.
+- `data/publications.yaml`: generated Hugo publication data, ignored by git.
 - `data/research_projects.yaml`: home-page research project groupings that can
   attach publication entries by BibTeX key.
 - `cv/cv.tex`: hand-authored LaTeX CV template.
@@ -118,6 +118,8 @@ Use these files as the main editing points:
 
 Publication data lives in `assets/data/refs.bib`. The CV and resume read that
 file directly with BibLaTeX, while Hugo reads generated `data/publications.yaml`.
+The generated YAML is ignored by git; `make site`, `make serve`, and the GitHub
+Pages workflow regenerate it before Hugo runs.
 Put website-facing entries in one of two BibTeX keyword groups:
 
 - `keywords = {publication}` for papers, workshop presentations, and arXiv preprints.
