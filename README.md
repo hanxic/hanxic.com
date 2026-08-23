@@ -23,6 +23,30 @@ parts of the website.
 - `static/cv/hanxi-chen-resume.pdf`: site-facing resume PDF generated from
   `cv/`.
 
+## Editing map
+
+Use this as the first place to decide where a change belongs:
+
+| To edit | Main file | Also relevant |
+| --- | --- | --- |
+| Name, email, GitHub, LinkedIn, site handle | `data/profile.yaml` | `layouts/_partials/contact-links.html` for contact rendering |
+| Home-page about text | `content/_index.md` | `layouts/_partials/about.html` for rendering |
+| Header layout and nav placement | `layouts/_partials/header.html` | `layouts/_partials/menu.html`, `layouts/_partials/contact-links.html` |
+| Site styling, spacing, typography, colors | `assets/css/main.css` | `static/fonts/` for vendored fonts |
+| Home-page publications | `assets/data/refs.bib` | `layouts/_partials/publications.html`; generated `data/publications.yaml` should not be edited |
+| Publication links, slides, code, arXiv, DOI | `assets/data/refs.bib` | Put local public files under `static/`, for example `static/slides/` |
+| Home-page research projects | `data/research_projects.yaml` | `assets/image/` for project images, `layouts/_partials/research-projects.html` for rendering |
+| Education | `data/education.yaml` | `layouts/_partials/education.html`, `cv/cv.tex`, `cv/resume.tex` |
+| Teaching | `data/teaching.yaml` | `layouts/_partials/teaching.html`, `cv/cv.tex` |
+| Service | `data/service.yaml` | `layouts/_partials/service.html`, `cv/cv.tex` |
+| Honors, coursework, projects, experience | `data/honors.yaml`, `data/coursework.yaml`, `data/projects.yaml`, `data/experience.yaml` | Mostly used by `cv/cv.tex` and supporting pages |
+| Research experience for CV/resume | `data/research.yaml` | `cv/cv.tex`, `cv/resume.tex`; use `resume_bullets` for shorter resume wording |
+| Resume technical skills | `data/skills.yaml` | `cv/resume.tex` |
+| CV layout | `cv/cv.tex` | Generated macros come from `cv/generated/data.tex` |
+| Resume layout | `cv/resume.tex` | Build/install with `make resume` |
+| New content pages or posts | `content/` | Hugo chooses templates from `layouts/` |
+| Hugo template behavior | `layouts/` | Keep content/data in `content/`, `data/`, or `assets/data/` when possible |
+
 ## Dependencies
 
 - Hugo
