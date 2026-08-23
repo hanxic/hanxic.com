@@ -78,6 +78,8 @@ sections:
     links:
     - label: Conference
       url: https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal
+    - label: Slides
+      url: /slides/coqpl-2025-vellvm.pdf
   - id: beck2024
     authors:
     - Calvin Beck
