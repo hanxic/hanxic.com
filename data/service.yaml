@@ -1,11 +1,11 @@
 ---
 entries:
   - role: Artifact Evaluation Committee
-    organization: PLDI 2026
-    time: Jan 2026
-  - role: Artifact Evaluation Committee
     organization: ATVA 2026
     time: Jul 2026
+  - role: Artifact Evaluation Committee
+    organization: PLDI 2026
+    time: Jan 2026
   - role: Artifact Evaluation Committee
     organization: POPL 2026
     time: Nov 2025

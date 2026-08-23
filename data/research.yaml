@@ -5,15 +5,28 @@ entries:
     supervisors:
       - Prof. Alexandra Silva
       - Prof. Andrew C. Myers
-    period: Sep 2025 --
+    period: Sep 2025 -- Present
     institution: Cornell University
     unit: Computer Science
     bullets:
-      - Conducting research on probabilistic concurrent outcome logic and probabilistic nondeterministic outcome logic under an oblivious scheduler, exploring applications in randomized distributed protocols, information flow systems, and machine learning optimization.
-      - Developing a Lean mechanization library for the logics, including a monadic semantics for probabilistic nondeterministic programs, a probabilistic assertion language, semantic and syntactic outcome triples, and new probability space constructions and automation using Mathlib and metaprogramming.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs under oblivious adversaries, using schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
+      - Mechanized opOL in Lean 4, including monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
+      - Contributed Lean mechanization for Type-Confusion Security, formalizing static and dynamic information-flow checks for decentralized systems with untrusted components.
     resume_bullets:
-      - Developing program logics for verifying probabilistic programs under oblivious schedulers, with applications to randomized distributed protocols and hardware.
-      - Building a Lean mechanization library for probabilistic reasoning, including probability-space constructions, outcome triples, and proof automation.
+      - Developed opOL, a Lean-mechanized program logic for probabilistic nondeterminism under oblivious adversaries, with verified caching and leader-election case studies.
+      - Contributed Lean mechanization for Type-Confusion Security, focusing on static and dynamic information-flow checks for decentralized systems with untrusted components.
+  - role: Research Mentor
+    group: Cornell Math+AI
+    supervisors:
+      - Prof. Daniel Halpern-Leistner
+    period: Jan 2026 -- Present
+    institution: Cornell University
+    unit: Mathematics
+    bullets:
+      - Mentoring autoformalization on research-level mathematical problems and proofs gathered for translation into Lean 4.
+      - Co-developing tools for evaluating Lean proof quality through proof-structure comparison and converting LaTeX proofs into Lean.
+    resume_bullets:
+      - Mentoring Math+AI autoformalization work on research-level Lean 4 benchmarks, proof-quality evaluation, and LaTeX-to-Lean proof conversion.
   - role: Research Assistant
     group: PLClub
     supervisors:
@@ -22,15 +35,13 @@ entries:
     institution: University of Pennsylvania
     unit: Computer and Information Science
     bullets:
-      - Contributed to the Verified LLVM (Vellvm) Project, formalizing LLVM IR semantics in Rocq. Formalized nontrivial lemmas such as serialization. Participated in the development of a low-level memory model in Rocq to facilitate pointer-integer casting.
-      - Developed a Rocq-based LLVM differential testing framework, as part of the Vellvm project, using QuickChick, capable of generating UB-free LLVM programs with nontrivial features like pointer manipulations. Reported novel bugs to the LLVM development team.
-      - Developed a program tracer using OCaml and Rocq for generating the dynamic trace via Vellvm interpreter. The tracer can generate annotated program trace, as well as well-formed LLVM IR program, for efficiently detecting bugs according to Vellvm's semantics.
-      - Developed a permutation library and proved the equivalence of seven variations of list permutations based on type class. Building a complete solver using MetaCoq for solving associativity-commutativity-unification on lists.
-      - Formalized the multiplicative, exponential first-order classical linear logic in Rocq with properties like cut elimination as a potential use case for the permutation library and a related formalization of opportunistically parallel, linear-resource programming language with asynchronous queries.
-      - Contributed to a newer version of Software Foundations, appeared at the Oregon Programming Language Summer School (OPLSS) at Boston University 2024, as part of the DeepSpec project.
+      - Contributed to Vellvm in Prof. Steve Zdancewic's group, formalizing LLVM IR operational semantics in Rocq, proving semantic lemmas including serialization, and developing low-level memory-model support for pointer-integer casts.
+      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and differential tests that found novel LLVM bugs.
+      - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
+      - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
     resume_bullets:
-      - Contributed to Vellvm in Steve Zdancewic's group, formalizing LLVM IR semantics and low-level memory models in Rocq.
-      - Built Rocq/OCaml differential-testing tools for validating Vellvm's semantics and finding bugs in LLVM implementations.
+      - Contributed to Vellvm in Steve Zdancewic's group, formalizing LLVM IR operational semantics and low-level memory models in Rocq.
+      - Built Rocq/OCaml validation tools for Vellvm, including QuickChick-based LLVM generation, interpreter tracing, and differential testing that found LLVM bugs.
   - role: Research Assistant
     group: Wharton Research Scholars
     supervisors:
@@ -39,11 +50,11 @@ entries:
     institution: University of Pennsylvania
     unit: The Wharton School
     bullets:
-      - Researched and proved the existence of a pseudo-polynomial solution for precedence constraints knapsack problems with two different graph classes, union of three paths and one-directional bipartite poset with consecutive children.
-      - Gave a talk in Wharton Research Scholars seminar. Submitted a 48-page undergraduate technical report to Wharton Research Scholars Program in December 2024.
+      - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
+      - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
     resume_bullets:
-      - Studied precedence-constrained knapsack problems, proving pseudo-polynomial algorithms for structured graph classes.
-      - Wrote a 48-page undergraduate technical report and presented the work in the Wharton Research Scholars seminar.
+      - Proved pseudo-polynomial algorithms for precedence-constrained knapsack problems on structured poset classes.
+      - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
   - role: Research Assistant
     group: Penn Computational Intelligence Lab
     supervisors:
@@ -52,6 +63,5 @@ entries:
     institution: University of Pennsylvania
     unit: Electrical and Systems Engineering
     bullets:
-      - Co-designed and developed a novel simulator prototype, written in C++, that models the functionality of Intel's Optane Memory.
-      - Researched a C# solution in modifying PDFSplit, a PowerPoint add-in in Linux, to Microsoft.
+      - Built a C++ simulator prototype for modeling Intel Optane Memory behavior.
 ...

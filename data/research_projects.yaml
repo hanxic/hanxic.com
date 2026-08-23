@@ -7,13 +7,13 @@ sections:
     entries:
       - id: opol
         title: Oblivious Probabilistic Outcome Logic
-        prefix: OPOL
+        prefix: opOL
         image: image/opol.png
         description: >
           Practical randomized protocols in distributed systems and hardware
           often rely on oblivious adversaries, but randomization + control flow can
           leak entropy through schedule consumption, making their correctness
-          subtle to reason about. OPOL develops a program logic, mechanized in Lean for verifying probabilistic programs against
+          subtle to reason about. opOL develops a program logic, mechanized in Lean for verifying probabilistic programs against
           oblivious adversaries.
         refs:
           - chen2026obliviousprobabilisticoutcomelogic

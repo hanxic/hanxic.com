@@ -82,7 +82,7 @@
   \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
     \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
     \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
-    \hfill \CVData{education.entries.#1.cv_years}\par
+    \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi\par
   }%
   \CVIfSet{education.entries.#1.gpa}{%
     Cumulative GPA: \CVData{education.entries.#1.gpa}%
@@ -174,7 +174,7 @@
 \newcommand{\ResumeResearchEntry}[1]{%
   \begin{minipage}{\textwidth}
     \textbf{\CVData{research.entries.#1.role}}, \emph{\CVData{research.entries.#1.group}}%
-    \CVIfSet{research.entries.#1.supervisors.@len}{, supervised by \CVPrintList{research.entries.#1.supervisors}{ and }}{}%
+    \CVIfSet{research.entries.#1.supervisors.@len}{, advised by \CVPrintList{research.entries.#1.supervisors}{ and }}{}%
     \hfill \CVData{research.entries.#1.period}
 
     \textbf{\CVData{research.entries.#1.institution}}%

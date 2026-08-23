@@ -52,7 +52,7 @@ entries:
         name: Advanced Programming
         location: University of Pennsylvania
         description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers. Taught 4 lectures.
-        cv_description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers, dependent type, refinement type. Taught 4 lectures. Mentored 4 project groups.
+        cv_description: Taught four lectures and mentored four final-project groups.
         instructors:
           - Prof. Stephanie Weirich
         positions:
@@ -66,7 +66,7 @@ entries:
         name: Analysis of Algorithms
         location: University of Pennsylvania
         description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
-        cv_description: An undergraduate/graduate course on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
+        cv_description: Led TA staff and student support across six terms.
         instructors:
           - Prof. Sanjeev Khanna
         cv_role: Head Teaching Assistant
@@ -93,7 +93,6 @@ entries:
         name: Theory of Networks
         location: University of Pennsylvania
         description: A course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
-        cv_description: An undergraduate course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
         instructors:
           - Prof. Victor Preciado
         positions:
@@ -105,7 +104,7 @@ entries:
         name: Software Foundations
         location: University of Pennsylvania
         description: A graduate course on basic concepts and techniques of programming languages. Topics include operational techniques for formal definition of language features, type systems and type safety properties, polymorphism, constructive logic, and the Rocq Proof Assistant.
-        cv_description: A graduate course on basic concepts and techniques of programming languages. Topics include Rocq Proof Assistant, constructive logic, Hoare Logic, lambda calculus, type system, type safety, and mutable reference. Taught 1 lecture about maps in mechanization.
+        cv_description: Taught one lecture on maps in Rocq mechanization.
         instructors:
           - Prof. Benjamin Pierce
         positions:
@@ -117,6 +116,7 @@ entries:
       - name: STEM Tutor
         location: The Weingarten Center
         description: Taught Programming Languages and Techniques I (CIS 1200), Programming Languages and Techniques II (CIS 1210), Mathematical Foundations of Computer Science (CIS 1600), Introduction to Algorithms (CIS 3200), Calculus II (MATH 1410), Calculus III (MATH 2400).
+        cv_description: Tutored core CS and mathematics courses.
         show:
           web: false
           cv: true

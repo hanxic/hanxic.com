@@ -89,7 +89,7 @@
   \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
     \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
     \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
-    \hfill \CVData{education.entries.#1.cv_years}\par
+    \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi\par
   }%
   \CVIfSet{education.entries.#1.gpa}{%
     Cumulative GPA: \CVData{education.entries.#1.gpa}%
@@ -175,7 +175,9 @@
 }
 \DeclareBibliographyDriver{misc}{%
   \printnames{author}\adddot\space
-  \printfield{title}\adddot
+  \printfield{title}\adddot\space
+  \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
+  \printfield{year}\adddot
 }
 \DeclareBibliographyAlias{inprogress}{misc}
 
@@ -261,9 +263,7 @@
     \textbf{\CVData{projects.entries.#1.title}} -- \emph{\CVData{projects.entries.#1.technologies.@joined}}%
     \hfill \CVData{projects.entries.#1.period}
 
-    \textbf{Keyword:} \CVData{projects.entries.#1.keywords.@joined}
-
-    \textbf{\CVData{projects.entries.#1.institution}}, \emph{\CVData{projects.entries.#1.course}}, supervised by \CVData{projects.entries.#1.supervisor}
+    \textbf{\CVData{projects.entries.#1.institution}}, \emph{\CVData{projects.entries.#1.course}}
 
     \begin{itemize}
       \foreach \bullet in {1,...,\CVLen{projects.entries.#1.bullets}}{%
@@ -274,7 +274,7 @@
 }
 
 \newcommand{\Technicals}{%
-  \CVSection{Technicals}{%
+  \CVSection{Selected Technical Projects}{%
     \vspace{0.4em}
     \foreach \entry in {1,...,\CVLen{projects.entries}}{%
       \ProjectEntry{\entry}%
@@ -304,12 +304,13 @@
   \begin{minipage}{\textwidth}
     \textbf{\CVIfSet{teaching.entries.#1.courses.#2.cv_role}{\CVData{teaching.entries.#1.courses.#2.cv_role}}{\CVData{teaching.entries.#1.courses.#2.positions.1.type}}}, %
     \emph{\TeachingSubject{#1}{#2}}%
+    \hfill
+    \CVIfSet{teaching.entries.#1.courses.#2.cv_terms.@len}{\CVPrintList{teaching.entries.#1.courses.#2.cv_terms}{, }}{\CVData{teaching.entries.#1.courses.#2.positions.1.terms.@joined}}
 
     \TeachingInstitution{#1}{#2}. %
-    \CVIfSet{teaching.entries.#1.courses.#2.cv_terms.@len}{\CVPrintList{teaching.entries.#1.courses.#2.cv_terms}{, }}{\CVData{teaching.entries.#1.courses.#2.positions.1.terms.@joined}}. %
-    \CVIfSet{teaching.entries.#1.courses.#2.instructors.@len}{Supervised by \CVPrintList{teaching.entries.#1.courses.#2.instructors}{ and }.}{}
+    \CVIfSet{teaching.entries.#1.courses.#2.instructors.@len}{Instructor: \CVPrintList{teaching.entries.#1.courses.#2.instructors}{ and }.}{}
 
-    \CVIfSet{teaching.entries.#1.courses.#2.cv_description}{\CVData{teaching.entries.#1.courses.#2.cv_description}}{\CVData{teaching.entries.#1.courses.#2.description}}
+    \CVIfSet{teaching.entries.#1.courses.#2.cv_description}{\CVData{teaching.entries.#1.courses.#2.cv_description}}{}
   \end{minipage}\par
 }
 
@@ -371,11 +372,11 @@
 \Education
 \Publications
 \Research
-\Technicals
 \Honors
 \Teaching
-\Coursework
+%\Coursework
 \Community
+\Technicals
 \OtherExperience
 
 \end{document}

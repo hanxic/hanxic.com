@@ -2,70 +2,55 @@
 _tex:
   join:
     technologies: ", "
-    keywords: ", "
 entries:
-  - title: RISC-V Pipelined Processor with cache
+  - title: RISC-V Pipelined Processor
     technologies:
       - SystemVerilog
       - Python
-    keywords:
-      - RTL design
-      - Formal Verification
+      - FPGA
     period: Feb 2025 -- May 2025
     institution: University of Pennsylvania
     course: CIS 5710 Computer Organization and Design
     supervisor: Prof. Joe Devietti
     bullets:
-      - Independently developed a fully functioning RISC-V pipelined processor project individually, including AXI-Lite-style caching, multi-cycle execution units, and basic branch prediction.
-      - Verified the processor using extensive custom testbenches, optimized the design for low LUT usage and timing performance, and synthesized it onto an FPGA to run real programs, including a Candy-Crush-style game.
-  - title: "OAT-Compiler: From C-like Lang to Assembly"
+      - Implemented a RISC-V pipelined processor with AXI-Lite-style caching, multi-cycle execution units, branch prediction, and memory-mapped I/O.
+      - Built custom verification testbenches, optimized LUT usage and timing behavior, and synthesized the design to FPGA to run compiled programs.
+  - title: Oat Compiler
     technologies:
       - OCaml
       - C
-      - LLVM
-      - X86
+      - LLVM IR
+      - x86
       - Clang
       - Dune
-    keywords:
-      - Code Generation
-      - Static Analysis
-      - Optimization
     period: Feb 2024 -- May 2024
     institution: University of Pennsylvania
     course: CIS 7000 Compilers and Interpreters
     supervisor: Prof. Steve Zdancewic
     bullets:
-      - Independently developed a workable full-stack compiler with linter, parser, frontend, and backend capable of compiling Oat, a C-like language with pointer manipulation and complex data structures, down to LLVM IR and X86.
-      - Validated with thousands of student test cases. The compiler contains a type system, analyses, and optimizations including mem2reg and dead-code elimination.
-  - title: "SQL-Interp: Haskell Library for SQL Interpretation and Parsing"
+      - Implemented a compiler for Oat, a C-like language with pointers and structured data, including lexing, parsing, type checking, frontend lowering, and backend code generation to LLVM IR and x86.
+      - Added static analyses and optimizations including mem2reg and dead-code elimination, validated against thousands of test cases.
+  - title: SQL Interpreter
     technologies:
       - Haskell
       - MySQL
       - Cabal
-    keywords:
-      - Functional Abstraction
-      - Type Systems
-      - Monadic Effects
     period: Sep 2023 -- Dec 2023
     institution: University of Pennsylvania
     course: CIS 5520 Advanced Programming
     supervisor: Prof. Stephanie Weirich
     bullets:
-      - Led a team in developing a model for MySQL syntax as well as a tested Haskell library for parsing, interpreting, optimizing, and pretty-printing SQL scripts, using GADTs, monad transformers, applicative parsers, and property-based testing.
-      - Formalized abstract datatypes covering most SQL features. Developed an interface for locally executing queries.
-  - title: "PennOS: Unix-like Operating System"
-    technologies:
-      - C
-      - Valgrind
-    keywords:
-      - Concurrency
-      - Process Management
-      - File Systems
-    period: Jan 2023 -- May 2023
-    institution: University of Pennsylvania
-    course: CIS 5480 Operating Systems
-    supervisor: Prof. Boon Thau Loo
-    bullets:
-      - Led a team in designing a fault-tolerant, multi-thread operating system with kernel and file system components and no memory leaks.
-      - Co-developed kernel components including threads, signals, foreground/background execution, scheduler, API, and user-level functions, and integrated the file system.
+      - Led development of a Haskell library for parsing, interpreting, optimizing, and pretty-printing SQL, using GADTs, monad transformers, applicative parsers, and property-based testing.
+      - Designed typed abstract syntax and execution interfaces for local query evaluation.
+#  - title: "PennOS: Unix-like Operating System"
+#    technologies:
+#      - C
+#      - Valgrind
+#    period: Jan 2023 -- May 2023
+#    institution: University of Pennsylvania
+#    course: CIS 5480 Operating Systems
+#    supervisor: Prof. Boon Thau Loo
+#    bullets:
+#      - Led development of a Unix-like operating system with kernel threading, signal handling, foreground/background process control, scheduling, and filesystem integration.
+#      - Used Valgrind-driven testing and debugging to enforce memory safety across kernel and user-level components.
 ...
