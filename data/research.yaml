@@ -40,7 +40,7 @@ entries:
     unit: The Wharton School
     bullets:
       - Researched and proved the existence of a pseudo-polynomial solution for precedence constraints knapsack problems with two different graph classes, union of three paths and one-directional bipartite poset with consecutive children.
-      - Gave a talk in Wharton Research Scholars seminar. Submitted a 48-page undergraduate technical report to Wharton Research Scholars Program in December 2024. Approved with grade A.
+      - Gave a talk in Wharton Research Scholars seminar. Submitted a 48-page undergraduate technical report to Wharton Research Scholars Program in December 2024.
     resume_bullets:
       - Studied precedence-constrained knapsack problems, proving pseudo-polynomial algorithms for structured graph classes.
       - Wrote a 48-page undergraduate technical report and presented the work in the Wharton Research Scholars seminar.

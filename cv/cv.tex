@@ -150,7 +150,7 @@
 }
 
 \defbibenvironment{cvbibliography}
-  {\begin{itemize}[leftmargin=*,label={},itemsep=0.2em,parsep=0pt,topsep=0pt]}
+  {\begin{itemize}[leftmargin=0pt,label={},labelsep=0pt,labelwidth=0pt,itemindent=0pt,itemsep=0.2em,parsep=0pt,topsep=0pt]}
   {\end{itemize}}
   {\item}
 
@@ -189,7 +189,7 @@
 
 \newcommand{\Publications}{%
   \CVSection{Publications}{%
-    \PublicationGroup{Publications}{publication}
+    \printbibliography[keyword={publication},heading=none,env=cvbibliography]%
     \PublicationGroup{Manuscripts}{manuscript}
   }%
 }
@@ -226,7 +226,13 @@
 \newcommand{\CVExperienceEntry}[2]{%
   \begin{minipage}{\textwidth}
     \textbf{\CVData{#1.entries.#2.role}}, \emph{\CVData{#1.entries.#2.group}\CVData{#1.entries.#2.organization}}%
-    \CVIfSet{#1.entries.#2.supervisors.@len}{, supervised by \CVPrintList{#1.entries.#2.supervisors}{ and }}{}%
+    \CVIfSet{#1.entries.#2.supervisors.@len}{%
+      \ifnum\pdfstrcmp{#1}{research}=0
+        , advised by \CVPrintList{#1.entries.#2.supervisors}{ and }%
+      \else
+        , supervised by \CVPrintList{#1.entries.#2.supervisors}{ and }%
+      \fi
+    }{}%
     \hfill \CVData{#1.entries.#2.period}
 
     \textbf{\CVData{#1.entries.#2.institution}}%
