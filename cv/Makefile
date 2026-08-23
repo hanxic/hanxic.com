@@ -7,28 +7,47 @@ BIB=../assets/data/refs.bib
 SITE_CV=../static/cv/hanxi-chen-cv.pdf
 SITE_RESUME=../static/cv/hanxi-chen-resume.pdf
 
-.PHONY: all generate pdf install resume resume-pdf resume-install clean
+.PHONY: all generate pdf install resume resume-pdf resume-install force force-resume clean
 
 all: install
-
-generate:
-	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) --output $(GENERATED)
 
 $(GENERATED): $(DATA) ../scripts/yaml_to_tex_data.py
 	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) --output $(GENERATED)
 
-pdf: generate
-	latexmk -pdf -g $(MAIN)
+generate: $(GENERATED)
 
-install: pdf
-	cp $(MAIN).pdf $(SITE_CV)
+$(MAIN).pdf: $(MAIN).tex $(GENERATED) $(BIB)
+	latexmk -pdf $(MAIN)
+
+pdf: $(MAIN).pdf
+
+$(SITE_CV): $(MAIN).pdf
+	mkdir -p $(dir $@)
+	cmp -s $< $@ || cp $< $@
+
+install: $(SITE_CV)
 
 resume: resume-install
 
-resume-pdf: generate
-	latexmk -pdf -g $(RESUME)
+$(RESUME).pdf: $(RESUME).tex $(GENERATED) $(BIB)
+	latexmk -pdf $(RESUME)
 
-resume-install: resume-pdf
+resume-pdf: $(RESUME).pdf
+
+$(SITE_RESUME): $(RESUME).pdf
+	mkdir -p $(dir $@)
+	cmp -s $< $@ || cp $< $@
+
+resume-install: $(SITE_RESUME)
+
+force: $(GENERATED)
+	latexmk -pdf -g $(MAIN)
+	mkdir -p $(dir $(SITE_CV))
+	cp $(MAIN).pdf $(SITE_CV)
+
+force-resume: $(GENERATED)
+	latexmk -pdf -g $(RESUME)
+	mkdir -p $(dir $(SITE_RESUME))
 	cp $(RESUME).pdf $(SITE_RESUME)
 
 clean:

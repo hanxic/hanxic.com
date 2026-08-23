@@ -48,14 +48,14 @@ clean-cv:
 
 help:
 	@echo "Targets:"
-	@echo "  make          Refresh the CV and resume PDFs, then build the Hugo site"
+	@echo "  make          Build updated CV/resume PDFs as needed, then build the Hugo site"
 	@echo "  make build    Same as make"
 	@echo "  make site     Build the Hugo site only"
 	@echo "  make serve    Start the Hugo development server with drafts"
-	@echo "  make cv       Generate CV data, build the PDF, and install it into static/cv"
+	@echo "  make cv       Build and install the CV PDF if inputs changed"
 	@echo "  make cv-pdf   Build cv/cv.pdf without copying it into static/cv"
 	@echo "  make cv-data  Regenerate cv/generated/data.tex from data/*.yaml"
-	@echo "  make resume   Generate and install the one-page resume PDF into static/cv"
+	@echo "  make resume   Build and install the one-page resume PDF if inputs changed"
 	@echo "  make resume-pdf"
 	@echo "               Build cv/resume.pdf without copying it into static/cv"
 	@echo "  make publications-data"

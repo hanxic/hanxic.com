@@ -235,10 +235,10 @@
 }
 
 \newcommand{\TechnicalSkills}{%
-  \ResumeSection{Technical Skills}{%
+  \ResumeSection{Skills \& Research Interests}{%
     \foreach \entry in {1,...,\CVLen{skills.entries}}{%
       \textbf{\CVData{skills.entries.\entry.category}:}
-      \CVData{skills.entries.\entry.items.@joined}\par
+      \CVData{skills.entries.\entry.items.@joined}.\par
     }%
   }%
 }

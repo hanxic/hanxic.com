@@ -3,33 +3,30 @@ _tex:
   join:
     items: ", "
 entries:
-  - category: Proof Assistants
+  - category: Programming & Tools
     items:
-      - Lean
+      - Lean 4
       - Rocq/Coq
-      - Mathlib
-      - QuickChick
-  - category: Programming
-    items:
       - OCaml
       - Haskell
       - C/C++
       - Python
-      - SQL
+      - PyTorch
+      - Java
+      - Rust
       - SystemVerilog
-  - category: Systems and Tools
+      - LLVM IR/Clang
+      - Z3
+      - Docker
+      - property-based testing
+      - static analysis
+      - benchmarking
+  - category: Research Interests
     items:
-      - LLVM IR
-      - Clang
-      - Dune
-      - Git
-      - Unix
-      - LaTeX
-#  - category: Research Methods
-#    items:
-#      - mechanized semantics
-#      - program logics
-#      - differential testing
-#      - property-based testing
-#      - randomized algorithms
+      - compilers
+      - formal verification
+      - program logics
+      - probabilistic programming
+      - concurrency
+      - information flow
 ...

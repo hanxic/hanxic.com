@@ -41,7 +41,7 @@ Use this as the first place to decide where a change belongs:
 | Service | `data/service.yaml` | `layouts/_partials/service.html`, `cv/cv.tex` |
 | Honors, coursework, projects, experience | `data/honors.yaml`, `data/coursework.yaml`, `data/projects.yaml`, `data/experience.yaml` | Mostly used by `cv/cv.tex` and supporting pages |
 | Research experience for CV/resume | `data/research.yaml` | `cv/cv.tex`, `cv/resume.tex`; use `resume_bullets` for shorter resume wording |
-| Resume technical skills | `data/skills.yaml` | `cv/resume.tex` |
+| Resume skills and research interests | `data/skills.yaml` | `cv/resume.tex` |
 | CV layout | `cv/cv.tex` | Generated macros come from `cv/generated/data.tex` |
 | Resume layout | `cv/resume.tex` | Build/install with `make resume` |
 | New content pages or posts | `content/` | Hugo chooses templates from `layouts/` |
@@ -136,7 +136,8 @@ Use these files as the main editing points:
 - `data/service.yaml`: service/community entries for the Info page and CV.
 - `data/honors.yaml`, `data/coursework.yaml`, `data/experience.yaml`, and
   `data/projects.yaml`: CV sections and supporting structured data.
-- `data/skills.yaml`: technical skills for the one-page resume.
+- `data/skills.yaml`: programming/tools and research interests for the one-page
+  resume.
 - `data/research_projects.yaml`: home-page research project sections, text,
   images, and references.
 
