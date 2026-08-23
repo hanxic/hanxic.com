@@ -53,7 +53,17 @@
             {{ if $visibleRef }}
             <a href="#pub-{{ $ref.id }}" title="{{ $ref.title }}">{{ printf "[%v]" (or $ref.tag $ref.year) }}</a>
             {{ else if $ref }}
+            {{ $refLink := "" }}
+            {{ with $ref.links }}
+              {{ with index . 0 }}
+                {{ $refLink = .url }}
+              {{ end }}
+            {{ end }}
+            {{ if $refLink }}
+            <a href="{{ $refLink | safeURL }}" target="_blank" rel="noopener" title="{{ $ref.title }}">{{ printf "[%v]" (or $ref.tag $ref.year) }}</a>
+            {{ else }}
             <span>[{{ or $ref.tag $ref.year }}]</span>
+            {{ end }}
             {{ else }}
             <span>[{{ . }}]</span>
             {{ end }}
