@@ -1,8 +1,10 @@
 *.DS_Store
 *#
+.hugo_build.lock
 auto/
 data/*-old.yaml
 data/publications.yaml
+docs/
 *public/
 cv/*.aux
 cv/*.bbl
