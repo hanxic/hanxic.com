@@ -438,8 +438,10 @@ main :not(h2) {
         grid-template-columns: 1fr;
     }
     .research-project-media {
-        aspect-ratio: 16 / 9;
-        max-height: 8rem;
+        aspect-ratio: 4 / 3;
+        justify-self: center;
+        max-height: 9rem;
+        width: 100%;
     }
 }
 
