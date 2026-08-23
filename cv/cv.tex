@@ -8,7 +8,6 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{multicol}
-\usepackage{xfrac}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[colorlinks=true,linkcolor=RoyalBlue,urlcolor=RoyalBlue,citecolor=MediumBlue]{hyperref}
 \usepackage{etoolbox}
@@ -286,7 +285,7 @@
 \newcommand{\TeachingSubject}[2]{%
   \CVIfSet{teaching.entries.#1.courses.#2.numbers.@len}{%
     \CVData{teaching.entries.#1.courses.#2.name} %
-    (\CVIfSet{teaching.entries.#1.courses.#2.cv_number}{\CVData{teaching.entries.#1.courses.#2.cv_number}}{\CVData{teaching.entries.#1.courses.#2.numbers.@joined}})%
+    (\CVData{teaching.entries.#1.courses.#2.numbers.@joined})%
   }{%
     \CVData{teaching.entries.#1.courses.#2.location}%
   }%
@@ -304,11 +303,12 @@
   \begin{minipage}{\textwidth}
     \textbf{\CVIfSet{teaching.entries.#1.courses.#2.cv_role}{\CVData{teaching.entries.#1.courses.#2.cv_role}}{\CVData{teaching.entries.#1.courses.#2.positions.1.type}}}, %
     \emph{\TeachingSubject{#1}{#2}}%
-    \hfill
-    \CVIfSet{teaching.entries.#1.courses.#2.cv_terms.@len}{\CVPrintList{teaching.entries.#1.courses.#2.cv_terms}{, }}{\CVData{teaching.entries.#1.courses.#2.positions.1.terms.@joined}}
+\par
 
     \TeachingInstitution{#1}{#2}. %
-    \CVIfSet{teaching.entries.#1.courses.#2.instructors.@len}{Instructor: \CVPrintList{teaching.entries.#1.courses.#2.instructors}{ and }.}{}
+    \CVIfSet{teaching.entries.#1.courses.#2.instructors.@len}{Instructor: \CVPrintList{teaching.entries.#1.courses.#2.instructors}{ and }. }{}%
+    Terms: \CVIfSet{teaching.entries.#1.courses.#2.cv_terms.@len}{\CVPrintList{teaching.entries.#1.courses.#2.cv_terms}{, }}{\CVData{teaching.entries.#1.courses.#2.positions.1.terms.@joined}}.%
+\par
 
     \CVIfSet{teaching.entries.#1.courses.#2.cv_description}{\CVData{teaching.entries.#1.courses.#2.cv_description}}{}
   \end{minipage}\par
@@ -347,7 +347,7 @@
 }
 
 \newcommand{\Community}{%
-  \CVSection{Community Involvement}{%
+  \CVSection{Academic Service}{%
     \begin{multicols}{2}
       \foreach \entry in {1,...,\CVLen{service.entries}}{%
         \CVData{service.entries.\entry.role}, \CVData{service.entries.\entry.organization}\hfill \CVData{service.entries.\entry.time}\par
@@ -377,6 +377,6 @@
 %\Coursework
 \Community
 \Technicals
-\OtherExperience
+%\OtherExperience
 
 \end{document}

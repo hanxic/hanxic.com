@@ -1,7 +1,5 @@
 ---
 _tex:
-  raw_fields:
-    - cv_number
   join:
     numbers: " / "
     terms: ", "
@@ -11,7 +9,6 @@ entries:
       - numbers:
         - CS 4160
         - CS 5160
-        cv_number: CS \sfrac{4}{5}160
         name: Formal Verification
         location: Cornell University
         description: An undergraduate/graduate course on formal verification and mechanization in Rocq. Topics include logic, programming language semantics, and verification of algorithms and data structures.
@@ -20,11 +17,10 @@ entries:
         positions:
         - type: Graduate Teaching Assistant
           terms:
-            - 26Sp
+            - Spr 2026
       - numbers:
         - CS 4110
         - CS 5110
-        cv_number: CS \sfrac{4}{5}110
         name: Programming Languages and Logics
         location: Cornell University
         description: An undergraduate/graduate course on the theory, design, and implementation of programming languages. Topics include operational semantics, denotational semantics, axiomatic semantics, program logics, lambda calculus, dependent type systems, type safety, and logical relations.
@@ -33,7 +29,7 @@ entries:
         positions:
         - type: Graduate Teaching Assistant
           terms:
-            - 25Fa
+            - Fal 2025
   - location: University of Pennsylvania
     courses:
       - numbers:
@@ -46,7 +42,7 @@ entries:
         positions:
           - type: "Teaching Assistant"
             terms:
-              - 25Sp
+              - Spr 2025
       - numbers:
           - CIS 5520
         name: Advanced Programming
@@ -58,7 +54,7 @@ entries:
         positions:
           - type: "Teaching Assistant"
             terms:
-              - 24Fa
+              - Fal 2024
       - numbers:
           - CIS 5020
           - CIT 5960
@@ -66,28 +62,28 @@ entries:
         name: Analysis of Algorithms
         location: University of Pennsylvania
         description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
-        cv_description: Led TA staff and student support across six terms.
+        cv_description: Led TA staff and student support across six terms; received the 2024 MCIT TA Award.
         instructors:
           - Prof. Sanjeev Khanna
         cv_role: Head Teaching Assistant
         cv_terms:
-          - 22Su
-          - 22Fa
-          - 23Sp
-          - 23Su
-          - 23Fa
-          - 24Su
+          - Sum 2022
+          - Fal 2022
+          - Spr 2023
+          - Sum 2023
+          - Fal 2023
+          - Sum 2024
         positions:
           - type: "Head Teaching Assistant"
             terms:
-              - 23Sp
-              - 23Su
-              - 23Fa
-              - 24Su
+              - Spr 2023
+              - Sum 2023
+              - Fal 2023
+              - Sum 2024
           - type: "Teaching Assistant"
             terms:
-              - 22Su
-              - 22Fa
+              - Sum 2022
+              - Fal 2022
       - numbers:
           - NETS 3120
         name: Theory of Networks
@@ -98,7 +94,7 @@ entries:
         positions:
           - type: "Head Teaching Assistant"
             terms:
-              - 24Sp
+              - Spr 2024
       - numbers:
           - CIS 5000
         name: Software Foundations
@@ -110,7 +106,7 @@ entries:
         positions:
           - type: "Teaching Assistant"
             terms:
-              - 23Fa
+              - Fal 2023
   - location: University of Pennsylvania
     courses:
       - name: STEM Tutor
@@ -123,9 +119,9 @@ entries:
         positions:
           - type: STEM Tutor
             terms:
-              - 21Sp
-              - 21Su
-              - 21Fa
-              - 22Sp
-              - 22Su
+              - Spr 2021
+              - Sum 2021
+              - Fal 2021
+              - Spr 2022
+              - Sum 2022
 ...
