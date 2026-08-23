@@ -1,6 +1,6 @@
 \documentclass[9pt]{extarticle}
 
-\usepackage[letterpaper,top=0.5in,bottom=0.5in,left=0.8in,right=0.8in,includeheadfoot]{geometry}
+\usepackage[letterpaper,top=0.7in, bottom=0.7in, left=0.8in, right=0.8in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{libertine}
 \usepackage{mathptmx}
@@ -8,6 +8,7 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{multicol}
+\usepackage{needspace}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[colorlinks=true,linkcolor=RoyalBlue,urlcolor=RoyalBlue,citecolor=MediumBlue]{hyperref}
 \usepackage{etoolbox}
@@ -37,6 +38,7 @@
 \newcommand{\Emptyline}{\vspace{0.85em}}
 \newcommand{\Minusline}{\vspace{-0.8em}}
 \newcommand{\CVSection}[2]{%
+  \Needspace{8\baselineskip}
   \Emptyline
   {\centering
     \textbf{\MakeUppercase{#1}}\\[-0.45em]
@@ -193,10 +195,13 @@
 
 \newcommand{\Publications}{%
   \CVSection{Publications}{%
-    \PublicationGroup{Refereed Publications}{refereed}
-    \PublicationGroup{Preprints}{preprint}
-    \PublicationGroup{Manuscripts in Preparation}{manuscript}
-    \PublicationGroup{Theses}{thesis}
+    \printbibliography[keyword={publication},heading=none,env=cvbibliography]%
+    \vspace{0.1em}
+    {\centering\textbf{Manuscripts}\par}
+    \vspace{0.05em}
+    \printbibliography[keyword={manuscript},heading=none,env=cvbibliography]%
+    \printbibliography[keyword={thesis},heading=none,env=cvbibliography]%
+    \par\vspace{0.15em}
   }%
 }
 
@@ -343,17 +348,37 @@
 
 \newcommand{\Honors}{%
   \CVSection{Honors \& Awards}{%
-    \foreach \entry in {1,...,\CVLen{honors.entries}}{%
-      \CVData{honors.entries.\entry.name}\hfill \CVData{honors.entries.\entry.time}\par
-    }%
+    \begin{multicols}{2}
+      \foreach \entry in {1,...,\CVLen{honors.entries}}{%
+        \CVData{honors.entries.\entry.name}\hfill \CVData{honors.entries.\entry.time}\par
+      }%
+    \end{multicols}
   }%
+}
+
+\newcount\ServiceItemCount
+\newcommand{\ServiceLine}[1]{%
+  \textbf{#1}: %
+  \global\ServiceItemCount=0
+  \foreach \entry in {1,...,\CVLen{service.entries}}{%
+    \ifnum\pdfstrcmp{\CVRawData{service.entries.\entry.role}}{#1}=0
+      \ifnum\ServiceItemCount>0 , \fi
+      \CVIfSet{service.entries.\entry.cv_label}{%
+        \CVData{service.entries.\entry.cv_label}%
+      }{%
+        \CVData{service.entries.\entry.organization}%
+      }%
+      \global\advance\ServiceItemCount by 1
+    \fi
+  }%
+  \par
 }
 
 \newcommand{\Community}{%
   \CVSection{Academic Service}{%
-    \foreach \entry in {1,...,\CVLen{service.entries}}{%
-      \CVData{service.entries.\entry.role}, \CVData{service.entries.\entry.organization}\hfill \CVData{service.entries.\entry.time}\par
-    }%
+    \ServiceLine{Seminar Organization}
+    \ServiceLine{Artifact Evaluation Committee}
+    \ServiceLine{Student Volunteer}
     \vspace{0.15em}
   }%
 }
@@ -378,7 +403,7 @@
 \Teaching
 %\Coursework
 \Community
-%\Technicals
+\Technicals
 %\OtherExperience
 
 \end{document}

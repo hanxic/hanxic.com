@@ -7,7 +7,7 @@ entries:
   - id: cornell
     school: Cornell University
     note: Ann S. Bowers College of Computing and Information Science
-    years: 2025-
+    years: 2025-present
     cv_years: 2025 -- Present
     location: Ithaca, NY, USA
     cv_location: Ithaca, NY
@@ -23,7 +23,7 @@ entries:
         url: https://www.cs.cornell.edu/andru/
   - id: penn
     school: University of Pennsylvania
-    note: Uncoordinated Dual Bachelor's Degree & Master's Degree between Penn Engineering & The Wharton School
+    note: Penn Engineering & The Wharton School
     years: 2020-2025
     cv_years: May 2025
     location: Philadelphia, PA, USA

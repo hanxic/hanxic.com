@@ -110,8 +110,13 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
-\DeclareDatamodelFields[type=field,datatype=literal]{tag}
-\DeclareDatamodelEntryfields{tag}
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=tag,fieldtarget=usera]
+    }
+  }
+}
 \addbibresource{../assets/data/refs.bib}
 \nocite{*}
 
@@ -156,21 +161,21 @@
 \DeclareBibliographyDriver{article}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \iffieldundef{tag}{\printfield{journaltitle}}{\printfield{tag}}\addcomma\space
+  \iffieldundef{usera}{\printfield{journaltitle}}{\printfield{usera}}\addcomma\space
   \printfield{year}\adddot
 }
 \DeclareBibliographyDriver{inproceedings}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \iffieldundef{tag}{\printfield{booktitle}}{\printfield{tag}}\addcomma\space
+  \iffieldundef{usera}{\printfield{booktitle}}{\printfield{usera}}\addcomma\space
   \printfield{year}\adddot
 }
 \DeclareBibliographyDriver{misc}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \iffieldundef{tag}{%
+  \iffieldundef{usera}{%
     \iffieldundef{eprinttype}{}{\printfield{eprinttype}\space preprint\addcomma\space}%
-  }{\printfield{tag}\space preprint\addcomma\space}%
+  }{\printfield{usera}\space preprint\addcomma\space}%
   \printfield{year}\adddot
 }
 

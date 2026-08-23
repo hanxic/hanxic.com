@@ -1,5 +1,9 @@
 ---
 _tex:
+  raw_fields:
+    - website
+    - linkedin
+    - github
   url_fields:
     - website
     - linkedin

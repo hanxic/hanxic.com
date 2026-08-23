@@ -13,7 +13,7 @@ entries:
       - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
       - Contributed Lean mechanization for Type-Confusion Security, formalizing static and dynamic information-flow checks for decentralized systems whose untrusted components can misrepresent dynamic types.
     resume_bullets:
-      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify caching and leader-election protocols.
       - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
       - Contributed Lean mechanization for Type-Confusion Security, formalizing information-flow checks for decentralized systems where untrusted components can lie about types and induce confused-deputy attacks.
   - role: Research Mentor
