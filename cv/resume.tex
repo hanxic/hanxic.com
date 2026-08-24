@@ -89,16 +89,14 @@
     \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
     \par
   }{}%
-  \ifnum#1=1\relax
-    \CVIfSet{education.entries.#1.advisors.@len}{%
-      Advisors: %
-      \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
-        \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
-        \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
-      }%
-      \par
-    }{}%
-  \fi
+  \CVIfSet{education.entries.#1.advisors.@len}{%
+    \ifnum#1=1\relax Advisors:\else Research advisors:\fi\space
+    \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
+      \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
+      \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
+    }%
+    \par
+  }{}%
 }
 
 \newcommand{\Education}{%

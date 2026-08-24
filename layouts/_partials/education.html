@@ -1,6 +1,6 @@
 <section id="education" class="section">
   <h2>Education</h2>
-  {{ range .Site.Data.education.entries }}
+  {{ range $index, $entry := .Site.Data.education.entries }}
   <article class="education">
     <header>
       <span class="school">
@@ -35,6 +35,24 @@
     <div class="gpa">
       [GPA]: {{ .gpa }}
       {{- with .distinction -}}, {{ . }}{{- end -}}
+    </div>
+    {{ end }}
+    {{ if .advisors }}
+    <div class="education-meta advisors">
+      <span class="education-meta-label">
+        {{- if eq $index 0 -}}[Advisors]:{{- else -}}[Research advisors]:{{- end -}}
+      </span>
+      <span class="education-meta-content">
+        {{- range $advisorIndex, $advisor := .advisors -}}
+          {{- if $advisorIndex }}, {{ end -}}
+          {{- if $advisor.url -}}
+          <a href="{{ $advisor.url }}">{{ $advisor.title }} {{ $advisor.name }}</a>
+          {{- else -}}
+          {{ $advisor.title }} {{ $advisor.name }}
+          {{- end -}}
+          {{- with $advisor.note }} ({{ . }}){{ end -}}
+        {{- end -}}
+      </span>
     </div>
     {{ end }}
     {{ if .honors }}
