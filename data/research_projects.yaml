@@ -35,7 +35,7 @@ sections:
         image: image/mathai.png
         description: >
           Autoformalization asks AI systems to translate mathematical
-          statements and proofs into Lean code. Cornell's ongoing Math+AI project, led by [Prof. Daniel Halpern-Leistner](https://danielhl.github.io/)
+          statements and proofs into Lean code. Cornell's ongoing Math+AI project, led by [Prof. Daniel Halpern-Leistner](https://danielhl.github.io/),
           develops challenging research-level benchmarks, a survey for comparing
           Lean proofs, a collection of formalization problems, and
           LaTeX-to-Lean proof tooling.

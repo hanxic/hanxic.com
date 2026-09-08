@@ -1,6 +1,6 @@
 baseURL = 'https://www.hanxic.com/'
 languageCode = 'en-us'
-title = 'Hanxi (Gary) Chen'
+title = 'Hanxi "Gary" Chen'
 
 [menus]
   [[menus.main]]
