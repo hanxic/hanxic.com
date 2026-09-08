@@ -1,5 +1,7 @@
 :root {
     --profile-picture-max-width: 250px;
+    --site-max-width: 1040px;
+    --section-rail-width: 7.5rem;
     --global-font-family: 'Iosevka Web', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --global-mono-font-family: var(--global-font-family);
     --content-line-height: 1.4;
@@ -13,7 +15,7 @@
     --global-text-color-dark: #233040;
     --global-text-color-light: #d8c4b6;
     --global-theme-color: #007acc;
-    --global-hover-color: #b509ac;
+    --global-hover-color: #174f78;
     --global-hover-text-color: #fff;
     --global-footer-bg-color: #f5efe7;
     --global-footer-text-color: #3e5879;
@@ -38,7 +40,7 @@
     --global-danger-block-bg: #ffe0e0;
     --global-danger-block-text: #600;
     --global-danger-block-title: #c00;
-    --global-border-line: 2px solid #ccc;
+    --global-border-line: 1px solid rgba(42, 69, 104, 0.24);
 }
 * {
     /* outline: 1px solid red; */
@@ -64,20 +66,25 @@ body {
 a {
     color: var(--global-theme-color);
     text-decoration: none;
+    transition: color 0.18s ease;
 }
 a:hover {
     color: var(--global-hover-color);
-    transition: color 0.2s ease;
+}
+a:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 3px;
 }
 main, header, footer {
     width: 100%;
-    max-width: 800px;
+    max-width: var(--site-max-width);
 }
 
 /* header */
 .site-title {
     color: var(--global-text-color);
-    font-size: 1.625rem;
+    font-size: 1.5rem;
+    letter-spacing: -0.025em;
     line-height: 1.1;
     margin: 0;
 }
@@ -93,7 +100,7 @@ main, header, footer {
     display: flex;
     flex-wrap: wrap;
     column-gap: 0.45rem;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     justify-content: flex-start;
     margin-top: 0.6rem;
     line-height: 1.45;
@@ -109,14 +116,18 @@ main, header, footer {
     margin-right: 0.15rem;
 }
 .site-contact-links a {
+    color: var(--global-text-color-small);
     font-size: inherit;
     line-height: inherit;
+}
+.site-contact-links a:hover {
+    color: var(--global-theme-color);
 }
 .menu-container {
     display: flex;
     flex-wrap: wrap;
-    font-size: 0.875rem;
-    gap: 0 0.4rem;
+    font-size: 0.8125rem;
+    gap: 0 0.5rem;
     justify-content: flex-end;
     text-align: center;
 }
@@ -140,7 +151,7 @@ main, header, footer {
 
 /* sites */
 .site-container {
-    max-width: 900px;
+    max-width: var(--site-max-width);
     margin: 0 auto;
 }
 
@@ -151,7 +162,7 @@ main, header, footer {
     flex-direction: column;
     align-items: stretch;
     margin: 0 auto;
-    padding: 0.55rem 0 0.5rem;
+    padding: 0.65rem 0 0.55rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -159,12 +170,49 @@ main, header, footer {
 
 .section {
     border-bottom: var(--global-border-line);
-    padding: 1.25rem 0;
+    column-gap: clamp(1.5rem, 3vw, 2.75rem);
+    display: grid;
+    grid-template-columns: var(--section-rail-width) minmax(0, 1fr);
+    padding: 2.5rem 0 2.75rem;
     scroll-margin-top: var(--sticky-header-offset, 6rem);
 }
-.section h2 {
-    line-height: 1.15;
-    margin: 0 0 0.75rem;
+.section > h2 {
+    align-self: start;
+    color: var(--global-text-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    font-weight: 700;
+    grid-column: 1;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0;
+    position: sticky;
+    text-transform: uppercase;
+    top: calc(var(--sticky-header-offset, 6rem) + 1rem);
+}
+.section > h2::before {
+    color: var(--global-theme-color);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.45rem;
+}
+#about > h2::before {
+    content: "01";
+}
+#publications > h2::before {
+    content: "02";
+}
+#research > h2::before {
+    content: "03";
+}
+#background > h2::before {
+    content: "04";
+}
+.section > :not(h2) {
+    grid-column: 2;
+    min-width: 0;
 }
 
 .background-subsection {
@@ -603,6 +651,24 @@ footer * {
 }
 
 @media (max-width: 760px) {
+    .section {
+        display: block;
+        padding: 1.6rem 0 1.8rem;
+    }
+    .section > h2 {
+        align-items: baseline;
+        flex-direction: row;
+        font-size: 1rem;
+        gap: 0.6rem;
+        letter-spacing: 0.045em;
+        margin: 0 0 1rem;
+        position: static;
+    }
+    .section > h2::before {
+        font-size: 0.65rem;
+        margin-bottom: 0;
+        min-width: 1.6rem;
+    }
     .site-header-main {
         align-items: flex-start;
         flex-direction: column;
