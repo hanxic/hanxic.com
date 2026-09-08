@@ -1,12 +1,14 @@
 :root {
     --profile-picture-max-width: 250px;
+    --global-font-family: 'Iosevka Web', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --global-mono-font-family: var(--global-font-family);
     --global-bg-color: #f5efe7;
     /* --global-bg-color: #f0f4f8; */
     --global-code-bg-color: rgba(181, 9, 172, 0.05);
     /* --global-text-color: #213555; */
     --global-text-color: #2a4568;
     --global-text-color-small: #4e3269;
-    --global-font-size-small: 0.75em;
+    --global-font-size-small: 0.875rem;
     --global-text-color-dark: #233040;
     --global-text-color-light: #d8c4b6;
     --global-theme-color: #007acc;
@@ -39,14 +41,16 @@
 }
 * {
     /* outline: 1px solid red; */
-    font-family: 'Iosevka Web', monospace;
+    box-sizing: border-box;
 }
 
 body {
     background-color: var(--global-bg-color);
     color: var(--global-text-color);
-    line-height: 1.5;
-    margin: 1rem;
+    font-family: var(--global-font-family);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,19 +65,16 @@ a:hover {
 }
 main, header, footer {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
 }
 
 /* header */
-header :not(h1){
-    font-size: 0.75rem;
-}
 /* header { */
 /*     border-bottom: var(--global-border-line); */
 /* } */
 .site-title {
     color: var(--global-text-color);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     line-height: 1.1;
     margin: 0;
 }
@@ -89,7 +90,7 @@ header :not(h1){
     display: flex;
     flex-wrap: wrap;
     column-gap: 0.45rem;
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     justify-content: flex-start;
     margin-top: 0.6rem;
     line-height: 1.45;
@@ -99,6 +100,7 @@ header :not(h1){
     color: var(--global-text-color);
     font-size: inherit;
     font-weight: 700;
+    font-family: var(--global-mono-font-family);
     letter-spacing: 0;
     line-height: inherit;
     margin-right: 0.15rem;
@@ -108,11 +110,11 @@ header :not(h1){
     line-height: inherit;
 }
 .menu-container {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     text-align: center;
 }
 .menu-container a {
-    font-size: 1.1em;
+    font-size: 1em;
 }
 /* .menu-container a { */
 /*     color: inherit; */
@@ -136,15 +138,9 @@ header :not(h1){
     margin: 0 auto;
 }
 
-/* font size */
-/* body */
-main :not(h2) {
-    font-size: 0.75rem;
-}
-
 .section {
     border-bottom: var(--global-border-line);
-    padding-bottom: 1rem;
+    padding-bottom: 1.25rem;
 }
 .section h2 {
     margin-bottom: 0.3rem;
@@ -172,7 +168,7 @@ main :not(h2) {
     font-weight: 400;
 }
 .about-content p {
-    text-shadow: 0.012em 0 0 rgba(42, 69, 104, 0.45);
+    text-shadow: none;
 }
 .about-content a {
     text-shadow: none;
@@ -185,7 +181,7 @@ main :not(h2) {
     color: var(--global-theme-color);
 }
 #publications h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 0.75rem 0 0.25rem;
 }
 #publications .publication-awards,
@@ -195,6 +191,10 @@ main :not(h2) {
     gap: 0 0.35rem;
     font-weight: 600;
     margin-top: 0.05rem;
+}
+#publications .tag,
+#publications .publication-links {
+    font-family: var(--global-mono-font-family);
 }
 #publications .publication-awards {
     color: var(--global-highlight-color);
@@ -212,7 +212,7 @@ main :not(h2) {
 }
 
 #research h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 0.75rem 0 0.35rem;
 }
 .research-project-list {
@@ -407,7 +407,7 @@ main :not(h2) {
     transform: rotate(38deg);
 }
 .research-project header {
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.25;
 }
@@ -427,6 +427,7 @@ main :not(h2) {
     font-weight: 600;
     gap: 0 0.35rem;
     margin-top: 0.25rem;
+    font-family: var(--global-mono-font-family);
 }
 .research-project-links a,
 .research-project-links span {
@@ -516,6 +517,7 @@ summary{
 #teaching .terms {
     font-size: var(--global-font-size-small);
     color: var(--global-text-color-small);
+    font-family: var(--global-mono-font-family);
 }
 
 /* Service */
@@ -536,34 +538,29 @@ summary{
 #service .time {
     margin-left: auto;
     white-space: nowrap;
+    font-family: var(--global-mono-font-family);
 }
 
 /* footer */
 footer {
-    text-color: var(--global-footer-text-color);
+    color: var(--global-footer-text-color);
 }
 footer * {
-    
-    font-size: 0.5rem;
-}
-footer {
+    font-size: 0.75rem;
 }
 
 @media (max-width: 500px) {
     .menu-container a {
-        font-size: 0.9em;
+        font-size: 0.95rem;
     }
     body {
-        margin: 0.9rem;
+        margin: 1rem;
     }
     header h1 {
-        font-size: 1.3rem !important;
+        font-size: 1.5rem !important;
     }
-    header :not(h1){
-        font-size: 0.60rem;
-    }
-    main :not(h2) {
-        font-size: 0.60rem;
+    .site-contact-links {
+        font-size: 0.85rem;
     }
     .about-container  {
         flex-direction: column;
