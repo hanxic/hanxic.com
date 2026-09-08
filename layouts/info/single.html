@@ -1,10 +1,9 @@
 {{ define "main" }}
-<div class="cv">
-  <!-- education -->
-  {{ partial "education.html" . }}
-
-  {{ partial "service.html" . }}
-
-  {{ partial "teaching.html" . }}
-</div>
+<section class="section">
+  <h2>Information moved</h2>
+  <p>
+    Education, teaching, and service are now part of the
+    <a href="{{ "/#background" | relURL }}">Background section</a> on the homepage.
+  </p>
+</section>
 {{ end }}

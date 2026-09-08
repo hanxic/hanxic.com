@@ -4,19 +4,37 @@ title = 'Hanxi "Gary" Chen'
 
 [menus]
   [[menus.main]]
-    name = 'Home'
-    pageRef = '/'
+    name = 'About'
+    url = '/#about'
     weight = 10
+    [menus.main.params]
+      section = 'about'
 
   [[menus.main]]
-    name = 'Info'
-    pageRef = '/info/'
+    name = 'Publications'
+    url = '/#publications'
     weight = 20
+    [menus.main.params]
+      section = 'publications'
+
+  [[menus.main]]
+    name = 'Research'
+    url = '/#research'
+    weight = 30
+    [menus.main.params]
+      section = 'research'
+
+  [[menus.main]]
+    name = 'Background'
+    url = '/#background'
+    weight = 40
+    [menus.main.params]
+      section = 'background'
 
   [[menus.main]]
     name = 'CV'
     url = '/cv/hanxi-chen-cv.pdf'
-    weight = 30
+    weight = 50
 
   # [[menus.main]]
   #   name = 'Tags'
