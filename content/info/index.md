@@ -1,5 +1,5 @@
 +++
 title= "Information"
 layout= "info"
-redirect = "/#background"
+redirect = "/#education"
 +++

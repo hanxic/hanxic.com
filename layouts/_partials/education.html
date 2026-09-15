@@ -1,64 +1,45 @@
-<section id="education" class="background-subsection">
-  <h3>Education</h3>
-  {{ range $index, $entry := .Site.Data.education.entries }}
+<section id="education" class="section">
+  <h2>Education</h2>
+  {{ range $entry := .Site.Data.education.entries }}
   <article class="education">
-    <header>
-      <span class="school">
-        {{ .school }}
-      </span>
-    <span class="separator">-</span>
-    <span class="location">
-      {{ .location }}
-    </span>
-    <span class="year">
-        {{ .years }}
-      </span>
-    </header>
-    {{ if .note }}
-    <div class="note small">
-      {{ .note }}
-    </div>
-    {{ end }}
-    <div class="degrees">
-      {{ range .degrees }}
-      <div class="degree">
-        <span class="title">{{- .title -}}</span>
-        {{- if .attributes -}}
-        <span class="attributes small">
-          {{ delimit .attributes ", " }}
-        </span>
-        {{ end }}
-      </div>
+    {{ with .logos }}
+    <div class="education-logos">
+      {{ range . }}
+      <img src="{{ .src | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="lazy" decoding="async">
       {{ end }}
     </div>
-    {{ if .gpa }}
-    <div class="gpa">
-      [GPA]: {{ .gpa }}
-      {{- with .distinction -}}, {{ . }}{{- end -}}
-    </div>
     {{ end }}
-    {{ if .advisors }}
-    <div class="education-meta advisors">
-      <span class="education-meta-label">
-        {{- if eq $index 0 -}}[Advisors]:{{- else -}}[Research advisors]:{{- end -}}
-      </span>
-      <span class="education-meta-content">
-        {{- range $advisorIndex, $advisor := .advisors -}}
-          {{- if $advisorIndex }}, {{ end -}}
-          {{- if $advisor.url -}}
-          <a href="{{ $advisor.url }}">{{ $advisor.title }} {{ $advisor.name }}</a>
-          {{- else -}}
-          {{ $advisor.title }} {{ $advisor.name }}
-          {{- end -}}
-          {{- with $advisor.note }} ({{ . }}){{ end -}}
-        {{- end -}}
-      </span>
-    </div>
-    {{ end }}
-    {{ if .honors }}
-    <div class="education-meta honors">
-      <span class="education-meta-label">[Honors]:</span>
-      <span class="education-meta-content">{{ delimit .honors ", " }}</span>
+    <header class="education-heading">
+      <div class="education-place">
+        <h3>{{ .school }}</h3>
+        <p class="education-context">{{- with .note -}}<span>{{ . }}</span><span class="education-separator" aria-hidden="true">·</span>{{- end -}}<span>{{ .location }}</span></p>
+      </div>
+      <span class="education-year">{{ .years }}</span>
+    </header>
+
+    <ul class="education-degree-list">
+      {{ range .degrees }}
+      <li>
+        <span class="education-degree-title">{{ .title }}</span>
+        {{ with .attributes }}<span class="education-degree-attributes"> ({{ delimit . ", " }})</span>{{ end }}
+        {{- with .site_note -}}<span class="education-degree-note">{{ . }}</span>{{- end }}
+      </li>
+      {{ end }}
+    </ul>
+    {{ if or .gpa .distinction .advisors .site_recognition }}
+    <div class="education-details">
+      {{ if or .distinction .gpa }}
+      <p class="education-outcome">{{ with .distinction }}<span class="education-distinction">{{ . }}</span>{{ end }}{{ if and .distinction .gpa }}<span class="education-separator" aria-hidden="true">·</span>{{ end }}{{ with .gpa }}<span>{{ . }}</span>{{ end }}</p>
+      {{ end }}
+      {{ if .advisors }}
+      <p class="education-advising">Advised by {{ range $advisorIndex, $advisor := .advisors }}{{ if $advisorIndex }}{{ if eq $advisorIndex (sub (len $entry.advisors) 1) }} and {{ else }}, {{ end }}{{ end }}{{ if $advisor.url }}<a href="{{ $advisor.url }}">{{ $advisor.title }} {{ $advisor.name }}</a>{{ else }}{{ $advisor.title }} {{ $advisor.name }}{{ end }}{{ end }}.</p>
+      {{ end }}
+      {{ with .site_recognition }}
+      <div class="education-recognition">
+        {{ with .research }}<p>{{ delimit . " · " }}</p>{{ end }}
+        {{ with .teaching }}<p>{{ delimit . " · " }}</p>{{ end }}
+      </div>
+      {{ end }}
     </div>
     {{ end }}
   </article>

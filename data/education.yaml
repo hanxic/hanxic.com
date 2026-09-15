@@ -1,15 +1,24 @@
 ---
 _tex:
   index_by: id
+  skip_fields:
+    - logos
+    - site_note
+    - site_recognition
   url_fields:
     - url
 entries:
   - id: cornell
     school: Cornell University
     note: Ann S. Bowers College of Computing and Information Science
-    years: 2025-present
+    logos:
+      - src: /images/cornell-bowers-logo.svg
+        alt: Cornell Bowers College of Computing and Information Science
+        width: 468
+        height: 80
+    years: 2025–present
     cv_years: 2025 -- Present
-    location: Ithaca, NY, USA
+    location: Ithaca, NY
     cv_location: Ithaca, NY
     degrees:
       - title: Ph.D. in Computer Science
@@ -24,9 +33,18 @@ entries:
   - id: penn
     school: University of Pennsylvania
     note: Penn Engineering & The Wharton School
-    years: 2020-2025
+    logos:
+      - src: /images/penn-engineering-logo.png
+        alt: Penn Engineering
+        width: 380
+        height: 130
+      - src: /images/wharton-logo.svg
+        alt: The Wharton School
+        width: 864
+        height: 217
+    years: 2020–2025
     cv_years: May 2025
-    location: Philadelphia, PA, USA
+    location: Philadelphia, PA
     cv_location: Philadelphia, PA
     cv_note: Penn Engineering & The Wharton School
     degrees:
@@ -35,7 +53,9 @@ entries:
         focus: Mathematics minor
         attributes:
         - Mathematics Minor
+        site_note: CIS Senior Thesis
       - title: B.S. in Economics
+        site_note: Wharton Research Scholars
     advisors:
       - name: Steve Zdancewic
         title: Prof.
@@ -43,14 +63,10 @@ entries:
       - name: Sanjeev Khanna
         title: Prof.
         url: https://www.cis.upenn.edu/~sanjeev/
-        note: Wharton Research Scholars
-    honors:
-      - Wharton Research Scholars
-      - MCIT TA Award
-      - CIS Faculty Appreciation Award
-      - Eta Kappa Nu Honors Society
-      - Tau Beta Pi Honors Society
-      - Beta Gamma Sigma Honors Society
+    site_recognition:
+      teaching:
+        - MCIT TA Award
+        - CIS Faculty Appreciation Award
     gpa: 3.97/4.00
     distinction: Summa Cum Laude
     courses:
