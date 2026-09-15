@@ -128,12 +128,12 @@ should expose data to LaTeX, not decide CV layout or section semantics.
 Use these files as the main editing points:
 
 - `data/profile.yaml`: name, contact information, site handle, and CV metadata.
-- `data/education.yaml`: education entries used by the Info page, CV, and
+- `data/education.yaml`: education entries used by the homepage, CV, and
   resume.
 - `data/research.yaml`: research experience for the CV and resume. The resume
   uses shorter `resume_bullets` when present.
-- `data/teaching.yaml`: teaching data for the Info page and CV.
-- `data/service.yaml`: service/community entries for the Info page and CV.
+- `data/teaching.yaml`: teaching data for the homepage and CV.
+- `data/service.yaml`: service/community entries for the homepage and CV.
 - `data/honors.yaml`, `data/coursework.yaml`, `data/experience.yaml`, and
   `data/projects.yaml`: CV sections and supporting structured data.
 - `data/skills.yaml`: programming/tools and research interests for the one-page

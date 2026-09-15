@@ -44,9 +44,11 @@
       {{ end }}
       {{ with .abstract }}
       <details class="abstract">
-        <summary>Abstract</summary>
-        <div class="content">
-          <p>{{ . }}</p>
+        <summary>Abstract<span class="abstract-icon" aria-hidden="true"></span></summary>
+        <div class="abstract-panel">
+          <div class="content">
+            <p>{{ . }}</p>
+          </div>
         </div>
       </details>
       {{ end }}

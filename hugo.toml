@@ -32,16 +32,23 @@ title = 'Hanxi "Gary" Chen'
       section = 'education'
 
   [[menus.main]]
-    name = 'Background'
-    url = '/#background'
+    name = 'Teaching'
+    url = '/#teaching'
     weight = 50
     [menus.main.params]
-      section = 'background'
+      section = 'teaching'
+
+  [[menus.main]]
+    name = 'Service'
+    url = '/#service'
+    weight = 60
+    [menus.main.params]
+      section = 'service'
 
   [[menus.main]]
     name = 'CV'
     url = '/cv/hanxi-chen-cv.pdf'
-    weight = 60
+    weight = 70
 
   # [[menus.main]]
   #   name = 'Tags'

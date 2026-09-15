@@ -77,8 +77,83 @@ const setupSectionNavigation = () => {
   updateActiveSection();
 };
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupSectionNavigation);
-} else {
+const setupAbstractDisclosures = () => {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll('#publications details.abstract').forEach((details) => {
+    const summary = details.querySelector('summary');
+    const panel = details.querySelector('.abstract-panel');
+
+    if (!summary || !panel || typeof panel.animate !== 'function') {
+      return;
+    }
+
+    let animation = null;
+    let closing = false;
+
+    summary.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const shouldOpen = closing || !details.open;
+      const startHeight = panel.getBoundingClientRect().height;
+      const startOpacity = details.open ? Number(getComputedStyle(panel).opacity) : 0;
+      animation?.cancel();
+      animation = null;
+
+      if (reducedMotion.matches) {
+        details.open = shouldOpen;
+        closing = false;
+        delete details.dataset.collapsing;
+        return;
+      }
+
+      if (shouldOpen) {
+        details.open = true;
+        delete details.dataset.collapsing;
+      } else {
+        details.dataset.collapsing = '';
+      }
+
+      closing = !shouldOpen;
+      const endHeight = shouldOpen ? panel.scrollHeight : 0;
+      const currentAnimation = panel.animate(
+        [
+          { height: `${startHeight}px`, opacity: startOpacity },
+          { height: `${endHeight}px`, opacity: shouldOpen ? 1 : 0 },
+        ],
+        {
+          duration: 280,
+          easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+          fill: 'forwards',
+        }
+      );
+
+      animation = currentAnimation;
+      currentAnimation.onfinish = () => {
+        if (animation !== currentAnimation) {
+          return;
+        }
+
+        if (!shouldOpen) {
+          details.open = false;
+          delete details.dataset.collapsing;
+        }
+
+        currentAnimation.cancel();
+        animation = null;
+        closing = false;
+      };
+    });
+  });
+};
+
+const setupPage = () => {
   setupSectionNavigation();
+  setupAbstractDisclosures();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupPage);
+} else {
+  setupPage();
 }
