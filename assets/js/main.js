@@ -95,7 +95,7 @@ const setupAbstractDisclosures = () => {
       event.preventDefault();
 
       const shouldOpen = closing || !details.open;
-      const startHeight = panel.getBoundingClientRect().height;
+      const startHeight = details.open ? panel.getBoundingClientRect().height : 0;
       const startOpacity = details.open ? Number(getComputedStyle(panel).opacity) : 0;
       animation?.cancel();
       animation = null;
@@ -104,8 +104,15 @@ const setupAbstractDisclosures = () => {
         details.open = shouldOpen;
         closing = false;
         delete details.dataset.collapsing;
+        panel.style.removeProperty('height');
+        panel.style.removeProperty('opacity');
         return;
       }
+
+      // Keep the content clipped before opening <details>, so its first
+      // visible frame starts at zero height instead of flashing open.
+      panel.style.height = `${startHeight}px`;
+      panel.style.opacity = `${startOpacity}`;
 
       if (shouldOpen) {
         details.open = true;
@@ -139,6 +146,8 @@ const setupAbstractDisclosures = () => {
           delete details.dataset.collapsing;
         }
 
+        panel.style.removeProperty('height');
+        panel.style.removeProperty('opacity');
         currentAnimation.cancel();
         animation = null;
         closing = false;

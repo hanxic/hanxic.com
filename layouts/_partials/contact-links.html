@@ -11,4 +11,7 @@
   {{ with site.Data.profile.contact.linkedin }}
   <a href="{{ . }}" target="_blank" rel="noopener">[LinkedIn]</a>
   {{ end }}
+  {{ with site.Params.cvURL }}
+  <a href="{{ . | relURL }}" aria-label="Curriculum vitae (PDF)">[CV]</a>
+  {{ end }}
 </nav>

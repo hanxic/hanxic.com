@@ -45,17 +45,13 @@ title = 'Hanxi "Gary" Chen'
     [menus.main.params]
       section = 'service'
 
-  [[menus.main]]
-    name = 'CV'
-    url = '/cv/hanxi-chen-cv.pdf'
-    weight = 70
-
   # [[menus.main]]
   #   name = 'Tags'
   #   pageRef = '/tags'
   #   weight = 30
 
 [params]
+  cvURL = '/cv/hanxi-chen-cv.pdf'
   profilePicture = "images/profile picture.jpg"
   updateTime = "August 2026"
 
