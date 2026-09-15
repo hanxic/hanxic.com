@@ -40,7 +40,7 @@
     --global-danger-block-bg: #ffe0e0;
     --global-danger-block-text: #600;
     --global-danger-block-title: #c00;
-    --global-border-line: 1px solid rgba(42, 69, 104, 0.24);
+    --global-border-line: 1px solid rgba(42, 69, 104, 0.18);
 }
 * {
     /* outline: 1px solid red; */
@@ -173,7 +173,7 @@ main, header, footer {
     column-gap: clamp(1.5rem, 3vw, 2.75rem);
     display: grid;
     grid-template-columns: var(--section-rail-width) minmax(0, 1fr);
-    padding: 2.5rem 0 2.75rem;
+    padding: 2.65rem 0 2.75rem;
     scroll-margin-top: var(--sticky-header-offset, 6rem);
 }
 .section > h2 {
@@ -262,13 +262,20 @@ main, header, footer {
     text-shadow: none;
 }
 
-#publications header {
-    font-weight: 600;
-}
 #publications .publication {
     font-family: var(--global-font-family);
     line-height: var(--content-line-height);
-    margin-bottom: 0.65rem;
+    padding: 0.8rem 0 0.9rem;
+    position: relative;
+}
+#publications .publication::before {
+    background: linear-gradient(90deg, rgba(0, 122, 204, 0.32), rgba(42, 69, 104, 0.16) 28%, rgba(42, 69, 104, 0.08) 72%, rgba(42, 69, 104, 0));
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 #publications .publication header,
 #publications .authors,
@@ -281,6 +288,25 @@ main, header, footer {
 #publications .myname {
     color: var(--global-theme-color);
 }
+#publications .publication header {
+    display: grid;
+    gap: 0.2rem;
+}
+#publications .publication .tag {
+    color: var(--global-text-color-small);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+#publications .publication .title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+#publications .authors {
+    color: var(--global-text-color-small);
+    margin-top: 0.25rem;
+}
 #publications h3 {
     font-size: 1rem;
     margin: 0.75rem 0 0.25rem;
@@ -291,7 +317,7 @@ main, header, footer {
     flex-wrap: wrap;
     gap: 0 0.35rem;
     font-weight: 600;
-    margin-top: 0.05rem;
+    margin-top: 0.25rem;
 }
 #publications .tag,
 #publications .publication-links {
@@ -306,6 +332,14 @@ main, header, footer {
 }
 #publications .publication-links a {
     white-space: nowrap;
+}
+#publications .abstract {
+    margin-top: 0.25rem;
+}
+#publications .abstract[open] .content {
+    border-left: 1px solid rgba(42, 69, 104, 0.2);
+    margin: 0.5rem 0 0;
+    padding-left: 0.85rem;
 }
 
 #research h3 {
@@ -653,7 +687,7 @@ footer * {
 @media (max-width: 760px) {
     .section {
         display: block;
-        padding: 1.6rem 0 1.8rem;
+        padding: 1.7rem 0 1.85rem;
     }
     .section > h2 {
         align-items: baseline;
