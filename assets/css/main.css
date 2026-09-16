@@ -26,7 +26,6 @@
     --global-distill-app-color: #828282;
     --line-ink: rgba(42, 69, 104, 0.18);
     --line-ink-strong: rgba(42, 69, 104, 0.26);
-    --line-publication: linear-gradient(90deg, rgba(0, 122, 204, 0.32), rgba(42, 69, 104, 0.16) 28%, rgba(42, 69, 104, 0.08) 72%, rgba(42, 69, 104, 0));
     --line-project: linear-gradient(90deg, rgba(0, 122, 204, 0.58), rgba(0, 122, 204, 0));
     --global-divider-color: var(--line-ink);
     --global-card-bg-color: #fff;
@@ -47,7 +46,14 @@
     --global-danger-block-bg: #ffe0e0;
     --global-danger-block-text: #600;
     --global-danger-block-title: #c00;
-    --global-border-line: 1px solid var(--line-ink);
+    /* Two rules on the page and only two, and they are told apart by drawing,
+       not by weight. `--rule-section` closes a section: flat ink, edge to edge,
+       a full stop. `--rule-row` divides entries inside one section: it catches
+       the accent at the left and fades out before the right margin, so it reads
+       as a tick in a list rather than a boundary. Nothing else on the page draws
+       a horizontal line. */
+    --rule-section: 1px solid var(--line-ink-strong);
+    --rule-row: linear-gradient(90deg, rgba(0, 122, 204, 0.32), rgba(42, 69, 104, 0.16) 28%, rgba(42, 69, 104, 0.08) 72%, rgba(42, 69, 104, 0));
 }
 * {
     /* outline: 1px solid red; */
@@ -260,13 +266,40 @@ main, header, footer, .site-index {
     content: counter(home-section, decimal-leading-zero);
 }
 .section {
-    border-bottom: var(--global-border-line);
+    border-bottom: var(--rule-section);
     column-gap: clamp(1.5rem, 3vw, 2.75rem);
     display: grid;
     grid-template-columns: var(--section-rail-width) minmax(0, 1fr);
     padding: 2.65rem 0 2.75rem;
     scroll-margin-top: var(--sticky-header-offset, 6rem);
 }
+/* Every row rule on the page is drawn here, once. It is a gradient, so it
+   cannot be a border -- it is an absolutely positioned hairline at the top of
+   the row's padding box, which lands exactly where a `border-top` would. The
+   rows are grids; an absolutely positioned pseudo-element is not a grid item,
+   so it never takes a column. Education is the one list that only rules
+   *between* entries -- its entries are tall blocks, not rows. */
+#publications .publication,
+#education .education + .education,
+#teaching .teaching-course,
+#service .service-entry,
+#contact .contact-entry {
+    position: relative;
+}
+#publications .publication::before,
+#education .education + .education::before,
+#teaching .teaching-course::before,
+#service .service-entry::before,
+#contact .contact-entry::before {
+    background: var(--rule-row);
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .section > h2 {
     align-self: start;
     color: var(--global-text-color);
@@ -360,16 +393,6 @@ main, header, footer, .site-index {
     font-family: var(--global-font-family);
     line-height: var(--content-line-height);
     padding: 0.8rem 0;
-    position: relative;
-}
-#publications .publication::before {
-    background: var(--line-publication);
-    content: "";
-    height: 1px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 #publications .publication header,
 #publications .authors,
@@ -791,7 +814,6 @@ main, header, footer, .site-index {
     line-height: var(--content-line-height);
 }
 #education .education + .education {
-    border-top: 1px solid var(--line-ink);
     margin-top: 1.3rem;
     padding-top: 1.4rem;
 }
@@ -909,7 +931,6 @@ main, header, footer, .site-index {
     margin: 0 0 0.55rem;
 }
 #teaching .teaching-course {
-    border-top: 1px solid var(--line-ink);
     display: grid;
     gap: 0.3rem 1rem;
     grid-template-columns: 10rem minmax(0, 1fr);
@@ -955,7 +976,6 @@ main, header, footer, .site-index {
 /* Service */
 #service .service-entry {
     align-items: baseline;
-    border-top: 1px solid var(--line-ink);
     display: grid;
     gap: 0.25rem 1rem;
     grid-template-columns: minmax(0, 1.55fr) minmax(0, 1.15fr) auto;
@@ -995,7 +1015,6 @@ main, header, footer, .site-index {
 }
 #contact .contact-entry {
     align-items: baseline;
-    border-top: 1px solid var(--line-ink);
     column-gap: 1rem;
     display: grid;
     grid-template-columns: 6.5rem minmax(0, 1fr);
