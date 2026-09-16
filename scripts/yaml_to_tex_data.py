@@ -48,11 +48,14 @@ LATEX_SPECIALS = {
 UNICODE_REPLACEMENTS = {
     "\u2013": "--",
     "\u2014": "---",
-    "\u2018": "'",
-    "\u2019": "'",
+    "\u2018": r"\textquotesingle{}",
+    "\u2019": r"\textquotesingle{}",
     "\u201c": "``",
     "\u201d": "''",
 }
+
+# One pass, so replacements are never re-escaped (e.g. '' for a closing quote).
+TEX_REPLACEMENTS = {**LATEX_SPECIALS, **UNICODE_REPLACEMENTS}
 
 
 @dataclass(frozen=True)
@@ -110,9 +113,7 @@ def stringify_scalar(value: Any) -> str:
 
 def tex_escape(value: Any) -> str:
     text = stringify_scalar(value)
-    for old, new in UNICODE_REPLACEMENTS.items():
-        text = text.replace(old, new)
-    return "".join(LATEX_SPECIALS.get(char, char) for char in text)
+    return "".join(TEX_REPLACEMENTS.get(char, char) for char in text)
 
 
 def tex_escape_url(value: Any) -> str:

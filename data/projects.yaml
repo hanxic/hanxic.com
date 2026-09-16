@@ -25,7 +25,7 @@ entries:
       - Dune
     period: Feb 2024 -- May 2024
     institution: University of Pennsylvania
-    course: CIS 7000 Compilers and Interpreters
+    course: CIS 7000 (now CIS 5521) Compilers and Interpreters
     supervisor: Prof. Steve Zdancewic
     bullets:
       - Implemented a compiler for Oat, a C-like language with pointers and structured data, including lexing, parsing, type checking, frontend lowering, and backend code generation to LLVM IR and x86.

@@ -18,7 +18,7 @@
 
 \hypersetup{
   pdftitle={\CVData{profile.name.short} Resume},
-  pdfauthor={\CVData{profile.name.full}}
+  pdfauthor={\CVData{profile.name.short}}
 }
 
 % extsizes has no 9.5pt option and 10pt runs to a second page.
@@ -151,9 +151,11 @@
   \maps[datatype=bibtex]{
     \map{
       \step[fieldsource=tag,fieldtarget=usera]
+      \step[fieldsource=talk,fieldtarget=userc]
     }
   }
 }
+\newcommand{\PrintTalk}{\iffieldundef{userc}{}{\space\printfield{userc}\adddot}}
 \addbibresource{../assets/data/refs.bib}
 \nocite{*}
 
@@ -197,14 +199,13 @@
 \DeclareBibliographyDriver{article}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \iffieldundef{usera}{\printfield{journaltitle}}{\printfield{usera}}\addcomma\space
-  \printfield{year}\adddot
+  % The tag already carries the year (ICFP'24), so don't print it twice.
+  \iffieldundef{usera}{\printfield{journaltitle}\addcomma\space\printfield{year}}{\printfield{usera}}\adddot
 }
 \DeclareBibliographyDriver{inproceedings}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
-  \iffieldundef{usera}{\printfield{booktitle}}{\printfield{usera}}\addcomma\space
-  \printfield{year}\adddot
+  \iffieldundef{usera}{\printfield{booktitle}\addcomma\space\printfield{year}}{\printfield{usera}}\adddot
 }
 \DeclareBibliographyDriver{misc}{%
   \printnames{author}\adddot\space
@@ -213,6 +214,7 @@
     \iffieldundef{eprinttype}{}{\printfield{eprinttype}\space preprint\addcomma\space}%
   }{\printfield{usera}\space preprint\addcomma\space}%
   \printfield{year}\adddot
+  \PrintTalk
 }
 \DeclareBibliographyAlias{inprogress}{misc}
 

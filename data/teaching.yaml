@@ -100,7 +100,7 @@ entries:
         description: A graduate course on basic concepts and techniques of programming languages. Topics include operational techniques for formal definition of language features, type systems and type safety properties, polymorphism, constructive logic, and the Rocq Proof Assistant.
         cv_description: Taught one lecture on maps in Rocq mechanization.
         instructors:
-          - Prof. Benjamin Pierce
+          - Prof. Benjamin C. Pierce
         positions:
           - type: "Teaching Assistant"
             terms:

@@ -20,7 +20,7 @@
 
 \hypersetup{
   pdftitle={\CVData{profile.name.short} CV},
-  pdfauthor={\CVData{profile.name.full}}
+  pdfauthor={\CVData{profile.name.short}}
 }
 
 \setlength{\parindent}{0pt}
@@ -131,12 +131,13 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
-% `award` is nonstandard and not in biblatex's data model, so it is mapped onto
-% a scratch field before it can be printed.
+% `award` and `talk` are nonstandard and not in biblatex's data model, so they
+% are mapped onto scratch fields before they can be printed.
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
     \map{
       \step[fieldsource=award,fieldtarget=userb]
+      \step[fieldsource=talk,fieldtarget=userc]
     }
   }
 }
@@ -144,6 +145,7 @@
 \nocite{*}
 
 \newcommand{\PrintAward}{\iffieldundef{userb}{}{\space[\printfield{userb}]}}
+\newcommand{\PrintTalk}{\iffieldundef{userc}{}{\space\printfield{userc}\adddot}}
 
 \DeclareNameFormat{default}{%
   \nameparts{#1}%
@@ -194,6 +196,7 @@
   \printfield{title}\adddot\space
   \printfield{booktitle}\addcomma\space
   \printfield{year}\adddot
+  \PrintTalk
   \PrintAward
 }
 \DeclareBibliographyDriver{thesis}{%
@@ -209,6 +212,7 @@
   \printfield{title}\adddot\space
   \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
   \printfield{year}\adddot
+  \PrintTalk
   \PrintAward
 }
 \DeclareBibliographyAlias{inprogress}{misc}
@@ -487,6 +491,7 @@
       }%
       . \emph{\CVData{talks.entries.\entry.venue}}%
       \CVIfSet{talks.entries.\entry.location}{, \CVData{talks.entries.\entry.location}}{}%
+      \CVIfSet{talks.entries.\entry.note}{. \CVData{talks.entries.\entry.note}}{}%
       \hfill \CVData{talks.entries.\entry.time}\par
     }%
   }%
@@ -518,7 +523,9 @@
 \Community
 \Technicals
 
-% Off by length, not oversight. \Talks needs more than one entry in talks.yaml.
+% Off by length, not oversight: a Talks section costs ~7 lines and needs either
+% a third page or 0.5in margins. The talks ride along as `talk` notes on their
+% bib entries instead. talks.yaml stays current either way.
 %\Talks
 %\Coursework
 %\OtherExperience

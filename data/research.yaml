@@ -37,7 +37,7 @@ entries:
     unit: Computer and Information Science
     bullets:
       - Contributed to the ICFP 2024 Vellvm memory-model paper in Prof. Steve Zdancewic's group, helping design a low-level memory model for LLVM optimization reasoning, verifying serialization lemmas in Rocq, and implementing tests for the memory model.
-      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential testing framework that found novel LLVM bugs.
+      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential-testing framework that found novel LLVM bugs.
       - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
       - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
     resume_bullets:
@@ -52,10 +52,10 @@ entries:
     institution: University of Pennsylvania
     unit: The Wharton School
     bullets:
-      - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
+      - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and designed pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
       - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
     resume_bullets:
-      - Proved pseudo-polynomial algorithms for precedence-constrained knapsack on structured poset classes -- unions of three paths and one-directional bipartite posets with consecutive children -- and wrote an undergraduate thesis on the work.
+      - Designed pseudo-polynomial algorithms for precedence-constrained knapsack on structured poset classes -- unions of three paths and one-directional bipartite posets with consecutive children -- and wrote an undergraduate thesis on the work.
   # - role: Research Assistant
   #   group: Penn Computational Intelligence Lab
   #   supervisors:

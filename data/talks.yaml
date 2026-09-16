@@ -1,14 +1,28 @@
 ---
-# \Talks is defined in cv.tex but not called; enable it once this has more than
-# one entry. Only the talk recorded in research.yaml is seeded here.
+# Record of talks given. Raw url, not \url{} -- \Talks in cv.tex hands it to
+# \href to link the title.
+_tex:
+  raw_fields:
+    - url
 entries:
+  - title: Oblivious Probabilistic Outcome Logic
+    venue: Cornell PL Seminar (PLDG)
+    location: Cornell University
+    time: Sep 2026
+    url: https://www.hanxic.com/slides/pldg-2026-opol.pdf
+  - title: "Vellvm: Formalizing the Informal"
+    venue: Workshop on Coq for Programming Languages (CoqPL)
+    location: Denver, CO
+    time: Jan 2025
+    note: With Calvin Beck.
+    url: https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal
+  - title: "Vellvm: Formalizing the Informal"
+    venue: PLClub Seminar
+    location: University of Pennsylvania
+    time: Jan 2025
+    note: With Calvin Beck.
   - title: Knapsack Problems with Precedence Constraints
     venue: Wharton Research Scholars Seminar
     location: University of Pennsylvania
     time: "2024"
-  # - title: "Vellvm: Formalizing the Informal"
-  #   venue: Workshop on Coq for Programming Languages (CoqPL)
-  #   location: Denver, CO
-  #   time: Jan 2025
-  #   url: https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal
 ...
