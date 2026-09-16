@@ -131,6 +131,17 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
+% ydnt breaks same-year ties on name/title, which put CoqPL (Jan) ahead of NFM
+% (Jun). Sort on month too; entries without one fall to the end of their year.
+\DeclareSortingTemplate{ymdnt}{
+  \sort{\field{presort}}
+  \sort[final]{\field{sortkey}}
+  \sort[direction=descending]{\field{sortyear}\field{year}\literal{9999}}
+  \sort[direction=descending]{\field[padside=left,padwidth=2,padchar=0]{month}\literal{00}}
+  \sort{\field{sortname}\field{author}\field{editor}\field{sorttitle}\field{title}}
+  \sort{\field{sorttitle}\field{title}}
+}
+\ExecuteBibliographyOptions{sorting=ymdnt}
 % `award` and `talk` are nonstandard and not in biblatex's data model, so they
 % are mapped onto scratch fields before they can be printed.
 \DeclareSourcemap{

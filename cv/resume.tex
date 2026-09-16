@@ -147,6 +147,17 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
+% ydnt breaks same-year ties on name/title, which put CoqPL (Jan) ahead of NFM
+% (Jun). Sort on month too; entries without one fall to the end of their year.
+\DeclareSortingTemplate{ymdnt}{
+  \sort{\field{presort}}
+  \sort[final]{\field{sortkey}}
+  \sort[direction=descending]{\field{sortyear}\field{year}\literal{9999}}
+  \sort[direction=descending]{\field[padside=left,padwidth=2,padchar=0]{month}\literal{00}}
+  \sort{\field{sortname}\field{author}\field{editor}\field{sorttitle}\field{title}}
+  \sort{\field{sorttitle}\field{title}}
+}
+\ExecuteBibliographyOptions{sorting=ymdnt}
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
     \map{
@@ -192,7 +203,7 @@
 }
 
 \defbibenvironment{resumebibliography}
-  {\begin{itemize}[leftmargin=*,label={},itemsep=0.12em,parsep=0pt,topsep=0pt]}
+  {\begin{itemize}[leftmargin=0pt,label={},labelsep=0pt,labelwidth=0pt,itemindent=0pt,itemsep=0.12em,parsep=0pt,topsep=0pt]}
   {\end{itemize}}
   {\item}
 
@@ -218,11 +229,9 @@
 }
 \DeclareBibliographyAlias{inprogress}{misc}
 
-% Refereed first, preprint after, so the arXiv entry no longer heads the list.
 \newcommand{\SelectedPublications}{%
   \ResumeSection{Selected Publications}{%
-    \printbibliography[keyword={refereed},heading=none,env=resumebibliography]%
-    \printbibliography[keyword={preprint},heading=none,env=resumebibliography]%
+    \printbibliography[keyword={publication},heading=none,env=resumebibliography]%
   }%
 }
 
