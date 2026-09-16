@@ -1,0 +1,10 @@
+{{- /*
+The one strip that stays on screen. The masthead above it scrolls away, so the
+name reappears here as a small mark once it is gone (toggled by
+`.is-condensed`, set from JS), and the menu carries the same numbers as the
+section rail -- the header is the catalogue's table of contents.
+*/ -}}
+<div class="site-index">
+  <a class="site-index-mark" href="#top">{{ site.Data.profile.name.short | default site.Title }}</a>
+  {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>

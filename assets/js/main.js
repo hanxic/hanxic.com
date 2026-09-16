@@ -1,5 +1,5 @@
 const setupSectionNavigation = () => {
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector('.site-index');
   const links = Array.from(document.querySelectorAll('.menu-container a[data-section]'));
 
   if (!links.length) {
@@ -25,20 +25,45 @@ const setupSectionNavigation = () => {
         link.removeAttribute('aria-current');
       }
     });
+
+    // The section rail uses the same signal: the number of the section you
+    // are reading lights up, so it reads as an index rather than decoration.
+    sections.forEach((section) => {
+      section.classList.toggle('is-current', section.id === sectionID);
+    });
   };
 
+  // The one number both the scroll landing and the scroll-spy read from. It has
+  // to be one number: `scroll-margin-top` parks a clicked section on this line,
+  // so if the spy tested a different line the section would land just short of
+  // its own threshold and the menu would highlight the section above it.
+  let headerOffset = 0;
   const updateHeaderOffset = () => {
     if (!header) {
       return;
     }
 
-    const offset = Math.ceil(header.getBoundingClientRect().height + 16);
-    document.documentElement.style.setProperty('--sticky-header-offset', `${offset}px`);
+    headerOffset = Math.ceil(header.getBoundingClientRect().height + 16);
+    document.documentElement.style.setProperty('--sticky-header-offset', `${headerOffset}px`);
   };
+
+  // The header changes height after load in ways `resize` never reports: the
+  // Iosevka webfont swapping in, the nav re-wrapping, browser zoom. A stale
+  // offset makes the sticky section headings stick too high and collide with
+  // the header, so track the real height instead of sampling it twice.
+  if (header && typeof ResizeObserver === 'function') {
+    new ResizeObserver(updateHeaderOffset).observe(header);
+  }
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(updateHeaderOffset);
+  }
 
   let frameRequested = false;
   const updateActiveSection = () => {
-    const threshold = (header?.getBoundingClientRect().bottom ?? 0) + 8;
+    // +1 absorbs the sub-pixel rounding of a scroll landing, so a section that
+    // has arrived exactly on its own margin counts as reached.
+    const threshold = headerOffset + 1;
     let activeSection = sections[0].id;
 
     sections.forEach((section) => {
@@ -46,6 +71,21 @@ const setupSectionNavigation = () => {
         activeSection = section.id;
       }
     });
+
+    // The document runs out of scroll before the last sections can reach the
+    // threshold, so clicking the final entry would otherwise leave the one
+    // above it lit. At the bottom, the deepest section on screen is the one
+    // being read.
+    const scrollBottom = window.scrollY + window.innerHeight;
+    if (scrollBottom >= document.documentElement.scrollHeight - 2) {
+      const onScreen = sections.filter(
+        (section) => section.getBoundingClientRect().top < window.innerHeight
+      );
+
+      if (onScreen.length) {
+        activeSection = onScreen[onScreen.length - 1].id;
+      }
+    }
 
     setActiveSection(activeSection);
     frameRequested = false;
@@ -75,6 +115,48 @@ const setupSectionNavigation = () => {
 
   updateHeaderOffset();
   updateActiveSection();
+};
+
+// The masthead carries the name and scrolls away; the sticky index strip brings
+// a small version of it back, but only once the real one is gone -- otherwise
+// the page states its own name twice, a few pixels apart.
+const setupMastheadCondense = () => {
+  const masthead = document.querySelector('.site-masthead');
+  const index = document.querySelector('.site-index');
+
+  if (!masthead || !index || typeof IntersectionObserver !== 'function') {
+    return;
+  }
+
+  // The strip itself covers the bottom of the masthead, so the handover point
+  // is the masthead's bottom edge crossing the strip's height, not the viewport
+  // top. A rootMargin equal to that height lines the two up.
+  const observe = () => {
+    const height = Math.ceil(index.getBoundingClientRect().height);
+    const observer = new IntersectionObserver(
+      ([entry]) => index.classList.toggle('is-condensed', !entry.isIntersecting),
+      { rootMargin: `-${height}px 0px 0px 0px`, threshold: 0 }
+    );
+
+    observer.observe(masthead);
+    return observer;
+  };
+
+  let observer = observe();
+
+  if (typeof ResizeObserver === 'function') {
+    // Re-anchor when the strip re-wraps or the webfont swaps in; rootMargin is
+    // fixed at construction time, so the observer has to be rebuilt.
+    let height = Math.ceil(index.getBoundingClientRect().height);
+    new ResizeObserver(() => {
+      const next = Math.ceil(index.getBoundingClientRect().height);
+      if (next !== height) {
+        height = next;
+        observer.disconnect();
+        observer = observe();
+      }
+    }).observe(index);
+  }
 };
 
 const setupAbstractDisclosures = () => {
@@ -158,6 +240,7 @@ const setupAbstractDisclosures = () => {
 
 const setupPage = () => {
   setupSectionNavigation();
+  setupMastheadCondense();
   setupAbstractDisclosures();
 };
 

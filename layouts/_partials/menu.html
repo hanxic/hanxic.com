@@ -16,6 +16,11 @@ Renders a menu for the given menu ID.
   </nav>
 {{- end }}
 
+{{- /*
+The index numbers come from menu position, and the section rail below numbers
+itself from DOM order with a CSS counter. Keep the menu weights in hugo.toml in
+the same order as the partials in layouts/home.html or the two will disagree.
+*/ -}}
 {{- define "_partials/inline/menu/walk.html" }}
 {{- $page := .page }}
 {{- $length := len .menuEntries }}
@@ -43,7 +48,7 @@ Renders a menu for the given menu ID.
         {{- printf " %s=%q" $k $v | safeHTMLAttr }}
       {{- end }}
     {{- end -}}
-  >[{{ $item.Name }}]</a>
+  ><span class="menu-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>{{ $item.Name }}</a>
 
   <!-- {{- if lt (add $index 1) $length }} / {{ end }} -->
 

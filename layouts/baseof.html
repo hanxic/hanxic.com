@@ -4,9 +4,10 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-masthead">
     {{ partial "header.html" . }}
   </header>
+  {{ partial "index-bar.html" . }}
   <main>
     <div class="site-container">
       {{ block "main" . }}{{ end }}
