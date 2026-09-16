@@ -9,37 +9,110 @@
     --prose-line-height: 1.48;
     --global-font-size-small: 0.875rem;
 
-    /* Warm paper, cool ink. The ground sits at hue 34 and the mark at hue 214 --
-       near-complementary -- and that split is the whole reason the page reads as
-       letterpress rather than as a screen. Every neutral here therefore carries
-       one of those two temperatures; there is no true grey in this palette, and
-       nothing should add one. */
-    --paper: #f5efe7;
-    --ink: #2a4568;            /* S42 L29, 8.55:1 on paper */
-    --ink-soft: #52647a;       /* S20 L40, 5.31:1 on paper */
+    /* ====================================================================
+       PALETTE -- the only place in this file where a colour is written down.
 
-    /* Two semantic colours and no more: `--accent` marks anything interactive,
-       `--distinction` marks an honour.
+       Six values define the whole page. Everything below them is derived, and
+       nothing further down the file states a channel, a hex or an rgba(); if
+       you find yourself typing one, it belongs up here instead. Swapping the
+       scheme therefore means editing exactly the seven lines in SCHEME, and
+       the `-rgb` pair must be kept in step with `--ink` and `--accent` by hand
+       because CSS cannot decompose a hex into channels.
 
-       The accent is tuned on two axes at once, and both matter. It has to sit
-       far enough from the ink to read as a link inside a paragraph -- call it
-       dE 20+ in Lab, since dE 12 is invisible at 15px -- while still clearing
-       AA against the paper. The old #0070ba managed the first (dE 28) and
-       failed the second (4.57:1): it was saturated *and* light, which is what
-       made it look like a browser default rather than a mark on a page. The
-       answer is not a quieter blue, it is a deeper one. At L34 a high-chroma
-       blue reads as fountain-pen ink, not as a hyperlink, and it buys the
-       contrast back.
+       The six roles:
+         --paper        the ground
+         --paper-raised the ground where something sits on top of it
+         --ink          body text
+         --ink-soft     subordinate text that is still meant to be read
+         --accent       anything interactive; the only chromatic colour in text
+         --distinction  an honour, and nothing else
+
+       Two rules constrain any scheme that goes in here. `--ink` must clear 7:1
+       on the paper. `--accent` wants to land near 6.5:1 on the paper -- a band,
+       not a floor -- *and* sit dE 20+ from `--ink` in Lab.
+
+       Both halves of that second rule are load-bearing and they pull against
+       each other. dE is what makes a link noticeable -- an accent can be
+       perfectly legible and still vanish into a paragraph when it sits in the
+       ink's own hue family, and dE 12 reads as no difference at all at 15px.
+       Contrast is what places the link in the page's hierarchy, and it is
+       bounded on *both* sides. Below about 5:1 a link reads as thin and
+       tentative next to ink at 13:1. Above about 7:1 it stops reading as a mark
+       on the text and starts reading as a second body colour, which makes a
+       paragraph look like it has been set in two fonts. 6.5:1 is the settled
+       value: present without shouting.
 
        Hover always raises contrast: quiet chrome links climb to the accent,
-       accent links settle down into the ink. */
-    --accent: #0a5ca3;         /* H208 S88 L34, 5.98:1 on paper, dE 23 from ink */
-    --accent-hover: var(--ink);
-    --distinction: #8a4b72;    /* H323 S30 L42, 5.52:1 on paper */
+       accent links settle down into the ink.
 
-    --line-ink: rgba(42, 69, 104, 0.18);
-    --line-ink-strong: rgba(42, 69, 104, 0.26);
-    --line-project: linear-gradient(90deg, rgba(10, 92, 163, 0.58), rgba(10, 92, 163, 0));
+       Schemes trialled, September 2026. Scheme 1 was chosen; the rest are kept
+       as a record so a future pass does not re-walk ground already covered.
+         1 Graphite & Signal  #f2f3f5 #fafbfc #181c22 #5c6470 #4b3fcc #8f5a10
+         2 Arctic             #edf2f6 #f8fbfd #122839 #4a6076 #06687f #a8485a
+         3 Warm & Emerald     #f5efe7 #fdfaf5 #252220 #5e574e #0c6a4c #985010
+         4 Slate & Coral      #f1f2f3 #fbfbfc #1f282f #5b6a74 #993214 #0a5f68
+         5 Deep Space (dark)  #151a21 #1c232c #e4e8ee #98a3b3 #3fb3d4 #cf9a4f
+         0 Warm letterpress   #f5efe7 #faf8f4 #2a4568 #52647a #0a5ca3 #8a4b72
+       Scheme 5 is parked, not rejected -- see the dark-mode entry in
+       DESIGN_DIRECTION.md. It needs light logo variants and figure plates
+       before it is a palette swap rather than a redesign.
+       ==================================================================== */
+
+    /* SCHEME 1 -- Graphite & Signal.  (Chosen.)
+
+       Ground and mark are both near-neutral, so the page reads as unpainted and
+       the one chromatic colour on it carries all of the personality. That is
+       the whole idea: a monochrome document plus a single signal. The futurism
+       comes from the ink, a graphite so dark and so nearly unsaturated (S14)
+       that no press could lay it down; the friendliness comes from the accent
+       being indigo rather than blue, which is a warm violet and reads as
+       invitation rather than as institution.
+
+       The paper went through three settings before landing here: neutral
+       #f2f3f5, then a cautious #f4f1eb, now a full cream at S56 -- warmer even
+       than the old letterpress ground it replaced. A dead-neutral ground made
+       the graphite read as grey and the page as a wireframe; a temperature
+       under the text is what makes near-black read as ink rather than as a
+       fill colour.
+
+       Warming the ground past about S40 forces the rest of the palette to move
+       with it, which is the interesting part. A cool graphite on a cream ground
+       goes visibly blue -- the eye reads the ink relative to the paper, not
+       absolutely -- so the ink follows the paper to hue 38 and the subordinate
+       ink with it. The page is now a single temperature from ground to body
+       text, and `--accent` is the only cool thing on it.
+
+       That is a better realisation of this scheme than the neutral version was.
+       "Monochrome document plus one signal" is stronger when the signal is the
+       lone cool mark on a warm page than when it is merely the lone saturated
+       one, because temperature reads at a glance and saturation does not.
+
+       `--distinction` had to move further than the rest. It was an amber at hue
+       35, which sat inside the paper's own hue family once the paper warmed and
+       so read as nothing more than dark paper. Pulling it to hue 20 makes it a
+       rust: still warm, still clearly not the accent, but far enough off the
+       ground to register as a mark. */
+    --paper: #f7f0e3;          /* cream, H39 S56 */
+    --paper-raised: #fdf9f0;
+    --ink: #201d18;            /* warm graphite, H38 S14, 14.82:1 on paper */
+    --ink-soft: #675f54;       /* 5.54:1 on paper */
+    --accent: #5138c9;         /* indigo-violet, 6.72:1 on paper, dE 94 from ink */
+    --distinction: #8c4a2a;    /* rust, 5.92:1 on paper */
+
+    /* Kept in step with --ink and --accent above. */
+    --ink-rgb: 32, 29, 24;
+    --accent-rgb: 81, 56, 201;
+
+    /* ---- derived: nothing below here introduces a new colour ---- */
+
+    --accent-hover: var(--ink);
+    /* Ink held back far enough that it reads as punctuation rather than as
+       content: the menu's section numerals, the middots between degrees. */
+    --ink-faint: rgba(var(--ink-rgb), 0.48);
+
+    --line-ink: rgba(var(--ink-rgb), 0.18);
+    --line-ink-strong: rgba(var(--ink-rgb), 0.26);
+    --line-project: linear-gradient(90deg, rgba(var(--accent-rgb), 0.58), rgba(var(--accent-rgb), 0));
     /* Two rules on the page and only two, and they are told apart by drawing,
        not by weight. `--rule-section` closes a section: flat ink, edge to edge,
        a full stop. `--rule-row` divides entries inside one section: it catches
@@ -47,7 +120,7 @@
        as a tick in a list rather than a boundary. Nothing else on the page draws
        a horizontal line. */
     --rule-section: 1px solid var(--line-ink-strong);
-    --rule-row: linear-gradient(90deg, rgba(10, 92, 163, 0.42), rgba(42, 69, 104, 0.16) 28%, rgba(42, 69, 104, 0.08) 72%, rgba(42, 69, 104, 0));
+    --rule-row: linear-gradient(90deg, rgba(var(--accent-rgb), 0.42), rgba(var(--ink-rgb), 0.16) 28%, rgba(var(--ink-rgb), 0.08) 72%, rgba(var(--ink-rgb), 0));
 }
 * {
     /* outline: 1px solid red; */
@@ -174,7 +247,7 @@ main, header, footer, .site-index {
     z-index: -1;
 }
 .site-index::after {
-    background-color: rgba(42, 69, 104, 0.22);
+    background-color: var(--line-ink-strong);
     bottom: 0;
     content: "";
     height: 1px;
@@ -228,7 +301,7 @@ main, header, footer, .site-index {
 /* Same treatment as the section rail's number, so the menu reads as the table
    of contents for the numbers running down the left of the page. */
 .menu-container .menu-index {
-    color: rgba(42, 69, 104, 0.45);
+    color: var(--ink-faint);
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -396,8 +469,14 @@ main, header, footer, .site-index {
     font-family: inherit;
     line-height: inherit;
 }
+/* One difference, not two. The author line is a single run of text at a single
+   weight of importance, and picking my own name out of it is a matter of weight
+   alone -- `<strong>` already does that. Giving it a darker colour as well made
+   the list read as two classes of person, which is both wrong and rude to the
+   co-authors; it also broke the page's own rule that colour carries meaning,
+   since the darker ink here meant nothing except "this one is me". */
 #publications .myname {
-    color: var(--ink);
+    color: inherit;
 }
 #publications .publication header {
     display: grid;
@@ -546,7 +625,7 @@ main, header, footer, .site-index {
 }
 .research-project {
     align-items: start;
-    background: #faf8f4;
+    background: var(--paper-raised);
     border: 1px solid var(--line-ink-strong);
     border-radius: 3px;
     display: grid;
@@ -601,150 +680,6 @@ main, header, footer, .site-index {
     display: block;
     position: absolute;
 }
-.research-project-media-probabilistic {
-    background: linear-gradient(135deg, #eef7f4 0%, #f7efe9 100%);
-}
-.research-project-media-probabilistic .research-visual span:nth-child(1) {
-    height: 0.45rem;
-    left: 18%;
-    top: 24%;
-    width: 0.45rem;
-}
-.research-project-media-probabilistic .research-visual span:nth-child(2) {
-    height: 0.45rem;
-    left: 56%;
-    top: 42%;
-    width: 0.45rem;
-}
-.research-project-media-probabilistic .research-visual span:nth-child(3) {
-    background: rgba(42, 69, 104, 0.58);
-    height: 0.45rem;
-    left: 35%;
-    top: 67%;
-    width: 0.45rem;
-}
-.research-project-media-probabilistic .research-visual::before,
-.research-project-media-probabilistic .research-visual::after {
-    background: rgba(42, 69, 104, 0.32);
-    content: "";
-    height: 1px;
-    left: 22%;
-    position: absolute;
-    top: 36%;
-    transform: rotate(18deg);
-    transform-origin: left center;
-    width: 47%;
-}
-.research-project-media-probabilistic .research-visual::after {
-    left: 38%;
-    top: 62%;
-    transform: rotate(-20deg);
-    width: 30%;
-}
-.research-project-media-types {
-    background: linear-gradient(135deg, #f0f4f7 0%, #edf5f6 100%);
-}
-.research-project-media-types .research-visual span {
-    border-radius: 4px;
-    height: 1.35rem;
-    opacity: 0.85;
-    width: 2.65rem;
-}
-.research-project-media-types .research-visual span:nth-child(1) {
-    left: 18%;
-    top: 23%;
-}
-.research-project-media-types .research-visual span:nth-child(2) {
-    background: var(--ink-soft);
-    left: 48%;
-    top: 40%;
-}
-.research-project-media-types .research-visual span:nth-child(3) {
-    background: rgba(42, 69, 104, 0.55);
-    left: 25%;
-    top: 62%;
-}
-.research-project-media-proof {
-    background: linear-gradient(135deg, #eef5ff 0%, #f7f0ed 100%);
-}
-.research-project-media-proof .research-visual span {
-    border-radius: 3px;
-    height: 0.35rem;
-    left: 20%;
-    width: 58%;
-}
-.research-project-media-proof .research-visual span:nth-child(1) {
-    top: 30%;
-}
-.research-project-media-proof .research-visual span:nth-child(2) {
-    background: rgba(42, 69, 104, 0.6);
-    top: 48%;
-    width: 42%;
-}
-.research-project-media-proof .research-visual span:nth-child(3) {
-    background: var(--ink-soft);
-    top: 66%;
-    width: 50%;
-}
-.research-project-media-compiler {
-    background: linear-gradient(135deg, #eff4ee 0%, #eef2f8 100%);
-}
-.research-project-media-compiler .research-visual span {
-    border-radius: 3px;
-    height: 0.5rem;
-    left: 18%;
-}
-.research-project-media-compiler .research-visual span:nth-child(1) {
-    top: 25%;
-    width: 64%;
-}
-.research-project-media-compiler .research-visual span:nth-child(2) {
-    background: rgba(42, 69, 104, 0.58);
-    top: 47%;
-    width: 48%;
-}
-.research-project-media-compiler .research-visual span:nth-child(3) {
-    background: var(--ink-soft);
-    top: 69%;
-    width: 34%;
-}
-.research-project-media-poset {
-    background: linear-gradient(135deg, #f7f3eb 0%, #edf5f6 100%);
-}
-.research-project-media-poset .research-visual span {
-    height: 0.42rem;
-    width: 0.42rem;
-}
-.research-project-media-poset .research-visual span:nth-child(1) {
-    left: 46%;
-    top: 20%;
-}
-.research-project-media-poset .research-visual span:nth-child(2) {
-    background: rgba(42, 69, 104, 0.62);
-    left: 27%;
-    top: 58%;
-}
-.research-project-media-poset .research-visual span:nth-child(3) {
-    background: var(--ink-soft);
-    left: 66%;
-    top: 58%;
-}
-.research-project-media-poset .research-visual::before,
-.research-project-media-poset .research-visual::after {
-    background: rgba(42, 69, 104, 0.35);
-    content: "";
-    height: 1px;
-    left: 35%;
-    position: absolute;
-    top: 48%;
-    transform: rotate(-38deg);
-    transform-origin: left center;
-    width: 28%;
-}
-.research-project-media-poset .research-visual::after {
-    left: 50%;
-    transform: rotate(38deg);
-}
 .research-project header {
     font-size: 1.0625rem;
     font-weight: 600;
@@ -777,6 +712,14 @@ main, header, footer, .site-index {
 .research-project-links a,
 .research-project-links span {
     white-space: nowrap;
+}
+/* A ref with nowhere to go -- [Manuscript], [Thesis] -- is not a link and must
+   not sit at body weight pretending otherwise. It drops to the same held-back
+   ink as the author lines: present, readable, plainly not clickable. That
+   leaves exactly two states in this row, `--accent` for go-somewhere and
+   `--ink-soft` for for-the-record, and no third thing for the eye to sort out. */
+.research-project-links span {
+    color: var(--ink-soft);
 }
 
 @media (max-width: 560px) {
@@ -848,7 +791,7 @@ main, header, footer, .site-index {
     margin: 0.2rem 0 0;
 }
 #education .education-separator {
-    color: rgba(42, 69, 104, 0.5);
+    color: var(--ink-faint);
     margin: 0 0.4rem;
 }
 #education .education-year {
@@ -882,7 +825,7 @@ main, header, footer, .site-index {
     white-space: nowrap;
 }
 #education .education-degree-note::before {
-    color: rgba(42, 69, 104, 0.5);
+    color: var(--ink-faint);
     content: "·";
     margin-right: 0.45rem;
 }
