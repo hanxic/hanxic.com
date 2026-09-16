@@ -347,6 +347,7 @@ main, header, footer, .site-index {
    so it never takes a column. Education is the one list that only rules
    *between* entries -- its entries are tall blocks, not rows. */
 #publications .publication,
+#research .research-project,
 #education .education + .education,
 #teaching .teaching-course,
 #service .service-entry,
@@ -354,6 +355,7 @@ main, header, footer, .site-index {
     position: relative;
 }
 #publications .publication::before,
+#research .research-project::before,
 #education .education + .education::before,
 #teaching .teaching-course::before,
 #service .service-entry::before,
@@ -493,13 +495,36 @@ main, header, footer, .site-index {
     font-weight: 600;
     line-height: 1.3;
 }
+/* Held back from the title rather than level with it. The title is what a
+   reader scans for; the author line is what they read once the title has
+   caught them, and setting both at full ink made every entry present two
+   equally loud lines with nothing to enter them by. `--ink-soft` is the same
+   held-back ink the dead refs use, which gives the section one consistent
+   voice for "supporting detail" instead of a separate shade per purpose.
+
+   Trialled at full `--ink` and reverted, September 2026. */
 #publications .authors {
     color: var(--ink-soft);
     margin-top: 0.25rem;
 }
+/* Group labels -- "Publications", "Manuscripts", "Current Projects" -- are not
+   content, they are furniture: they tell you which pile you are looking at and
+   are never the thing you came to read. At 1rem/600 they sat a hair under the
+   entry titles beneath them, close enough that each list opened with two lines
+   competing to be its heading. They now take the rail's own idiom, small caps
+   at wide tracking in the held-back ink, which is already how this page says
+   "structure, not text". Uppercase is the whole reason this can share `--ink-soft`
+   with the venue tags without the two reading as the same rank. */
+#publications h3,
+#research h3 {
+    color: var(--ink-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
 #publications h3 {
-    font-size: 1rem;
-    margin: 0.75rem 0 0.25rem;
+    margin: 1.1rem 0 0;
 }
 #publications .publication-awards,
 #publications .publication-links {
