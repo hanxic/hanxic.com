@@ -1,0 +1,14 @@
+---
+# \Talks is defined in cv.tex but not called; enable it once this has more than
+# one entry. Only the talk recorded in research.yaml is seeded here.
+entries:
+  - title: Knapsack Problems with Precedence Constraints
+    venue: Wharton Research Scholars Seminar
+    location: University of Pennsylvania
+    time: "2024"
+  # - title: "Vellvm: Formalizing the Informal"
+  #   venue: Workshop on Coq for Programming Languages (CoqPL)
+  #   location: Denver, CO
+  #   time: Jan 2025
+  #   url: https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal
+...

@@ -17,7 +17,7 @@ entries:
         positions:
         - type: Graduate Teaching Assistant
           terms:
-            - Spr 2026
+            - Spring 2026
       - numbers:
         - CS 4110
         - CS 5110
@@ -29,7 +29,7 @@ entries:
         positions:
         - type: Graduate Teaching Assistant
           terms:
-            - Fal 2025
+            - Fall 2025
   - location: University of Pennsylvania
     courses:
       - numbers:
@@ -42,7 +42,7 @@ entries:
         positions:
           - type: "Teaching Assistant"
             terms:
-              - Spr 2025
+              - Spring 2025
       - numbers:
           - CIS 5520
         name: Advanced Programming
@@ -54,7 +54,7 @@ entries:
         positions:
           - type: "Teaching Assistant"
             terms:
-              - Fal 2024
+              - Fall 2024
       - numbers:
           - CIS 5020
           - CIT 5960
@@ -62,28 +62,26 @@ entries:
         name: Analysis of Algorithms
         location: University of Pennsylvania
         description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
-        cv_description: Led TA staff and student support across six terms; received the 2024 MCIT TA Award.
+        cv_description: Teaching Assistant for the course in Summer 2022 and Fall 2022. Led TA staff and student support across six terms; received the 2024 MCIT TA Award.
         instructors:
           - Prof. Sanjeev Khanna
         cv_role: Head Teaching Assistant
         cv_terms:
-          - Sum 2022
-          - Fal 2022
-          - Spr 2023
-          - Sum 2023
-          - Fal 2023
-          - Sum 2024
+          - Spring 2023
+          - Summer 2023
+          - Fall 2023
+          - Summer 2024
         positions:
           - type: "Head Teaching Assistant"
             terms:
-              - Spr 2023
-              - Sum 2023
-              - Fal 2023
-              - Sum 2024
+              - Spring 2023
+              - Summer 2023
+              - Fall 2023
+              - Summer 2024
           - type: "Teaching Assistant"
             terms:
-              - Sum 2022
-              - Fal 2022
+              - Summer 2022
+              - Fall 2022
       - numbers:
           - NETS 3120
         name: Theory of Networks
@@ -94,7 +92,7 @@ entries:
         positions:
           - type: "Head Teaching Assistant"
             terms:
-              - Spr 2024
+              - Spring 2024
       - numbers:
           - CIS 5000
         name: Software Foundations
@@ -106,7 +104,7 @@ entries:
         positions:
           - type: "Teaching Assistant"
             terms:
-              - Fal 2023
+              - Fall 2023
   - location: University of Pennsylvania
     courses:
       - name: STEM Tutor
@@ -119,9 +117,9 @@ entries:
         positions:
           - type: STEM Tutor
             terms:
-              - Spr 2021
-              - Sum 2021
-              - Fal 2021
-              - Spr 2022
-              - Sum 2022
+              - Spring 2021
+              - Summer 2021
+              - Fall 2021
+              - Spring 2022
+              - Summer 2022
 ...

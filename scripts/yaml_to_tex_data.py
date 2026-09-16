@@ -41,6 +41,8 @@ LATEX_SPECIALS = {
     "_": r"\_",
     "~": r"\textasciitilde{}",
     "^": r"\textasciicircum{}",
+    # Upright apostrophe, not the font's curly right quote.
+    "'": r"\textquotesingle{}",
 }
 
 UNICODE_REPLACEMENTS = {

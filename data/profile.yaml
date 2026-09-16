@@ -17,16 +17,23 @@ contact:
   handle: hanxic
   # Rendered as the lede of the Contact section -- a statement of what I am open
   # to, not instructions for how to reach me; the rows below already say that.
-  # Phone stays out of the web build on purpose; it is here for the CV only.
+  # Phone is reference only: printed in neither the web build nor the PDFs,
+  # which are themselves published at hanxic.com.
   note: "I would love to hear about a collaboration, an idea in programming languages and formal verification, or whatever you happen to be working on."
   phone: "(201) 406-1327"
   email: hanxic@cs.cornell.edu
   website: https://www.hanxic.com
   website_label: www.hanxic.com
   linkedin: https://www.linkedin.com/in/hanxic
+  linkedin_label: linkedin.com/in/hanxic
   github: https://github.com/hanxic
   github_label: github.com/hanxic
+  # Uncomment to print in the CV and resume headers.
+  # scholar: https://scholar.google.com/citations?user=XXXXXXXX
+  # scholar_label: Google Scholar
+  # orcid: https://orcid.org/0000-0000-0000-0000
+  # orcid_label: ORCID
 cv:
   filename: hanxi-chen-cv.pdf
-  updated: August 2026
+  updated: September 2026
 ...

@@ -3,25 +3,26 @@ _tex:
   join:
     items: ", "
 entries:
-  - category: Programming & Tools
+  - category: Proof assistants & verification
     items:
       - Lean 4
-      - Rocq/Coq
+      - Rocq
+      - Z3
+      - property-based testing
+      - static analysis
+  - category: Languages & tools
+    items:
       - OCaml
       - Haskell
       - C/C++
+      - Rust
       - Python
       - PyTorch
       - Java
-      - Rust
       - SystemVerilog
       - LLVM IR/Clang
-      - Z3
       - Docker
-      - property-based testing
-      - static analysis
-      - benchmarking
-  - category: Research Interests
+  - category: Research interests
     items:
       - compilers
       - formal verification

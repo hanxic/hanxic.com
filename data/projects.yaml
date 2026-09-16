@@ -13,7 +13,7 @@ entries:
     course: CIS 5710 Computer Organization and Design
     supervisor: Prof. Joe Devietti
     bullets:
-      - Implemented a RISC-V pipelined processor with AXI-Lite-style caching, multi-cycle units, branch prediction, and memory-mapped I/O.
+      - Designed a RISC-V pipelined processor with AXI-Lite caching, multi-cycle units, branch prediction, and memory-mapped I/O.
       - Built verification testbenches, optimized LUT usage and timing behavior, and synthesized the design to FPGA to run compiled programs.
   - title: Oat Compiler
     technologies:
@@ -31,6 +31,8 @@ entries:
       - Implemented a compiler for Oat, a C-like language with pointers and structured data, including lexing, parsing, type checking, frontend lowering, and backend code generation to LLVM IR and x86.
       - Added static analyses and optimizations including mem2reg and dead-code elimination, validated against thousands of test cases.
   - title: SQL Interpreter
+    show:
+      resume: false
     technologies:
       - Haskell
       - MySQL

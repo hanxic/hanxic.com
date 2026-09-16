@@ -2,6 +2,7 @@
 
 \usepackage[letterpaper,top=0.38in,bottom=0.38in,left=0.65in,right=0.65in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
 \usepackage{libertine}
 \usepackage{mathptmx}
 \usepackage{microtype}
@@ -20,6 +21,8 @@
   pdfauthor={\CVData{profile.name.full}}
 }
 
+% extsizes has no 9.5pt option and 10pt runs to a second page.
+\AtBeginDocument{\fontsize{9.5}{11.5}\selectfont}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \pagestyle{empty}
@@ -49,14 +52,21 @@
   }%
 }
 
+\newcommand{\CVLink}[2]{%
+  \CVIfSet{profile.contact.#1}{%
+    \;\textbar{}\;
+    \href{\CVData{profile.contact.#1}}{\CVData{profile.contact.#2}}%
+  }{}%
+}
+
 \newcommand{\ResumeHeader}{%
   {\centering
     {\LARGE \textbf{\CVData{profile.name.full}}}\\
     \href{mailto:\CVData{profile.contact.email}}{\CVData{profile.contact.email}}
-    \;\textbar{}\;
-    \href{\CVData{profile.contact.website}}{\CVData{profile.contact.website_label}}
-    \;\textbar{}\;
-    \href{\CVData{profile.contact.github}}{\CVData{profile.contact.github_label}}
+    \CVLink{website}{website_label}%
+    \CVLink{github}{github_label}%
+    \CVLink{linkedin}{linkedin_label}%
+    \CVLink{scholar}{scholar_label}%
   \par}
 }
 
@@ -67,6 +77,14 @@
     , \textit{#1}%
   \fi%
   \hfill #3%
+}
+
+\newcommand{\ResumeAdvisors}[1]{%
+  Advisors:\space
+  \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
+    \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
+    \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
+  }%
 }
 
 \newcommand{\ResumeEducationEntry}[1]{%
@@ -82,28 +100,49 @@
   \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
     \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
     \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
-    \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi\par
+    \CVIfSet{education.entries.#1.degrees.\degree.cv_date}{%
+      \hfill \CVData{education.entries.#1.degrees.\degree.cv_date}%
+    }{%
+      \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi
+    }\par
   }%
   \CVIfSet{education.entries.#1.gpa}{%
     GPA: \CVData{education.entries.#1.gpa}%
     \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
     \par
   }{}%
-  \CVIfSet{education.entries.#1.advisors.@len}{%
-    \ifnum#1=1\relax Advisors:\else Research advisors:\fi\space
-    \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
-      \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
-      \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
-    }%
-    \par
-  }{}%
+  \CVIfSet{education.entries.#1.advisors.@len}{\ResumeAdvisors{#1}\par}{}%
+}
+
+\newcount\ResumeAwardCount
+\newcommand{\HonorIfShown}[2]{%
+  \CVIfSet{honors.entries.#1.show.cv}{%
+    \ifnum\pdfstrcmp{\CVRawData{honors.entries.#1.show.cv}}{false}=0
+    \else
+      #2%
+    \fi
+  }{#2}%
+}
+\newcommand{\ResumeAwardsLine}{%
+  \global\ResumeAwardCount=0
+  \foreach \entry in {1,...,\CVLen{honors.entries}}{%
+    \ifnum\pdfstrcmp{\CVRawData{honors.entries.\entry.group}}{award}=0
+      \HonorIfShown{\entry}{%
+        \ifnum\ResumeAwardCount>0 \space\textbullet\space \fi
+        \CVData{honors.entries.\entry.name}%
+        \global\advance\ResumeAwardCount by 1
+      }%
+    \fi
+  }%
 }
 
 \newcommand{\Education}{%
-  \ResumeSection{Education}{%
-    \ResumeEducationEntry{1}
-    \Emptyline
-    \ResumeEducationEntry{2}
+  \ResumeSection{Education \& Awards}{%
+    \foreach \entry in {1,...,\CVLen{education.entries}}{%
+      \ResumeEducationEntry{\entry}%
+      \Emptyline
+    }%
+    \textbf{Awards}: \ResumeAwardsLine\par
   }%
 }
 
@@ -128,7 +167,7 @@
   \usebibmacro{name:andothers}%
 }
 \DeclareNameAlias{author}{default}
-\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{title}{\iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 \DeclareFieldFormat*{journaltitle}{#1}
 \DeclareFieldFormat*{booktitle}{#1}
 \AtEveryBibitem{%
@@ -137,7 +176,6 @@
   \clearfield{month}%
   \clearfield{day}%
   \clearfield{award}%
-  \clearfield{url}%
   \clearfield{urlpaper}%
   \clearfield{urlpdf}%
   \clearfield{urlarxiv}%
@@ -176,10 +214,13 @@
   }{\printfield{usera}\space preprint\addcomma\space}%
   \printfield{year}\adddot
 }
+\DeclareBibliographyAlias{inprogress}{misc}
 
+% Refereed first, preprint after, so the arXiv entry no longer heads the list.
 \newcommand{\SelectedPublications}{%
   \ResumeSection{Selected Publications}{%
-    \printbibliography[keyword={publication},heading=none,env=resumebibliography]%
+    \printbibliography[keyword={refereed},heading=none,env=resumebibliography]%
+    \printbibliography[keyword={preprint},heading=none,env=resumebibliography]%
   }%
 }
 
@@ -200,15 +241,21 @@
   \end{minipage}\par
 }
 
+\newcommand{\ResumeIfShown}[3]{%
+  \CVIfSet{#1.entries.#2.show.resume}{%
+    \ifnum\pdfstrcmp{\CVRawData{#1.entries.#2.show.resume}}{false}=0
+    \else
+      #3%
+    \fi
+  }{#3}%
+}
+
 \newcommand{\ResearchExperience}{%
   \ResumeSection{Relevant Research Experience}{%
-    \ResumeResearchEntry{1}
-    \Emptyline
-    \ResumeResearchEntry{2}
-    \Emptyline
-    \ResumeResearchEntry{3}
-    \Emptyline
-    \ResumeResearchEntry{4}
+    \foreach \entry in {1,...,\CVLen{research.entries}}{%
+      \ResumeIfShown{research}{\entry}{\ResumeResearchEntry{\entry}\Emptyline}%
+    }%
+    \vspace{-0.3em}
   }%
 }
 
@@ -240,9 +287,10 @@
 
 \newcommand{\SelectedTechnicalProjects}{%
   \ResumeSection{Selected Technical Projects}{%
-    \ResumeProjectEntry{1}
-    \Emptyline
-    \ResumeProjectEntry{2}
+    \foreach \entry in {1,...,\CVLen{projects.entries}}{%
+      \ResumeIfShown{projects}{\entry}{\ResumeProjectEntry{\entry}\Emptyline}%
+    }%
+    \vspace{-0.3em}
   }%
 }
 
@@ -254,6 +302,9 @@
     }%
   }%
 }
+
+\catcode`\'=\active
+\protected\def'{\textquotesingle}
 
 \begin{document}
 \ResumeHeader

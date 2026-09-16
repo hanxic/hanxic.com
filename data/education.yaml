@@ -48,7 +48,9 @@ entries:
     cv_location: Philadelphia, PA
     cv_note: Penn Engineering & The Wharton School
     degrees:
+      # TODO: add cv_date to the two bachelor's degrees once confirmed.
       - title: M.S.E. in Computer and Information Science
+        cv_date: May 2025
       - title: B.S.E. in Computer Science
         focus: Mathematics minor
         attributes:

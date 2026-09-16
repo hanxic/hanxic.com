@@ -1,20 +1,30 @@
 ---
 entries:
-  - name: CIS Faculty Appreciation Award
-    time: "2024"
   - name: MCIT TA Award
+    group: award
+    time: "2024"
+  - name: CIS Faculty Appreciation Award
+    group: award
     time: "2024"
   - name: CIS Senior Thesis
+    group: award
     time: "2024"
   - name: Wharton Research Scholars
+    group: award
     time: "2024"
   - name: Eta Kappa Nu
+    group: society
     time: "2022, 2023, 2024, 2025"
   - name: Tau Beta Pi
+    group: society
     time: "2023, 2024, 2025"
   - name: Beta Gamma Sigma
+    group: society
     time: "2023, 2024, 2025"
   - name: Dean's List
+    group: award
     time: "2022, 2023"
     note: Penn ceased to award the Dean's List citation.
+    show:
+      cv: false
 ...

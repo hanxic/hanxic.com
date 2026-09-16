@@ -9,13 +9,14 @@ entries:
     institution: Cornell University
     unit: Computer Science
     bullets:
+      - Working toward end-to-end security for probabilistic and concurrent systems, from adversary models to semantics-preserving compilation.
       - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
       - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
-      - Contributed Lean mechanization for Type-Confusion Security, formalizing static and dynamic information-flow checks for decentralized systems whose untrusted components can misrepresent dynamic types.
+      - Led the Lean mechanization of Type-Confusion Security, proving type safety for the static and dynamic information-flow checks that protect decentralized systems whose untrusted components can misrepresent dynamic types.
     resume_bullets:
-      - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify caching and leader-election protocols.
-      - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
-      - Contributed Lean mechanization for Type-Confusion Security, formalizing information-flow checks for decentralized systems where untrusted components can lie about types and induce confused-deputy attacks.
+      - Working toward end-to-end security guarantees -- reasoning about adversaries in probabilistic and concurrent systems, and carrying those guarantees down to executed code through semantics-preserving compilation.
+      - Developed opOL, a program logic for probabilistic nondeterministic programs under oblivious adversaries, and used it to verify randomized caching and leader-election protocols; the metatheory and case studies are fully mechanized in Lean 4.
+      - Led the Lean mechanization of Type-Confusion Security and proved its type safety, enforcing safety in decentralized systems whose untrusted components misrepresent dynamic types and induce confused-deputy attacks.
   - role: Research Mentor
     group: Cornell Math+AI
     supervisors:
@@ -24,10 +25,9 @@ entries:
     institution: Cornell University
     unit: Mathematics
     bullets:
-      - Mentoring and building an autoformalization benchmark for translating research-level mathematical statements and proofs into Lean 4.
-      - Curating problem/proof pairs and co-developing proof-quality evaluation and LaTeX-to-Lean translation tools.
+      - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and LaTeX-to-Lean translation tools with interactive dependency graphs; now also directing a newer project on large language models for program reasoning.
     resume_bullets:
-      - Mentoring and building an autoformalization benchmark for translating research-level mathematical statements and proofs into Lean 4; curating problem/proof pairs and co-developing proof-quality evaluation and LaTeX-to-Lean tools.
+      - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and LaTeX-to-Lean translation tools with interactive dependency graphs; now also directing a newer project on large language models for program reasoning.
   - role: Research Assistant
     group: PLClub
     supervisors:
@@ -41,9 +41,9 @@ entries:
       - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
       - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
     resume_bullets:
-      - Contributed to the ICFP 2024 Vellvm memory-model paper in Prof. Steve Zdancewic's group, helping design a low-level memory model for LLVM optimization reasoning, verifying serialization lemmas in Rocq, and implementing tests for the memory model.
-      - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential testing framework that found novel LLVM bugs.
-      - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
+      - Co-authored the ICFP 2024 Vellvm memory-model paper -- designed a low-level memory model for LLVM optimization reasoning and verified its serialization lemmas in Rocq.
+      - Built a Rocq/OCaml differential-testing framework validating Vellvm against real LLVM implementations, with QuickChick generators for UB-free programs; found previously unreported LLVM bugs.
+      - Developed Rocq infrastructure for permutation reasoning and list AC unification, and used it to formalize first-order classical linear logic with cut elimination.
   - role: Research Assistant
     group: Wharton Research Scholars
     supervisors:
@@ -55,8 +55,7 @@ entries:
       - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
       - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
     resume_bullets:
-      - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and proved pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
-      - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
+      - Proved pseudo-polynomial algorithms for precedence-constrained knapsack on structured poset classes -- unions of three paths and one-directional bipartite posets with consecutive children -- and wrote an undergraduate thesis on the work.
   # - role: Research Assistant
   #   group: Penn Computational Intelligence Lab
   #   supervisors:

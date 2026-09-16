@@ -2,6 +2,7 @@
 
 \usepackage[letterpaper,top=0.7in, bottom=0.7in, left=0.8in, right=0.8in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
 \usepackage{libertine}
 \usepackage{mathptmx}
 \usepackage{microtype}
@@ -55,16 +56,24 @@
   }%
 }
 
+\newcommand{\CVLink}[2]{%
+  \CVIfSet{profile.contact.#1}{%
+    \;\textbar{}\;
+    \href{\CVData{profile.contact.#1}}{\CVData{profile.contact.#2}}%
+  }{}%
+}
+
 \newcommand{\CVHeader}{%
   {\centering
     {\Huge \textbf{\CVData{profile.name.full}}}\\
     {\large
       \href{mailto:\CVData{profile.contact.email}}{\CVData{profile.contact.email}}
-      \;\textbar{}\;
-      \href{\CVData{profile.contact.website}}{\CVData{profile.contact.website_label}}
-      \;\textbar{}\;
-      \href{\CVData{profile.contact.github}}{\CVData{profile.contact.github_label}}
-    }
+      \CVLink{website}{website_label}%
+      \CVLink{github}{github_label}%
+      \CVLink{scholar}{scholar_label}%
+      \CVLink{orcid}{orcid_label}%
+    }\\[0.2em]
+    {\small Last updated: \CVData{profile.cv.updated}}
   \par}
 }
 
@@ -75,6 +84,14 @@
     , \textit{#1}%
   \fi%
   \hfill #3%
+}
+
+\newcommand{\CVAdvisors}[1]{%
+  Advisors:\space
+  \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
+    \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
+    \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
+  }%
 }
 
 \newcommand{\CVEducationEntry}[1]{%
@@ -90,21 +107,18 @@
   \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
     \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
     \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
-    \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi\par
+    \CVIfSet{education.entries.#1.degrees.\degree.cv_date}{%
+      \hfill \CVData{education.entries.#1.degrees.\degree.cv_date}%
+    }{%
+      \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi
+    }\par
   }%
   \CVIfSet{education.entries.#1.gpa}{%
     GPA: \CVData{education.entries.#1.gpa}%
     \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
     \par
   }{}%
-  \CVIfSet{education.entries.#1.advisors.@len}{%
-    \ifnum#1=1\relax Advisors:\else Research advisors:\fi\space
-    \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
-      \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
-      \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
-    }%
-    \par
-  }{}%
+  \CVIfSet{education.entries.#1.advisors.@len}{\CVAdvisors{#1}\par}{}%
 }
 
 \newcommand{\Education}{%
@@ -117,8 +131,19 @@
 }
 
 \usepackage[backend=biber,maxnames=99,style=authoryear,sorting=ydnt,defernumbers=true]{biblatex}
+% `award` is nonstandard and not in biblatex's data model, so it is mapped onto
+% a scratch field before it can be printed.
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=award,fieldtarget=userb]
+    }
+  }
+}
 \addbibresource{../assets/data/refs.bib}
 \nocite{*}
+
+\newcommand{\PrintAward}{\iffieldundef{userb}{}{\space[\printfield{userb}]}}
 
 \DeclareNameFormat{default}{%
   \nameparts{#1}%
@@ -139,7 +164,6 @@
   \clearfield{month}%
   \clearfield{day}%
   \clearfield{tag}%
-  \clearfield{award}%
   \clearfield{urlpaper}%
   \clearfield{urlpdf}%
   \clearfield{urlarxiv}%
@@ -163,12 +187,14 @@
   \printfield{title}\adddot\space
   \printfield{journaltitle}\addcomma\space
   \printfield{year}\adddot
+  \PrintAward
 }
 \DeclareBibliographyDriver{inproceedings}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
   \printfield{booktitle}\addcomma\space
   \printfield{year}\adddot
+  \PrintAward
 }
 \DeclareBibliographyDriver{thesis}{%
   \printnames{author}\adddot\space
@@ -176,32 +202,43 @@
   \printfield{type}\addcomma\space
   \printfield{year}\adddot\space
   \printfield{note}\adddot
+  \PrintAward
 }
 \DeclareBibliographyDriver{misc}{%
   \printnames{author}\adddot\space
   \printfield{title}\adddot\space
   \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
   \printfield{year}\adddot
+  \PrintAward
 }
 \DeclareBibliographyAlias{inprogress}{misc}
 
-\newcommand{\PublicationGroup}[2]{%
+% A real \defbibheading, so a group whose list is empty drops its heading too.
+\defbibheading{cvgroup}[\bibname]{%
   \vspace{0.1em}
   {\centering\textbf{#1}\par}
   \vspace{0.05em}
-  \printbibliography[keyword={#2},heading=none,env=cvbibliography]%
+}
+\newcommand{\PublicationGroup}[2]{%
+  \printbibliography[keyword={#2},heading=cvgroup,title={#1},env=cvbibliography]%
+  \par\vspace{0.15em}
+}
+
+% One heading for both, since `keyword` filters a single value.
+\defbibcheck{unpublished}{%
+  \ifboolexpr{ test {\ifkeyword{preprint}} or test {\ifkeyword{manuscript}} }
+    {}{\skipentry}%
+}
+\newcommand{\PublicationCheckGroup}[2]{%
+  \printbibliography[check={#2},heading=cvgroup,title={#1},env=cvbibliography]%
   \par\vspace{0.15em}
 }
 
 \newcommand{\Publications}{%
   \CVSection{Publications}{%
-    \printbibliography[keyword={publication},heading=none,env=cvbibliography]%
-    \vspace{0.1em}
-    {\centering\textbf{Manuscripts}\par}
-    \vspace{0.05em}
-    \printbibliography[keyword={manuscript},heading=none,env=cvbibliography]%
-    \printbibliography[keyword={thesis},heading=none,env=cvbibliography]%
-    \par\vspace{0.15em}
+    \PublicationGroup{Refereed}{refereed}
+    \PublicationCheckGroup{Preprints \& Manuscripts}{unpublished}
+    \PublicationGroup{Theses}{thesis}
   }%
 }
 
@@ -346,32 +383,89 @@
   }%
 }
 
+\newcommand{\HonorIfShown}[2]{%
+  \CVIfSet{honors.entries.#1.show.cv}{%
+    \ifnum\pdfstrcmp{\CVRawData{honors.entries.#1.show.cv}}{false}=0
+    \else
+      #2%
+    \fi
+  }{#2}%
+}
+
+\newcount\HonorGroupCount
+\newcommand{\HonorCount}[1]{%
+  \global\HonorGroupCount=0
+  \foreach \entry in {1,...,\CVLen{honors.entries}}{%
+    \ifnum\pdfstrcmp{\CVRawData{honors.entries.\entry.group}}{#1}=0
+      \HonorIfShown{\entry}{\global\advance\HonorGroupCount by 1}%
+    \fi
+  }%
+}
+
+\newcount\SocietyItemCount
+\newcommand{\HonorSocieties}{%
+  \HonorCount{society}%
+  \ifnum\HonorGroupCount>0
+    \textbf{Honor societies}: %
+    \global\SocietyItemCount=0
+    \foreach \entry in {1,...,\CVLen{honors.entries}}{%
+      \ifnum\pdfstrcmp{\CVRawData{honors.entries.\entry.group}}{society}=0
+        \HonorIfShown{\entry}{%
+          \ifnum\SocietyItemCount>0 , \fi
+          \CVData{honors.entries.\entry.name}%
+          \global\advance\SocietyItemCount by 1
+        }%
+      \fi
+    }%
+    \par
+  \fi
+}
+
 \newcommand{\Honors}{%
   \CVSection{Honors \& Awards}{%
     \begin{multicols}{2}
       \foreach \entry in {1,...,\CVLen{honors.entries}}{%
-        \CVData{honors.entries.\entry.name}\hfill \CVData{honors.entries.\entry.time}\par
+        \ifnum\pdfstrcmp{\CVRawData{honors.entries.\entry.group}}{award}=0
+          \HonorIfShown{\entry}{%
+            \CVData{honors.entries.\entry.name}\hfill \CVData{honors.entries.\entry.time}\par
+          }%
+        \fi
       }%
     \end{multicols}
+    \vspace{0.15em}
+    \HonorSocieties
   }%
 }
 
+% Matches `group`, not `role`: `role` is display copy and changing it used to
+% empty the heading silently. Emits nothing when no entry matches.
 \newcount\ServiceItemCount
-\newcommand{\ServiceLine}[1]{%
-  \textbf{#1}: %
+\newcommand{\ServiceCount}[1]{%
   \global\ServiceItemCount=0
   \foreach \entry in {1,...,\CVLen{service.entries}}{%
-    \ifnum\pdfstrcmp{\CVRawData{service.entries.\entry.role}}{#1}=0
-      \ifnum\ServiceItemCount>0 , \fi
-      \CVIfSet{service.entries.\entry.cv_label}{%
-        \CVData{service.entries.\entry.cv_label}%
-      }{%
-        \CVData{service.entries.\entry.organization}%
-      }%
+    \ifnum\pdfstrcmp{\CVRawData{service.entries.\entry.group}}{#1}=0
       \global\advance\ServiceItemCount by 1
     \fi
   }%
-  \par
+}
+\newcommand{\ServiceLine}[1]{%
+  \ServiceCount{#1}%
+  \ifnum\ServiceItemCount>0
+    \textbf{#1}: %
+    \global\ServiceItemCount=0
+    \foreach \entry in {1,...,\CVLen{service.entries}}{%
+      \ifnum\pdfstrcmp{\CVRawData{service.entries.\entry.group}}{#1}=0
+        \ifnum\ServiceItemCount>0 , \fi
+        \CVIfSet{service.entries.\entry.cv_label}{%
+          \CVData{service.entries.\entry.cv_label}%
+        }{%
+          \CVData{service.entries.\entry.organization}%
+        }%
+        \global\advance\ServiceItemCount by 1
+      \fi
+    }%
+    \par
+  \fi
 }
 
 \newcommand{\Community}{%
@@ -380,6 +474,21 @@
     \ServiceLine{Artifact Evaluation Committee}
     \ServiceLine{Student Volunteer}
     \vspace{0.15em}
+  }%
+}
+
+\newcommand{\Talks}{%
+  \CVSection{Talks}{%
+    \foreach \entry in {1,...,\CVLen{talks.entries}}{%
+      \CVIfSet{talks.entries.\entry.url}{%
+        \href{\CVData{talks.entries.\entry.url}}{\CVData{talks.entries.\entry.title}}%
+      }{%
+        \CVData{talks.entries.\entry.title}%
+      }%
+      . \emph{\CVData{talks.entries.\entry.venue}}%
+      \CVIfSet{talks.entries.\entry.location}{, \CVData{talks.entries.\entry.location}}{}%
+      \hfill \CVData{talks.entries.\entry.time}\par
+    }%
   }%
 }
 
@@ -393,6 +502,11 @@
   }%
 }
 
+% Upright apostrophes in the bibliography too; the .bbl is read after this
+% point. Safe because neither document uses math mode.
+\catcode`\'=\active
+\protected\def'{\textquotesingle}
+
 \begin{document}
 \CVHeader
 
@@ -401,9 +515,12 @@
 \Research
 \Honors
 \Teaching
-%\Coursework
 \Community
 \Technicals
+
+% Off by length, not oversight. \Talks needs more than one entry in talks.yaml.
+%\Talks
+%\Coursework
 %\OtherExperience
 
 \end{document}
