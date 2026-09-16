@@ -161,40 +161,47 @@ const setupMastheadCondense = () => {
 
 const setupAbstractDisclosures = () => {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const easing = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
 
   document.querySelectorAll('#publications details.abstract').forEach((details) => {
     const summary = details.querySelector('summary');
     const panel = details.querySelector('.abstract-panel');
+    const content = panel?.querySelector('.content');
 
-    if (!summary || !panel || typeof panel.animate !== 'function') {
+    if (!summary || !panel || !content || typeof panel.animate !== 'function') {
       return;
     }
 
-    let animation = null;
+    let animations = [];
     let closing = false;
+
+    const clearInlineStyles = () => {
+      panel.style.removeProperty('height');
+      content.style.removeProperty('opacity');
+      content.style.removeProperty('transform');
+    };
 
     summary.addEventListener('click', (event) => {
       event.preventDefault();
 
       const shouldOpen = closing || !details.open;
       const startHeight = details.open ? panel.getBoundingClientRect().height : 0;
-      const startOpacity = details.open ? Number(getComputedStyle(panel).opacity) : 0;
-      animation?.cancel();
-      animation = null;
+      const startOpacity = details.open ? Number(getComputedStyle(content).opacity) : 0;
+      animations.forEach((running) => running.cancel());
+      animations = [];
 
       if (reducedMotion.matches) {
         details.open = shouldOpen;
         closing = false;
         delete details.dataset.collapsing;
-        panel.style.removeProperty('height');
-        panel.style.removeProperty('opacity');
+        clearInlineStyles();
         return;
       }
 
-      // Keep the content clipped before opening <details>, so its first
-      // visible frame starts at zero height instead of flashing open.
+      // Keep the content clipped and hidden before opening <details>, so its
+      // first visible frame starts at zero instead of flashing open.
       panel.style.height = `${startHeight}px`;
-      panel.style.opacity = `${startOpacity}`;
+      content.style.opacity = `${startOpacity}`;
 
       if (shouldOpen) {
         details.open = true;
@@ -205,21 +212,44 @@ const setupAbstractDisclosures = () => {
 
       closing = !shouldOpen;
       const endHeight = shouldOpen ? panel.scrollHeight : 0;
-      const currentAnimation = panel.animate(
-        [
-          { height: `${startHeight}px`, opacity: startOpacity },
-          { height: `${endHeight}px`, opacity: shouldOpen ? 1 : 0 },
-        ],
+
+      // A three-line abstract should not take as long to open as a ten-line one,
+      // so the box travels at a roughly constant speed inside sane bounds. The
+      // band is kept narrow because the CSS line-draws run at a fixed 300ms.
+      const duration = Math.min(
+        340,
+        Math.max(240, Math.round(Math.max(startHeight, endHeight) * 0.55))
+      );
+
+      const panelAnimation = panel.animate(
+        [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+        { duration, easing, fill: 'forwards' }
+      );
+
+      // Height leads and the text follows, so it arrives into a box that is
+      // already open instead of fading in while still being clipped. Closing
+      // reverses the order: the text leaves first, then the box collapses.
+      const contentAnimation = content.animate(
+        shouldOpen
+          ? [
+              { opacity: startOpacity, transform: 'translateY(-6px)' },
+              { opacity: 1, transform: 'none' },
+            ]
+          : [
+              { opacity: startOpacity, transform: 'none' },
+              { opacity: 0, transform: 'translateY(-4px)' },
+            ],
         {
-          duration: 280,
-          easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+          delay: shouldOpen ? Math.round(duration * 0.3) : 0,
+          duration: Math.round(duration * (shouldOpen ? 0.6 : 0.4)),
+          easing,
           fill: 'forwards',
         }
       );
 
-      animation = currentAnimation;
-      currentAnimation.onfinish = () => {
-        if (animation !== currentAnimation) {
+      animations = [panelAnimation, contentAnimation];
+      panelAnimation.onfinish = () => {
+        if (animations[0] !== panelAnimation) {
           return;
         }
 
@@ -228,10 +258,9 @@ const setupAbstractDisclosures = () => {
           delete details.dataset.collapsing;
         }
 
-        panel.style.removeProperty('height');
-        panel.style.removeProperty('opacity');
-        currentAnimation.cancel();
-        animation = null;
+        animations.forEach((running) => running.cancel());
+        animations = [];
+        clearInlineStyles();
         closing = false;
       };
     });
