@@ -1,0 +1,40 @@
+{{- /*
+The masthead links scroll away with the masthead, and they are abbreviated to a
+single word each. This is where the same addresses are written out in full, at
+the end of the page, where a reader who has read down to here is most likely to
+want one. Same rail, same hairline rows as Service -- a catalogue entry, not a
+call to action.
+*/ -}}
+{{- $contact := site.Data.profile.contact }}
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <div class="contact-body">
+    {{ with $contact.note }}
+    <p class="contact-note">{{ . }}</p>
+    {{ end }}
+    <dl class="contact-list">
+      {{ with $contact.email }}
+      <div class="contact-entry">
+        <dt class="contact-label">Email</dt>
+        <dd class="contact-value"><a href="mailto:{{ . }}">{{ . }}</a></dd>
+      </div>
+      {{ end }}
+      {{ with $contact.github }}
+      <div class="contact-entry">
+        <dt class="contact-label">GitHub</dt>
+        <dd class="contact-value">
+          <a href="{{ . }}" target="_blank" rel="noopener">{{ $contact.github_label | default . }}</a>
+        </dd>
+      </div>
+      {{ end }}
+      {{ with $contact.linkedin }}
+      <div class="contact-entry">
+        <dt class="contact-label">LinkedIn</dt>
+        <dd class="contact-value">
+          <a href="{{ . }}" target="_blank" rel="noopener">{{ $contact.linkedin_label | default (strings.TrimPrefix "https://www." .) }}</a>
+        </dd>
+      </div>
+      {{ end }}
+    </dl>
+  </div>
+</section>

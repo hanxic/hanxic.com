@@ -105,6 +105,11 @@ main, header, footer, .site-index {
     line-height: 1.05;
     margin: 0;
 }
+/* Pinned to the right edge at every width. When the masthead is too narrow to
+   hold the name and the links on one line the links drop to their own line, but
+   they stay on the same edge -- `margin-left: auto` overrides the parent's
+   space-between, which would otherwise park a lone wrapped item on the left and
+   make the whole header look like it had flipped sides. */
 .site-contact-links {
     color: var(--global-text-color-small);
     column-gap: 0.45rem;
@@ -113,6 +118,7 @@ main, header, footer, .site-index {
     font-size: 0.8125rem;
     justify-content: flex-end;
     line-height: 1.45;
+    margin-left: auto;
     /* Sits on the name's baseline rather than floating above it. */
     padding-bottom: 0.3rem;
     text-align: right;
@@ -198,13 +204,18 @@ main, header, footer, .site-index {
     transform: none;
     visibility: visible;
 }
+/* Right-edged like the masthead links, and it stays that way once it wraps --
+   the ragged edge is always on the left, on every line, at every width. The
+   auto margin keeps it there even at widths where the name mark is gone and the
+   menu is the strip's only child. */
 .menu-container {
     display: flex;
     flex-wrap: nowrap;
     font-size: 0.8125rem;
     gap: 0.15rem 1.15rem;
     justify-content: flex-end;
-    text-align: left;
+    margin-left: auto;
+    text-align: right;
 }
 .menu-container a {
     color: var(--global-text-color-small);
@@ -968,6 +979,61 @@ main, header, footer, .site-index {
     font-family: var(--global-mono-font-family);
 }
 
+/* Contact -- the same hairline rows as Service, with the label demoted to the
+   rail's small-caps voice so the address itself is the thing you read. */
+#contact .contact-note {
+    color: var(--global-text-color-small);
+    line-height: var(--prose-line-height);
+    margin: 0 0 1.35rem;
+    max-width: 68ch;
+}
+/* The rows run the full column, not the prose measure: every other hairline on
+   the page -- the section dividers, the Service rows -- lands on the same right
+   edge, and a list that stopped short would be the one thing that did not. */
+#contact .contact-list {
+    margin: 0;
+}
+#contact .contact-entry {
+    align-items: baseline;
+    border-top: 1px solid var(--line-ink);
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    line-height: var(--content-line-height);
+    padding: 0.7rem 0;
+}
+#contact .contact-label {
+    color: var(--global-text-color-small);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+#contact .contact-value {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.9rem;
+    margin: 0;
+}
+#contact .contact-value a {
+    font-family: var(--global-mono-font-family);
+    font-size: 1rem;
+    font-weight: 550;
+}
+/* The rule under the address draws on hover, so the row answers the pointer
+   with the same hairline vocabulary the rest of the page uses. */
+#contact .contact-value a {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    padding-bottom: 1px;
+    transition: background-size 0.24s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.18s ease;
+}
+#contact .contact-value a:hover {
+    background-size: 100% 1px;
+}
+
 /* footer */
 footer {
     color: var(--global-footer-text-color);
@@ -985,24 +1051,15 @@ footer * {
 }
 
 @media (max-width: 860px) {
-    /* The strip cannot hold a mark and six entries on one line any more; the
-       menu takes the whole width and the name stays in the masthead only. */
+    /* The strip cannot hold a mark and seven entries on one line any more, so
+       the name stays in the masthead only and the menu gets the whole strip.
+       It keeps its right edge: the alignment of the header should not depend on
+       the window width, only the number of lines it takes. */
     .site-index-mark {
         display: none;
     }
-    .menu-container {
-        justify-content: flex-start;
-        width: 100%;
-    }
     .site-masthead {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.7rem;
-    }
-    .site-contact-links {
-        justify-content: flex-start;
-        padding-bottom: 0;
-        text-align: left;
+        gap: 0.35rem 1.5rem;
     }
 }
 
@@ -1114,6 +1171,19 @@ footer * {
         grid-column: 2;
         grid-row: 1;
     }
+    /* An email address does not fit beside its label at this width, so the
+       label becomes a heading over the address instead of a column. */
+    #contact .contact-entry {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 0.25rem;
+    }
+    #contact .contact-value {
+        gap: 0.15rem 0.6rem;
+    }
+    #contact .contact-value a {
+        font-size: 0.9375rem;
+        overflow-wrap: anywhere;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1123,5 +1193,8 @@ footer * {
     .site-index-mark {
         transform: none;
         transition: none;
+    }
+    #contact .contact-value a {
+        transition: color 0.18s ease;
     }
 }

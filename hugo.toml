@@ -45,6 +45,13 @@ title = 'Hanxi "Gary" Chen'
     [menus.main.params]
       section = 'service'
 
+  [[menus.main]]
+    name = 'Contact'
+    url = '/#contact'
+    weight = 70
+    [menus.main.params]
+      section = 'contact'
+
   # [[menus.main]]
   #   name = 'Tags'
   #   pageRef = '/tags'

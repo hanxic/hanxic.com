@@ -15,6 +15,10 @@ name:
   family: Chen
 contact:
   handle: hanxic
+  # Rendered as the lede of the Contact section -- a statement of what I am open
+  # to, not instructions for how to reach me; the rows below already say that.
+  # Phone stays out of the web build on purpose; it is here for the CV only.
+  note: "I would love to hear about a collaboration, an idea in programming languages and formal verification, or whatever you happen to be working on."
   phone: "(201) 406-1327"
   email: hanxic@cs.cornell.edu
   website: https://www.hanxic.com
