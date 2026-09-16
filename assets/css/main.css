@@ -112,7 +112,6 @@
 
     --line-ink: rgba(var(--ink-rgb), 0.18);
     --line-ink-strong: rgba(var(--ink-rgb), 0.26);
-    --line-project: linear-gradient(90deg, rgba(var(--accent-rgb), 0.58), rgba(var(--accent-rgb), 0));
     /* Two rules on the page and only two, and they are told apart by drawing,
        not by weight. `--rule-section` closes a section: flat ink, edge to edge,
        a full stop. `--rule-row` divides entries inside one section: it catches
@@ -332,12 +331,20 @@ main, header, footer, .site-index {
 .home > .section > h2::before {
     content: counter(home-section, decimal-leading-zero);
 }
+/* `--row-pad` is a section's row padding, declared once on the section and
+   read back twice: by the rows, and by the closing padding below. A row is
+   padded to sit centred between two rules, but the last row has no rule under
+   it -- that trailing padding is surplus, and the section rule ends up sitting
+   that much further from the last line of ink than it does in a section with
+   no rows. Subtracting it means every section closes on the same measure of
+   clear space, whatever its entries are padded by. Sections without rows
+   (About, Education, whose entries only rule *between*) leave it at zero. */
 .section {
     border-bottom: var(--rule-section);
     column-gap: clamp(1.5rem, 3vw, 2.75rem);
     display: grid;
     grid-template-columns: var(--section-rail-width) minmax(0, 1fr);
-    padding: 2.65rem 0 2.75rem;
+    padding: 2.65rem 0 calc(2.75rem - var(--row-pad, 0rem));
     scroll-margin-top: var(--sticky-header-offset, 6rem);
 }
 /* Every row rule on the page is drawn here, once. It is a gradient, so it
@@ -345,9 +352,12 @@ main, header, footer, .site-index {
    the row's padding box, which lands exactly where a `border-top` would. The
    rows are grids; an absolutely positioned pseudo-element is not a grid item,
    so it never takes a column. Education is the one list that only rules
-   *between* entries -- its entries are tall blocks, not rows. */
+   *between* entries -- its entries are tall blocks, not rows.
+
+   Research is not in this list. It is the one section whose entries are not
+   rows at all but composites -- title, keywords, prose, figure -- so it is
+   bracketed instead, and it needs its own `::before`/`::after` to draw them. */
 #publications .publication,
-#research .research-project,
 #education .education + .education,
 #teaching .teaching-course,
 #service .service-entry,
@@ -355,7 +365,6 @@ main, header, footer, .site-index {
     position: relative;
 }
 #publications .publication::before,
-#research .research-project::before,
 #education .education + .education::before,
 #teaching .teaching-course::before,
 #service .service-entry::before,
@@ -456,12 +465,12 @@ main, header, footer, .site-index {
 }
 
 #publications {
-    padding-bottom: 0;
+    --row-pad: 0.8rem;
 }
 #publications .publication {
     font-family: var(--global-font-family);
     line-height: var(--content-line-height);
-    padding: 0.8rem 0;
+    padding: var(--row-pad) 0;
 }
 #publications .publication header,
 #publications .authors,
@@ -646,33 +655,106 @@ main, header, footer, .site-index {
 }
 .research-project-list {
     display: grid;
-    gap: 0.75rem;
+    gap: 1.5rem;
+}
+/* The box became a pair of brackets, September 2026.
+
+   A bordered, tinted, rounded panel is a card, and a card is the one thing on
+   this page that comes from somewhere else -- every other list here divides
+   itself with a rule and nothing more. But Research does want an enclosure:
+   unlike a publication, an entry is a title, a strip of keywords, a paragraph
+   and a figure, and without something around it the four parts drift apart.
+
+   So: keep the enclosure, drop three of its four sides. What is left is a
+   bracket pair, which is this page's own punctuation -- [About], [DOI],
+   [NFM'25] -- at display size. That is the whole trick. The mark is already
+   the site's, so it reads as native rather than as a device; it costs about a
+   fifth of the ink a full border did; and where a box says "component", two
+   brackets say "this is one item in a catalogue", which is what the page has
+   claimed to be from the start.
+
+   Borders animate, which gradients and crop-mark backgrounds do not, and that
+   is what makes the hover below possible at all. */
+#research {
+    --row-pad: 0.4rem;
 }
 .research-project {
+    line-height: var(--content-line-height);
+    padding: var(--row-pad) 1.5rem;
+    position: relative;
+}
+.research-project-grid {
     align-items: start;
-    background: var(--paper-raised);
-    border: 1px solid var(--line-ink-strong);
-    border-radius: 3px;
     display: grid;
     gap: 1.05rem;
     grid-template-columns: minmax(0, 1fr) clamp(9rem, 26%, 13.5rem);
-    line-height: var(--content-line-height);
-    padding: 0.9rem 1rem;
-    position: relative;
+}
+.research-project::before,
+.research-project::after {
+    border: 1px solid var(--line-ink);
+    bottom: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    transition: border-color 240ms ease, width 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    width: 0.65rem;
 }
 .research-project::before {
-    background: var(--line-project);
-    content: "";
-    height: 1px;
-    left: 0.9rem;
-    position: absolute;
-    top: -1px;
-    width: 3.25rem;
+    border-right: 0;
+    left: 0;
 }
+.research-project::after {
+    border-left: 0;
+    right: 0;
+}
+/* At rest the brackets are hairlines like every other line on the page. Under
+   the pointer they take the accent and open a little wider -- the page's one
+   piece of instrumentation, and the reason to have chosen a mark that is drawn
+   with borders. `focus-within` is not decoration here: these entries contain
+   links, so a keyboard reader gets the same signal a mouse does. */
+.research-project:hover::before,
+.research-project:hover::after,
+.research-project:focus-within::before,
+.research-project:focus-within::after {
+    border-color: var(--accent);
+    width: 0.95rem;
+}
+@media (prefers-reduced-motion: reduce) {
+    .research-project::before,
+    .research-project::after {
+        transition: none;
+    }
+}
+/* Not a tag cloud and not a claim -- just the technical register of the work,
+   said in three words so a reader outside PL can place it before committing to
+   the paragraph. Set as the smallest thing in the section, in caps at the
+   rail's own tracking, so it reads as an index term rather than as text. */
+.research-project-keywords {
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    gap: 0 0.4rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+    text-transform: uppercase;
+}
+.research-project-keywords .sep {
+    color: var(--ink-faint);
+}
+/* Top, not centre: a centred figure is placed by the length of the prose next
+   to it, so it lands at a different height in every entry and its top edge
+   lines up with nothing. Aligned to the start it shares a line with the title
+   and the five entries gain a horizon. */
 .research-project-media {
-    align-self: center;
+    align-self: start;
     aspect-ratio: 3 / 2;
-    background: transparent;
+    /* Only visible behind the one figure with transparency (the Vellvm SVG) --
+       without it the cream shows through and the diagram reads as a hole in
+       the page rather than as a plate on it. The other four are white artwork
+       and cover this entirely. */
+    background: var(--paper-raised);
     border: 0;
     border-radius: 0;
     grid-column: 2;
@@ -748,10 +830,15 @@ main, header, footer, .site-index {
 }
 
 @media (max-width: 560px) {
+    #research {
+        --row-pad: 0.3rem;
+    }
     .research-project {
+        padding: var(--row-pad) 1rem;
+    }
+    .research-project-grid {
         gap: 0.7rem;
         grid-template-columns: 1fr;
-        padding: 0.75rem 0.8rem;
     }
     .research-project-body {
         grid-column: 1;
@@ -896,11 +983,14 @@ main, header, footer, .site-index {
     letter-spacing: -0.02em;
     margin: 0 0 0.55rem;
 }
+#teaching {
+    --row-pad: 0.75rem;
+}
 #teaching .teaching-course {
     display: grid;
     gap: 0.3rem 1rem;
     grid-template-columns: 10rem minmax(0, 1fr);
-    padding: 0.75rem 0;
+    padding: var(--row-pad) 0;
 }
 #teaching .teaching-course-code {
     color: var(--ink-soft);
@@ -940,13 +1030,16 @@ main, header, footer, .site-index {
 }
 
 /* Service */
+#service {
+    --row-pad: 0.75rem;
+}
 #service .service-entry {
     align-items: baseline;
     display: grid;
     gap: 0.25rem 1rem;
     grid-template-columns: minmax(0, 1.55fr) minmax(0, 1.15fr) auto;
     line-height: var(--content-line-height);
-    padding: 0.75rem 0;
+    padding: var(--row-pad) 0;
 }
 #service .service-organization {
     font-size: 1rem;
@@ -982,13 +1075,16 @@ main, header, footer, .site-index {
 #contact .contact-list {
     margin: 0;
 }
+#contact {
+    --row-pad: 0.7rem;
+}
 #contact .contact-entry {
     align-items: baseline;
     column-gap: 1rem;
     display: grid;
     grid-template-columns: 6.5rem minmax(0, 1fr);
     line-height: var(--content-line-height);
-    padding: 0.7rem 0;
+    padding: var(--row-pad) 0;
 }
 #contact .contact-label {
     color: var(--ink-soft);
@@ -1054,7 +1150,7 @@ footer * {
 @media (max-width: 760px) {
     .section {
         display: block;
-        padding: 1.7rem 0 1.85rem;
+        padding: 1.7rem 0 calc(1.85rem - var(--row-pad, 0rem));
     }
     .section > h2 {
         align-items: baseline;

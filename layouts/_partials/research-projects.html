@@ -21,7 +21,13 @@
     {{ range .entries }}
     {{ $project := . }}
     <article class="research-project">
-      <div class="research-project-media research-project-media-{{ default "default" .visual }}">
+      {{- /* The brackets are drawn on the <article>, the columns on the div
+             inside it. They cannot be the same element: an absolutely
+             positioned pseudo-element of a grid container resolves against its
+             grid area rather than the padding box, so the brackets collapse to
+             their arms. */ -}}
+      <div class="research-project-grid">
+      <div class="research-project-media">
         {{ with $project.image }}
         {{ $image := resources.Get . }}
         {{ if $image }}
@@ -42,6 +48,11 @@
           {{ with .prefix }}<span class="project-prefix">{{ . }}:</span>{{ end }}
           <span class="title">{{ .title }}</span>
         </header>
+        {{ with .keywords }}
+        <div class="research-project-keywords">
+          {{ range $i, $k := . }}{{ if $i }}<span class="sep" aria-hidden="true">&middot;</span>{{ end }}<span>{{ $k }}</span>{{ end }}
+        </div>
+        {{ end }}
         {{ with .description }}
         <div class="research-project-description">{{ . | markdownify }}</div>
         {{ end }}
@@ -73,6 +84,7 @@
           {{ end }}
         </div>
         {{ end }}
+      </div>
       </div>
     </article>
     {{ end }}

@@ -9,6 +9,7 @@ sections:
         title: Oblivious Probabilistic Outcome Logic
         prefix: opOL
         image: image/opol.png
+        keywords: [Lean 4, Program logic, Probabilistic programming]
         description: >
           Practical randomized protocols in distributed systems and hardware
           often rely on oblivious adversaries, but randomization + control flow can
@@ -21,6 +22,7 @@ sections:
       - id: type-confusion-security
         title: Type-Confusion Security
         image: image/type-confusion.png
+        keywords: [Information flow, Type systems, Security]
         description: >
           In decentralized systems, untrusted components can ignore the type
           system and lie about the interfaces they provide, causing type
@@ -33,6 +35,7 @@ sections:
       - id: autoformalization
         title: Autoformalization
         image: image/mathai.png
+        keywords: [Lean 4, AI for Mathematics]
         description: >
           Autoformalization asks AI systems to translate mathematical
           statements and proofs into Lean code. Cornell's ongoing Math+AI project, led by [Prof. Daniel Halpern-Leistner](https://danielhl.github.io/),
@@ -50,6 +53,7 @@ sections:
         title: Differential Testing for LLVM
         prefix: Vellvm
         image: image/VellvmSlide-new.svg
+        keywords: [Rocq, LLVM IR, Differential testing]
         description: >
           LLVM IR is a widely used compiler intermediate representation whose
           official semantics are informal. Developed in [Prof. Steve Zdancewic](https://www.cis.upenn.edu/~stevez/)'s
@@ -66,6 +70,7 @@ sections:
       - id: precedence-constraints
         title: Knapsack Problems with Precedence Constraints
         image: image/precedence.png
+        keywords: [Algorithms]
         description: >
           Real-world knapsack problems, including cryptocurrency mining and
           inventory planning, often involve dependencies. However,
