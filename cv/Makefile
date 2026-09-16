@@ -2,14 +2,16 @@ MAIN=cv
 RESUME=resume
 DATA_DIR=../data
 GENERATED=generated/data.tex
-DATA=$(wildcard $(DATA_DIR)/*.yaml)
+# publications.yaml is generated from refs.bib and carries `_tex: skip: true`, so
+# it never reaches data.tex. Excluding it keeps a site rebuild from relinking both PDFs.
+DATA=$(filter-out $(DATA_DIR)/publications.yaml,$(wildcard $(DATA_DIR)/*.yaml))
 BIB=../assets/data/refs.bib
 SITE_CV=../static/cv/hanxi-chen-cv.pdf
 SITE_RESUME=../static/cv/hanxi-chen-resume.pdf
 
 .PHONY: all generate pdf install resume resume-pdf resume-install force force-resume clean
 
-all: install
+all: install resume-install
 
 $(GENERATED): $(DATA) ../scripts/yaml_to_tex_data.py
 	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) --output $(GENERATED)
@@ -57,4 +59,5 @@ clean:
 	rm -f $(MAIN).fls $(MAIN).log $(MAIN).out $(MAIN).pdf $(MAIN).run.xml $(MAIN)-blx.bib
 	rm -f $(RESUME).aux $(RESUME).bbl $(RESUME).bcf $(RESUME).blg $(RESUME).fdb_latexmk
 	rm -f $(RESUME).fls $(RESUME).log $(RESUME).out $(RESUME).pdf $(RESUME).run.xml $(RESUME)-blx.bib
+	rm -f *-SAVE-ERROR
 	rm -rf generated

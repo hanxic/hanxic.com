@@ -6,11 +6,15 @@ PUBLICATIONS_BIB ?= assets/data/refs.bib
 PUBLICATIONS_DATA ?= data/publications.yaml
 PUBLICATIONS_SCRIPT ?= scripts/bib_to_publications_yaml.py
 
-.PHONY: all build site serve cv cv-pdf cv-data resume resume-pdf publications-data clean clean-site clean-cv help
+.PHONY: all build site serve cv cv-pdf cv-data resume resume-pdf publications-data clean clean-site clean-cv clean-data help
+
+# `cv` and `resume` are separate recursions into cv/, and both build generated/data.tex.
+# Under -j they would race on that one file, so the top level stays serial.
+.NOTPARALLEL:
 
 all: build
 
-build: cv resume site
+build: publications-data cv resume site
 
 site: publications-data
 	$(HUGO) $(HUGO_FLAGS)
@@ -38,17 +42,21 @@ publications-data: $(PUBLICATIONS_DATA)
 $(PUBLICATIONS_DATA): $(PUBLICATIONS_BIB) $(PUBLICATIONS_SCRIPT)
 	python3 $(PUBLICATIONS_SCRIPT) --input $(PUBLICATIONS_BIB) --output $(PUBLICATIONS_DATA)
 
-clean: clean-cv clean-site
+clean: clean-cv clean-site clean-data
 
 clean-site:
 	rm -rf public
+
+clean-data:
+	rm -f $(PUBLICATIONS_DATA)
 
 clean-cv:
 	$(MAKE) -C $(CV_DIR) clean
 
 help:
 	@echo "Targets:"
-	@echo "  make          Build updated CV/resume PDFs as needed, then build the Hugo site"
+	@echo "  make          Regenerate publication data, rebuild the CV/resume PDFs as"
+	@echo "               needed, then build the Hugo site"
 	@echo "  make build    Same as make"
 	@echo "  make site     Build the Hugo site only"
 	@echo "  make serve    Start the Hugo development server with drafts"
@@ -60,4 +68,4 @@ help:
 	@echo "               Build cv/resume.pdf without copying it into static/cv"
 	@echo "  make publications-data"
 	@echo "               Regenerate data/publications.yaml from assets/data/refs.bib"
-	@echo "  make clean    Remove generated CV files and Hugo public output"
+	@echo "  make clean    Remove generated CV files, publication data, and Hugo output"
