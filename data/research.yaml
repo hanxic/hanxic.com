@@ -27,7 +27,8 @@ entries:
     bullets:
       - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and LaTeX-to-Lean translation tools with interactive dependency graphs; now also directing a newer project on large language models for program reasoning.
     resume_bullets:
-      - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and LaTeX-to-Lean translation tools with interactive dependency graphs; now also directing a newer project on large language models for program reasoning.
+      - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and MathCopilot.org, a LaTeX-to-Lean translation tools with interactive dependency graphs
+      - Also mentoring a second team building agentic framework for synthesizing invariants for program logics in software engineering.
   - role: Research Assistant
     group: PLClub
     supervisors:
