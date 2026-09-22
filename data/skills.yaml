@@ -8,7 +8,7 @@ entries:
       - Lean 4
       - Rocq
       - Z3
-      - property-based testing
+      - property-based testing (QuickCheck)
   - category: Languages & tools
     items:
       - OCaml
@@ -19,10 +19,12 @@ entries:
       - Rust
       - PyTorch
       - SystemVerilog
-      - LLVM IR/Clang
-      - X86 Assembly
+      - LLVM
+      - Clang
+      - Assembly
       - RISC-V
-      - Go
+      - Git
+      - Docker
   # resume_category renames the row for the resume only, so the CV keeps saying
   # "Research interests".
   - category: Research interests
