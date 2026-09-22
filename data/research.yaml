@@ -14,9 +14,9 @@ entries:
       - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
       - Led the Lean mechanization of Type-Confusion Security, proving type safety for the static and dynamic information-flow checks that protect decentralized systems whose untrusted components can misrepresent dynamic types.
     resume_bullets:
-      - Working toward end-to-end security guarantees -- reasoning about adversaries in probabilistic and concurrent systems, and carrying those guarantees down to executed code through semantics-preserving compilation.
-      - Developed opOL, a program logic for probabilistic nondeterministic programs under oblivious adversaries, and used it to verify randomized caching and leader-election protocols; the metatheory and case studies are fully mechanized in Lean 4.
-      - Led the Lean mechanization of Type-Confusion Security and proved its type safety, enforcing safety in decentralized systems whose untrusted components misrepresent dynamic types and induce confused-deputy attacks.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a separation logic for probabilistic nondeterministic programs with oblivious adversaries, supporting compositional reasoning about probabilistic independence and unbounded loops.
+      - Mechanized opOL's metatheory in Lean 4 and verified case studies inspired by randomized caching and leader-election protocols.
+      - Co-developed a theory of type-confusion security for decentralized systems, where untrusted components misrepresent dynamic types; led its Lean mechanization and prove type safety for static and dynamic checks under ideal-world and real-world attacker models.
   - role: Research Mentor
     group: Cornell Math+AI
     supervisors:
@@ -40,10 +40,16 @@ entries:
       - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential-testing framework that found novel LLVM bugs.
       - Developed Rocq infrastructure for permutation reasoning and list AC unification, then applied it to formalize first-order classical linear logic with cut elimination and a linear-resource calculus for asynchronous queries.
       - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
+    # A bullet may be a plain string, or a {lead, note, text} map that prints the
+    # lead in bold. The thesis titles use the map form: on multi-author papers
+    # they answer "which part was his?" in a way a verb phrase cannot.
     resume_bullets:
-      - Co-authored the ICFP 2024 Vellvm memory-model paper -- designed a low-level memory model for LLVM optimization reasoning and verified its serialization lemmas in Rocq.
-      - Built a Rocq/OCaml differential-testing framework validating Vellvm against real LLVM implementations, with QuickChick generators for UB-free programs; found previously unreported LLVM bugs.
-      - Developed Rocq infrastructure for permutation reasoning and list AC unification, and used it to formalize first-order classical linear logic with cut elimination.
+      - A main contributor to the Verified LLVM Project (Vellvm), which develops formal semantics for LLVM IR in Rocq using interaction tree and coinduction; co-authored its ICFP 2024 paper, helping design a low-level memory model for optimization reasoning.
+      - lead: Random Testing at IR Level
+        note: senior thesis
+        text: built a Rocq/OCaml differential-testing framework validating Vellvm against real LLVM, with QuickChick generators for UB-free programs; found previously unreported LLVM bugs.
+      - Developed Rocq infrastructure for permutation reasoning and list AC unification, then developed a Rocq formalization for polymorphic, multiplicative-exponential linear logic with cut elimination.
+      - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
   - role: Research Assistant
     group: Wharton Research Scholars
     supervisors:
@@ -54,8 +60,12 @@ entries:
     bullets:
       - Studied precedence-constrained knapsack problems, which are strongly NP-hard in general, and designed pseudo-polynomial algorithms for structured poset classes including unions of three paths and one-directional bipartite posets with consecutive children.
       - Presented the work in the Wharton Research Scholars seminar and wrote an undergraduate thesis.
+    # The title carries the problem statement, so the body no longer repeats
+    # "for precedence-constrained knapsack" and the bullet still fits two lines.
     resume_bullets:
-      - Designed pseudo-polynomial algorithms for precedence-constrained knapsack on structured poset classes -- unions of three paths and one-directional bipartite posets with consecutive children -- and wrote an undergraduate thesis on the work.
+      - lead: Knapsack Problem with Precedence Constraints
+        note: Wharton Research Scholars thesis
+        text: designed pseudo-polynomial algorithms on structured poset classes -- unions of three paths and one-directional bipartite posets with consecutive children.
   # - role: Research Assistant
   #   group: Penn Computational Intelligence Lab
   #   supervisors:

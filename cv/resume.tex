@@ -34,7 +34,9 @@
 \makeatother
 \newcommand{\CVRawData}[1]{\csname cvdata@#1\endcsname}
 
-\newcommand{\Emptyline}{\vspace{0.3em}}
+% 0.3em is the nicer gap, but the page is exactly full: halving it is what buys
+% the Teaching line room without touching margins or type size.
+\newcommand{\Emptyline}{\vspace{0.15em}}
 \newcommand{\ResumeSection}[2]{%
   \vspace{0.45em}
   {\centering
@@ -79,6 +81,36 @@
   \hfill #3%
 }
 
+% resume_years overrides cv_years for the resume alone: the CV wants Penn's
+% graduation date, the resume wants the span, and the CV must not change.
+\newcommand{\ResumeEntryYears}[1]{%
+  \CVIfSet{education.entries.#1.resume_years}{%
+    \CVData{education.entries.#1.resume_years}%
+  }{\CVData{education.entries.#1.cv_years}}%
+}
+% Place and time ride together on the school line so each institution carries
+% exactly one date, instead of a date riding on whichever degree row is first.
+\newcommand{\ResumeSchoolRight}[1]{%
+  \CVData{education.entries.#1.cv_location}\Sep\ResumeEntryYears{#1}%
+}
+% resume_note likewise overrides cv_note. \ResumeSchool tests its optional
+% argument with \detokenize, so the branch has to be chosen here rather than by
+% handing it a macro that expands to nothing.
+\newcommand{\ResumeSchoolLine}[1]{%
+  \CVIfSet{education.entries.#1.resume_note}{%
+    \ResumeSchool[\CVData{education.entries.#1.resume_note}]
+      {\CVData{education.entries.#1.school}}{\ResumeSchoolRight{#1}}%
+  }{%
+    \CVIfSet{education.entries.#1.cv_note}{%
+      \ResumeSchool[\CVData{education.entries.#1.cv_note}]
+        {\CVData{education.entries.#1.school}}{\ResumeSchoolRight{#1}}%
+    }{%
+      \ResumeSchool
+        {\CVData{education.entries.#1.school}}{\ResumeSchoolRight{#1}}%
+    }%
+  }%
+}
+
 \newcommand{\ResumeAdvisors}[1]{%
   Advisors:\space
   \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
@@ -87,37 +119,79 @@
   }%
 }
 
-\newcommand{\ResumeEducationEntry}[1]{%
-  \CVIfSet{education.entries.#1.cv_note}{%
-    \ResumeSchool[\CVData{education.entries.#1.cv_note}]
-      {\CVData{education.entries.#1.school}}
-      {\CVData{education.entries.#1.cv_location}}%
+\newcommand{\Sep}{\space\textbullet\space}
+
+% Degrees print grouped by their resume_row (default 1) rather than strictly one
+% per line, so an entry can fold short degrees onto a shared line when space is
+% tight. Rows beyond the last populated one cost nothing.
+\newcount\ResumeRowCount
+\newcommand{\DegreeIfRow}[4]{%
+  \CVIfSet{education.entries.#1.degrees.#2.resume_row}{%
+    \ifnum\pdfstrcmp{\CVRawData{education.entries.#1.degrees.#2.resume_row}}{#3}=0
+      #4%
+    \fi
   }{%
-    \ResumeSchool
-      {\CVData{education.entries.#1.school}}
-      {\CVData{education.entries.#1.cv_location}}%
-  }\\
-  \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
-    \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
-    \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
-    \CVIfSet{education.entries.#1.degrees.\degree.cv_date}{%
-      \hfill \CVData{education.entries.#1.degrees.\degree.cv_date}%
-    }{%
-      \ifnum\degree=1\relax\hfill \CVData{education.entries.#1.cv_years}\fi
-    }\par
+    \ifnum#3=1\relax #4\fi
   }%
-  \CVIfSet{education.entries.#1.gpa}{%
-    GPA: \CVData{education.entries.#1.gpa}%
-    \CVIfSet{education.entries.#1.distinction}{, \emph{\CVData{education.entries.#1.distinction}}}{}%
-    \par
+}
+\newcommand{\ResumeDegreeRow}[2]{%
+  \global\ResumeRowCount=0
+  \foreach \degree in {1,...,\CVLen{education.entries.#1.degrees}}{%
+    \DegreeIfRow{#1}{\degree}{#2}{%
+      \ifnum\ResumeRowCount>0 ; \fi
+      \textbf{\CVData{education.entries.#1.degrees.\degree.title}}%
+      \CVIfSet{education.entries.#1.degrees.\degree.focus}{, \CVData{education.entries.#1.degrees.\degree.focus}}{}%
+      % resume_school names the awarding school inline, where `focus` already
+      % goes. Only worth setting where it tells the reader something the degree
+      % does not already imply -- Wharton for the economics B.S.
+      \CVIfSet{education.entries.#1.degrees.\degree.resume_school}{, \textit{\CVData{education.entries.#1.degrees.\degree.resume_school}}}{}%
+      \global\advance\ResumeRowCount by 1
+    }%
+  }%
+}
+\newcommand{\ResumeEducationEntry}[1]{%
+  \ResumeSchoolLine{#1}\\
+  % No date on the degree rows: the school line above carries it, which leaves
+  % every degree row with an empty right margin rather than only some of them.
+  \ResumeDegreeRow{#1}{1}\par
+  % The statement sits under the degree it describes rather than above the
+  % section. Indented on both sides so it reads as a gloss on the Ph.D. line;
+  % sized to wrap to exactly two lines at this measure.
+  \CVIfSet{education.entries.#1.resume_statement}{%
+    \CVIfSet{profile.statement.resume}{%
+      {\leftskip=1.5em \rightskip=1.5em \noindent
+        \CVData{profile.statement.resume}\par}%
+    }{}%
   }{}%
+  % Remaining rows: one line each, skipped silently when empty. GPA and awards
+  % then start a line of their own so the degree list stays a degree list, but
+  % they share that line with each other rather than taking one each. Entries
+  % with none of the three (Cornell) emit no line at all.
+  \ResumeDegreeRow{#1}{2}%
+  \ifnum\ResumeRowCount>0 \par\fi
+  \ResumeDegreeRow{#1}{3}%
+  \ifnum\ResumeRowCount>0 \par\fi
+  \global\ResumeRowCount=0
+
+  \CVIfSet{education.entries.#1.gpa}{%
+    \ifnum\ResumeRowCount>0 \Sep\fi
+    GPA: \CVData{education.entries.#1.gpa}%
+    \CVIfSet{education.entries.#1.distinction}{\Sep Honors: \emph{\CVData{education.entries.#1.distinction}}}{}%
+    \global\advance\ResumeRowCount by 1
+  }{}%
+  \CVIfSet{education.entries.#1.resume_awards}{%
+    \ifnum\ResumeRowCount>0 \Sep\fi
+    Awards: \ResumeAwardsLine
+    \global\advance\ResumeRowCount by 1
+  }{}%
+  \ifnum\ResumeRowCount>0 \par\fi
   \CVIfSet{education.entries.#1.advisors.@len}{\ResumeAdvisors{#1}\par}{}%
 }
 
 \newcount\ResumeAwardCount
 \newcommand{\HonorIfShown}[2]{%
-  \CVIfSet{honors.entries.#1.show.cv}{%
-    \ifnum\pdfstrcmp{\CVRawData{honors.entries.#1.show.cv}}{false}=0
+  \CVIfSet{honors.entries.#1.show.resume}{%
+    \ifnum\pdfstrcmp{\CVRawData{honors.entries.#1.show.resume}}{false}=0
     \else
       #2%
     \fi
@@ -128,7 +202,9 @@
   \foreach \entry in {1,...,\CVLen{honors.entries}}{%
     \ifnum\pdfstrcmp{\CVRawData{honors.entries.\entry.group}}{award}=0
       \HonorIfShown{\entry}{%
-        \ifnum\ResumeAwardCount>0 \space\textbullet\space \fi
+        % Commas, not bullets: this list is nested inside a bullet-separated
+        % line, so reusing \Sep here would flatten the two levels together.
+        \ifnum\ResumeAwardCount>0 , \fi
         \CVData{honors.entries.\entry.name}%
         \global\advance\ResumeAwardCount by 1
       }%
@@ -140,9 +216,8 @@
   \ResumeSection{Education \& Awards}{%
     \foreach \entry in {1,...,\CVLen{education.entries}}{%
       \ResumeEducationEntry{\entry}%
-      \Emptyline
+      \ifnum\entry<\CVLen{education.entries}\relax\Emptyline\fi
     }%
-    \textbf{Awards}: \ResumeAwardsLine\par
   }%
 }
 
@@ -246,7 +321,18 @@
 
     \begin{itemize}
       \foreach \bullet in {1,...,\CVLen{research.entries.#1.resume_bullets}}{%
-        \item \CVData{research.entries.#1.resume_bullets.\bullet}
+        % A bullet is either a plain string or a {lead, note, text} map that
+        % opens with a named artifact (the thesis titles). The lead is set plain:
+        % bolding it competed with the entry headings for attention.
+        \CVIfSet{research.entries.#1.resume_bullets.\bullet.lead}{%
+          \item \CVData{research.entries.#1.resume_bullets.\bullet.lead}%
+            \CVIfSet{research.entries.#1.resume_bullets.\bullet.note}{%
+              \space(\CVData{research.entries.#1.resume_bullets.\bullet.note})%
+            }{}%
+            : \CVData{research.entries.#1.resume_bullets.\bullet.text}
+        }{%
+          \item \CVData{research.entries.#1.resume_bullets.\bullet}
+        }%
       }%
     \end{itemize}
   \end{minipage}\par
@@ -287,9 +373,9 @@
     \textbf{\CVData{projects.entries.#1.title}} -- \emph{\CVData{projects.entries.#1.technologies.@joined}}%
     \hfill \CVData{projects.entries.#1.period}
 
-    \textbf{\CVData{projects.entries.#1.institution}}%
-    \CVIfSet{projects.entries.#1.course}{, \emph{\CVData{projects.entries.#1.course}}}{}
-
+    % No school-and-course line on the resume: "University of Pennsylvania, CIS
+    % 5710 ..." frames these as coursework rather than as engineering work. The
+    % CV still prints both from the same YAML keys (cv.tex).
     \begin{itemize}
       \ResumeProjectBullets{#1}
     \end{itemize}
@@ -305,12 +391,23 @@
   }%
 }
 
+\newcommand{\ResumeSkillRow}[1]{%
+  \textbf{\CVIfSet{skills.entries.#1.resume_category}{%
+    \CVData{skills.entries.#1.resume_category}%
+  }{\CVData{skills.entries.#1.category}}:}
+  \CVData{skills.entries.#1.items.@joined}.\par
+}
+
+% Teaching rides along here as one row rather than its own section: a section
+% header plus a per-institution breakdown costs the page its last five lines.
+% Rows print in the order the section title names them: skill rows, the Areas
+% row, then Teaching.
 \newcommand{\TechnicalSkills}{%
-  \ResumeSection{Skills \& Research Interests}{%
+  \ResumeSection{Skills, Areas \& Teaching}{%
     \foreach \entry in {1,...,\CVLen{skills.entries}}{%
-      \textbf{\CVData{skills.entries.\entry.category}:}
-      \CVData{skills.entries.\entry.items.@joined}.\par
+      \ResumeIfShown{skills}{\entry}{\ResumeSkillRow{\entry}}%
     }%
+    \textbf{Teaching:} \CVData{teaching.resume_line}\par
   }%
 }
 

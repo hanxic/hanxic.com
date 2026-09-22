@@ -3,6 +3,23 @@ _tex:
   join:
     numbers: " / "
     terms: ", "
+# The resume has room for one line, so it counts the appointments below rather
+# than listing them: 12 term-appointments over 7 distinct courses, 5 of those
+# terms as Head TA. Recount when a term is added.
+# "at Cornell and Penn" is dropped as redundant: Education names both schools
+# a few lines above.
+#
+# The five topics cover all seven courses: formal verification takes CS 4160/5160
+# and CIS 5000 (Software Foundations is Rocq mechanization by another name),
+# programming languages takes CS 4110/5110 and CIS 5520, compilers CIS 5521,
+# algorithms CIS 5020, and network theory NETS 3120. "graph ML" rather than "machine
+# learning": NETS 3120 is network science with graph learning, so the bare term
+# would overclaim, and "network science" alone drops the ML signal.
+#
+# Measured at 512.66pt against a 520.34pt line -- 8pt of slack, so any addition
+# here wraps. "appointments" not "TA appointments" for that reason; "5 as Head
+# TA" later in the line already establishes the role.
+resume_line: "12 appointments, 5 as Head TA -- formal verification, programming languages, compilers, algorithms, network theory."
 entries:
   - location: Cornell University
     courses:

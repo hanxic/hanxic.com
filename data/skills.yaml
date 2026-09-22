@@ -9,25 +9,29 @@ entries:
       - Rocq
       - Z3
       - property-based testing
-      - static analysis
   - category: Languages & tools
     items:
       - OCaml
       - Haskell
-      - C/C++
-      - Rust
       - Python
-      - PyTorch
+      - C/C++
       - Java
+      - Rust
+      - PyTorch
       - SystemVerilog
       - LLVM IR/Clang
-      - Docker
+      - X86 Assembly
+      - RISC-V
+      - Go
+  # resume_category renames the row for the resume only, so the CV keeps saying
+  # "Research interests".
   - category: Research interests
+    resume_category: Areas
     items:
-      - compilers
       - formal verification
       - program logics
       - probabilistic programming
       - concurrency
+      - compilers
       - information flow
 ...

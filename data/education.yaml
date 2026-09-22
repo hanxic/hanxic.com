@@ -20,6 +20,8 @@ entries:
     cv_years: 2025 -- Present
     location: Ithaca, NY
     cv_location: Ithaca, NY
+    # Prints profile.statement.resume under the Ph.D. line in the resume.
+    resume_statement: true
     degrees:
       - title: Ph.D. in Computer Science
         focus: Programming Languages
@@ -47,16 +49,34 @@ entries:
     location: Philadelphia, PA
     cv_location: Philadelphia, PA
     cv_note: Penn Engineering & The Wharton School
+    # The resume annotates the school line instead of naming both sub-schools
+    # there: "Penn Engineering" is what an M.S.E./B.S.E. already implies, and
+    # naming both leaves the reader to guess which degree came from which.
+    # Lowercase on purpose -- it is a gloss, not a Penn program name.
+    resume_note: triple degree
+    # The span, not the graduation date the CV wants, since this now sits on the
+    # school line as the one date for the institution.
+    resume_years: 2020 -- 2025
+    # resume_row assigns degrees to lines in the resume (default 1). Degrees
+    # sharing a row print on one line separated by semicolons; here each Penn
+    # degree gets its own row, so the three read as three credentials rather
+    # than a run-on. GPA and awards follow on a line of their own.
     degrees:
       # TODO: add cv_date to the two bachelor's degrees once confirmed.
       - title: M.S.E. in Computer and Information Science
         cv_date: May 2025
+        resume_row: 1
       - title: B.S.E. in Computer Science
         focus: Mathematics minor
+        resume_row: 2
         attributes:
         - Mathematics Minor
         site_note: CIS Senior Thesis
       - title: B.S. in Economics
+        resume_row: 3
+        # Wharton is the one sub-school worth naming: without it this reads as a
+        # generic arts-and-sciences economics degree.
+        resume_school: The Wharton School
         site_note: Wharton Research Scholars
     advisors:
       - name: Steve Zdancewic
@@ -71,6 +91,9 @@ entries:
         - CIS Faculty Appreciation Award
     gpa: 3.97/4.00
     distinction: Summa Cum Laude
+    # Every award in honors.yaml is a Penn award, so the resume prints them here
+    # on the GPA line instead of as a section-wide line of their own.
+    resume_awards: true
     courses:
       - CIS 6700
 ...

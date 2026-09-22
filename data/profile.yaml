@@ -13,6 +13,12 @@ name:
   short: Hanxi Chen
   given: Hanxi
   family: Chen
+# Sits directly under the resume header, above Education: two lines that say what
+# the PhD is for, so a ten-second skim gets the thesis rather than assembling it
+# from four research entries. Keep it to two lines at a 1.5em indent (the text
+# wraps to three past roughly 975pt of natural width).
+statement:
+  resume: "I work on end-to-end security for probabilistic and concurrent systems: designing adversary-aware program logics, exploring AI-assisted proof and invariant synthesis, and building security-preserving compilation frameworks."
 contact:
   handle: hanxic
   # Rendered as the lede of the Contact section -- a statement of what I am open

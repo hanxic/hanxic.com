@@ -324,8 +324,8 @@
     \textbf{\CVData{projects.entries.#1.title}} -- \emph{\CVData{projects.entries.#1.technologies.@joined}}%
     \hfill \CVData{projects.entries.#1.period}
 
-    \textbf{\CVData{projects.entries.#1.institution}}, \emph{\CVData{projects.entries.#1.course}}
-
+    % School and course are deliberately not printed: naming the course frames
+    % these as assigned work. The fields stay in projects.yaml for the website.
     \begin{itemize}
       \foreach \bullet in {1,...,\CVLen{projects.entries.#1.bullets}}{%
         \item \CVData{projects.entries.#1.bullets.\bullet}

@@ -6,12 +6,19 @@ entries:
   - name: CIS Faculty Appreciation Award
     group: award
     time: "2024"
+  # Both are theses/programs rather than awards, and both already appear in the
+  # resume's research section -- "Wharton Research Scholars" as an entry heading,
+  # the CIS thesis under its own title. Listing them here too was duplication.
   - name: CIS Senior Thesis
     group: award
     time: "2024"
+    show:
+      resume: false
   - name: Wharton Research Scholars
     group: award
     time: "2024"
+    show:
+      resume: false
   - name: Eta Kappa Nu
     group: society
     time: "2022, 2023, 2024, 2025"
@@ -27,4 +34,5 @@ entries:
     note: Penn ceased to award the Dean's List citation.
     show:
       cv: false
+      resume: false
 ...
