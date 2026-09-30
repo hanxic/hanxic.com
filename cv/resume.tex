@@ -14,7 +14,13 @@
 \usepackage{ifthen}
 \usepackage{pgffor}
 
-\input{generated/data.tex}
+% Indirect so a tailored variant can be built from the same source: the Makefile
+% passes \def\CVDataFile{generated/data-<variant>.tex} on the pdflatex command
+% line, which wins because \providecommand only fires when undefined. The
+% variant data is data/ overlaid with data-variants/<variant>/, so a variant
+% never forks this file and never touches the CV or the site.
+\providecommand{\CVDataFile}{generated/data.tex}
+\input{\CVDataFile}
 
 \hypersetup{
   pdftitle={\CVData{profile.name.short} Resume},
@@ -37,14 +43,17 @@
 % 0.3em is the nicer gap, but the page is exactly full: halving it is what buys
 % the Teaching line room without touching margins or type size.
 \newcommand{\Emptyline}{\vspace{0.15em}}
-\newcommand{\ResumeSection}[2]{%
+% The optional argument is a right-margin gloss on the heading rule. It is set
+% in a zero-width \llap so it costs no line of its own and leaves the title
+% centred on the full measure rather than on what is left beside it.
+\newcommand{\ResumeSection}[3][]{%
   \vspace{0.45em}
   {\centering
-    \textbf{\MakeUppercase{#1}}\\[-0.45em]
+    \makebox[\textwidth]{\hfill\textbf{\MakeUppercase{#2}}\hfill\llap{\small #1}}\\[-0.45em]
     \rule{\textwidth}{1.6pt}
     \par}
   \vspace{0.05em}
-  #2
+  #3
 }
 
 \newcommand{\CVPrintList}[2]{%
@@ -238,6 +247,10 @@
     \map{
       \step[fieldsource=tag,fieldtarget=usera]
       \step[fieldsource=talk,fieldtarget=userc]
+      % firstauthors names everyone sharing the first slot. Mapped onto namea it
+      % parses as a name list, so its length is what distinguishes a lone first
+      % author (beck2024) from joint ones (beck2025a, beck2025b).
+      \step[fieldsource=firstauthors,fieldtarget=namea]
     }
   }
 }
@@ -251,6 +264,13 @@
     test {\ifdefstring{\namepartgiven}{Hanxi}} and
     test {\ifdefstring{\namepartfamily}{Chen}}
   }{\mkbibbold{\namepartgiven\space\namepartfamily}}{\namepartgiven\space\namepartfamily}%
+  % Two or more names in namea means joint first authorship, which by convention
+  % is the leading run of the author list -- so star positions 1..|namea|. The
+  % star goes before the comma, or it reads as punctuation rather than a mark.
+  \ifboolexpr{
+    test {\ifnumgreater{\value{namea}}{1}} and
+    not test {\ifnumgreater{\value{listcount}}{\value{namea}}}
+  }{\textsuperscript{*}}{}%
   \ifthenelse{\value{listcount}<\value{liststop}}{\addcomma\space}{}%
   \usebibmacro{name:andothers}%
 }
@@ -305,7 +325,7 @@
 \DeclareBibliographyAlias{inprogress}{misc}
 
 \newcommand{\SelectedPublications}{%
-  \ResumeSection{Selected Publications}{%
+  \ResumeSection[\textsuperscript{*}equal contribution]{Selected Publications}{%
     \printbibliography[keyword={publication},heading=none,env=resumebibliography]%
   }%
 }
