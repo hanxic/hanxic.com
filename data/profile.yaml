@@ -18,7 +18,7 @@ name:
 # from four research entries. Keep it to two lines at a 1.5em indent (the text
 # wraps to three past roughly 975pt of natural width).
 statement:
-  resume: "I work on end-to-end security for probabilistic and concurrent systems: designing adversary-aware program logics, exploring AI-assisted proof and invariant synthesis, and building security-preserving compilation frameworks."
+  resume: "I develop formal methods for end-to-end security in probabilistic and concurrent systems, spanning adversary-aware program logics, (AI-assisted) theorem proving techniques and invariant synthesis, and (hyper)properties-preserving compilation."
 contact:
   handle: hanxic
   # Rendered as the lede of the Contact section -- a statement of what I am open

@@ -3,18 +3,56 @@ _tex:
   join:
     technologies: ", "
 entries:
+  # Off the resume by default. It is the one project with no line of sight to
+  # the rest of the page -- everything else there is PL, verification, or
+  # compilers -- so it was paying four lines to widen the profile in a
+  # direction most of the postings do not ask about. Still on the CV, which
+  # prints every entry regardless of `show`. A posting where SystemVerilog or
+  # FPGA work is the point should turn it back on from data-variants/.
   - title: RISC-V Pipelined Processor
+    show:
+      resume: false
     technologies:
       - SystemVerilog
       - Python
       - FPGA
-    period: Feb 2025 -- May 2025
+    period: "2025"
     institution: University of Pennsylvania
     course: CIS 5710 Computer Organization and Design
     supervisor: Prof. Joe Devietti
     bullets:
       - Designed a RISC-V pipelined processor with AXI-Lite caching, multi-cycle units, branch prediction, and memory-mapped I/O.
       - Built verification testbenches, optimized LUT usage and timing behavior, and synthesized the design to FPGA to run compiled programs.
+  # Written as a take-home exercise, and the firm asked that the exercise not be
+  # shared, so no company, data, or prompt is named here and the code is not
+  # mirrored into this repo -- only the approach and result, which are mine to
+  # describe. No institution or supervisor key: this was unaffiliated work, so
+  # the entry prints no attribution line.
+  #
+  # The space claim is deliberately "bounded by the live order book" rather than
+  # "constant". It is literally O(1) for the counting and aggregation queries,
+  # but the book-state query carries a per-client set of open order IDs, so it
+  # is constant in session length and linear in the open book. That is both the
+  # honest bound and the better one: it names the invariant that matters for a
+  # protocol whose sessions are unbounded and whose book is not.
+  #
+  # The resume bullets stay at one line each and name only the design and the
+  # bound. The mechanism -- the single combinator, the exact-length reads off
+  # the BodyLength header, the assumption checks -- is what the follow-up
+  # question is for, and it is all still here in the CV bullets.
+  - title: Streaming FIX Log Processor
+    technologies:
+      - OCaml
+      - Core
+      - Dune
+    period: "2024"
+    bullets:
+      - Built a single-pass processor for session logs of the Financial Information eXchange (FIX) trading protocol, answering order-flow and book-state queries in space bounded by the live order book rather than by the length of the session; the direct implementation is linear in log size.
+      - Designed a single streaming combinator capable of expressing each of the required queries as a fold, using the protocol's BodyLength header for exact-length reads rather than scanning for field separators.
+      - Cross-validated the streaming results against a naive in-memory implementation, and verified the message-ordering and routing assumptions the streaming design depends on.
+    resume_bullets:
+      - Reduced Financial Information eXchange (FIX) trading-protocol log queries from linear space to the open order book's size.
+      - Designed one streaming combinator capable of expressing a range of queries; cross-checked against an in-memory reference.
   - title: Oat Compiler
     technologies:
       - OCaml
@@ -23,12 +61,16 @@ entries:
       - x86
       - Clang
       - Dune
-    period: Feb 2024 -- May 2024
-    institution: University of Pennsylvania
-    course: CIS 7000 (now CIS 5521) Compilers and Interpreters
-    supervisor: Prof. Steve Zdancewic
+    period: "2024"
     bullets:
       - Implemented a compiler for Oat, a C-like language with pointers and structured data, including lexing, parsing, type checking, frontend lowering, and backend code generation to LLVM IR and x86.
+      - Added static analyses and optimizations including mem2reg and dead-code elimination, validated against thousands of test cases.
+    # The enumeration of phases was the long part and the least informative:
+    # every compiler has a lexer. The resume keeps the endpoints -- source
+    # language in, two backends out -- and the optimization work, which is the
+    # part that is not assigned-by-default.
+    resume_bullets:
+      - Implemented a compiler for Oat, a C-like language with pointers and structured data, targeting both LLVM IR and x86.
       - Added static analyses and optimizations including mem2reg and dead-code elimination, validated against thousands of test cases.
   - title: SQL Interpreter
     show:
@@ -37,7 +79,7 @@ entries:
       - Haskell
       - MySQL
       - Cabal
-    period: Sep 2023 -- Dec 2023
+    period: "2023"
     institution: University of Pennsylvania
     course: CIS 5520 Advanced Programming
     supervisor: Prof. Stephanie Weirich

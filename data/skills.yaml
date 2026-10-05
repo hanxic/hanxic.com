@@ -3,37 +3,50 @@ _tex:
   join:
     items: ", "
 entries:
-  - category: Proof assistants & verification
+  # Split by kind -- languages, then the things used on them -- rather than by
+  # subfield. Within Languages the order is still editorial, not alphabetical:
+  # the two proof assistants lead, then the two implementation languages the
+  # projects are actually written in, so the row states the profile before it
+  # starts listing. After that it descends by how much of the page backs the
+  # name: the systems tier, then the general-purpose tier, then hardware.
+  - category: Languages
     items:
       - Lean 4
       - Rocq
-      - Z3
-      - property-based testing (QuickCheck)
-  - category: Languages & tools
-    items:
       - OCaml
       - Haskell
       - Python
-      - C/C++
       - Java
+      - C/C++
       - Rust
-      - PyTorch
+      - Typescript
       - SystemVerilog
+      - RISC-V assembly
+  # Solvers and verification first, then compilers, then dev infrastructure,
+  # then ML and data, with LaTeX last -- expected on a CV, least informative to
+  # a PL reader. Verus sits next to Z3, which is its backend.
+  - category: Tools
+    items:
+      - Z3
+      - Verus
+      - QuickChick
       - LLVM
       - Clang
-      - Assembly
-      - RISC-V
       - Git
       - Docker
+      - PyTorch
+      - Spark
+      - MySQL
+      - LaTeX
   # resume_category renames the row for the resume only, so the CV keeps saying
   # "Research interests".
   - category: Research interests
     resume_category: Areas
     items:
+      - programming languages
       - formal verification
       - program logics
       - probabilistic programming
-      - concurrency
       - compilers
-      - information flow
+      - program security
 ...

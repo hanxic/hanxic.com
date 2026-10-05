@@ -121,14 +121,18 @@
 }
 
 \newcommand{\ResumeAdvisors}[1]{%
-  Advisors:\space
+  \textbf{Advisors:}\space
   \foreach \advisor in {1,...,\CVLen{education.entries.#1.advisors}}{%
     \CVData{education.entries.#1.advisors.\advisor.title}~\CVData{education.entries.#1.advisors.\advisor.name}%
     \ifnum\advisor<\CVLen{education.entries.#1.advisors}\relax, \fi
   }%
+  \CVIfSet{education.entries.#1.resume_leadership}{%
+    \ResumeMetaSep\textbf{Leadership:}\space\CVData{education.entries.#1.resume_leadership}%
+  }{}%
 }
 
 \newcommand{\Sep}{\space\textbullet\space}
+\newcommand{\ResumeMetaSep}{\hspace{0.8em}\textbullet\hspace{0.8em}}
 
 % Degrees print grouped by their resume_row (default 1) rather than strictly one
 % per line, so an entry can fold short degrees onto a shared line when space is
@@ -184,13 +188,13 @@
 
   \CVIfSet{education.entries.#1.gpa}{%
     \ifnum\ResumeRowCount>0 \Sep\fi
-    GPA: \CVData{education.entries.#1.gpa}%
-    \CVIfSet{education.entries.#1.distinction}{\Sep Honors: \emph{\CVData{education.entries.#1.distinction}}}{}%
+    \textbf{GPA:} \CVData{education.entries.#1.gpa}%
+    \CVIfSet{education.entries.#1.distinction}{\ResumeMetaSep\textbf{Honors:} \emph{\CVData{education.entries.#1.distinction}}}{}%
     \global\advance\ResumeRowCount by 1
   }{}%
   \CVIfSet{education.entries.#1.resume_awards}{%
-    \ifnum\ResumeRowCount>0 \Sep\fi
-    Awards: \ResumeAwardsLine
+    \ifnum\ResumeRowCount>0 \ResumeMetaSep\fi
+    \textbf{Awards:} \ResumeAwardsLine
     \global\advance\ResumeRowCount by 1
   }{}%
   \ifnum\ResumeRowCount>0 \par\fi
@@ -246,6 +250,9 @@
   \maps[datatype=bibtex]{
     \map{
       \step[fieldsource=tag,fieldtarget=usera]
+      % award is nonstandard and not in biblatex's data model, so preserve it
+      % in a scratch field before printing bibliography entries.
+      \step[fieldsource=award,fieldtarget=userb]
       \step[fieldsource=talk,fieldtarget=userc]
       % firstauthors names everyone sharing the first slot. Mapped onto namea it
       % parses as a name list, so its length is what distinguishes a lone first
@@ -254,6 +261,7 @@
     }
   }
 }
+\newcommand{\PrintAward}{\iffieldundef{userb}{}{\space[\printfield{userb}]}}
 \newcommand{\PrintTalk}{\iffieldundef{userc}{}{\space\printfield{userc}\adddot}}
 \addbibresource{../assets/data/refs.bib}
 \nocite{*}
@@ -307,6 +315,7 @@
   \printfield{title}\adddot\space
   % The tag already carries the year (ICFP'24), so don't print it twice.
   \iffieldundef{usera}{\printfield{journaltitle}\addcomma\space\printfield{year}}{\printfield{usera}}\adddot
+  \PrintAward
 }
 \DeclareBibliographyDriver{inproceedings}{%
   \printnames{author}\adddot\space
@@ -368,7 +377,7 @@
 }
 
 \newcommand{\ResearchExperience}{%
-  \ResumeSection{Relevant Research Experience}{%
+  \ResumeSection{Research Experience}{%
     \foreach \entry in {1,...,\CVLen{research.entries}}{%
       \ResumeIfShown{research}{\entry}{\ResumeResearchEntry{\entry}\Emptyline}%
     }%
@@ -388,14 +397,36 @@
   }%
 }
 
+\newcommand{\ResumeProjectAttributionBody}[1]{%
+  \CVIfSet{projects.entries.#1.institution}{%
+    \textbf{\CVData{projects.entries.#1.institution}}%
+    \CVIfSet{projects.entries.#1.supervisor}{, advised by \CVData{projects.entries.#1.supervisor}}{}
+
+  }{%
+    \CVIfSet{projects.entries.#1.supervisor}{Advised by \CVData{projects.entries.#1.supervisor}
+
+    }{}%
+  }%
+}
+
+\newcommand{\ResumeProjectAttribution}[1]{%
+  \CVIfSet{projects.entries.#1.resume_attribution}{%
+    \ifnum\pdfstrcmp{\CVRawData{projects.entries.#1.resume_attribution}}{false}=0
+    \else
+      \ResumeProjectAttributionBody{#1}%
+    \fi
+  }{\ResumeProjectAttributionBody{#1}}%
+}
+
 \newcommand{\ResumeProjectEntry}[1]{%
   \begin{minipage}{\textwidth}
     \textbf{\CVData{projects.entries.#1.title}} -- \emph{\CVData{projects.entries.#1.technologies.@joined}}%
     \hfill \CVData{projects.entries.#1.period}
 
-    % No school-and-course line on the resume: "University of Pennsylvania, CIS
-    % 5710 ..." frames these as coursework rather than as engineering work. The
-    % CV still prints both from the same YAML keys (cv.tex).
+    % The master prints institution/advisor attribution while a tailored
+    % variant may suppress it to spend the line on posting-specific evidence.
+    % Unaffiliated work sets neither key and prints no line.
+    \ResumeProjectAttribution{#1}%
     \begin{itemize}
       \ResumeProjectBullets{#1}
     \end{itemize}

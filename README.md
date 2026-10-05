@@ -43,7 +43,7 @@ Use this as the first place to decide where a change belongs:
 | Research experience for CV/resume | `data/research.yaml` | `cv/cv.tex`, `cv/resume.tex`; use `resume_bullets` for shorter resume wording |
 | Resume skills and research interests | `data/skills.yaml` | `cv/resume.tex` |
 | CV layout | `cv/cv.tex` | Generated macros come from `cv/generated/data.tex` |
-| Resume layout | `cv/resume.tex` | Build/install with `make resume` |
+| Resume layout | `cv/resume.tex` | Build with `make resume`; commit with `make commit-resume` |
 | New content pages or posts | `content/` | Hugo chooses templates from `layouts/` |
 | Hugo template behavior | `layouts/` | Keep content/data in `content/`, `data/`, or `assets/data/` when possible |
 
@@ -59,7 +59,8 @@ Use this as the first place to decide where a change belongs:
 make
 ```
 
-Refreshes the CV PDF in `static/cv/` and builds the Hugo site.
+Regenerates shared data, compiles the CV and resume in `cv/`, and builds the
+Hugo site. The site-facing PDFs in `static/cv/` are left unchanged.
 
 ```sh
 make serve
@@ -78,14 +79,14 @@ Hugo site.
 make cv
 ```
 
-Regenerates the LaTeX data macros, builds the CV PDF, and copies it to
-`static/cv/hanxi-chen-cv.pdf`.
+Regenerates the LaTeX data macros and builds `cv/cv.pdf` without changing the
+site-facing copy.
 
 ```sh
 make cv-pdf
 ```
 
-Builds `cv/cv.pdf` without installing it into `static/cv/`.
+Same as `make cv`.
 
 ```sh
 make cv-data
@@ -97,14 +98,23 @@ Regenerates `cv/generated/data.tex` from `data/*.yaml`.
 make resume
 ```
 
-Regenerates the LaTeX data macros, builds the one-page resume PDF, and copies it
-to `static/cv/hanxi-chen-resume.pdf`.
+Regenerates the LaTeX data macros and builds the one-page `cv/resume.pdf`
+without changing the site-facing copy.
 
 ```sh
 make resume-pdf
 ```
 
-Builds `cv/resume.pdf` without installing it into `static/cv/`.
+Same as `make resume`.
+
+```sh
+make commit
+```
+
+Builds both PDFs as needed, then copies them to their tracked site-facing paths
+under `static/cv/`. Use `make commit-cv` or `make commit-resume` to commit only
+one document to the website source. The target does not create a Git commit; you
+can inspect `git diff -- static/cv/` and commit the updated files normally.
 
 ```sh
 make publications-data

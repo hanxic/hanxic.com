@@ -13,9 +13,9 @@ SITE_RESUME=../static/cv/hanxi-chen-resume.pdf
 # stay in cv/ and are never copied to static/: the site publishes the master only.
 VARIANT_DIR=../data-variants
 
-.PHONY: all generate pdf install resume resume-pdf resume-install force force-resume variants clean
+.PHONY: all generate pdf install resume resume-pdf resume-install commit force force-resume variants clean
 
-all: install resume-install
+all: pdf resume-pdf
 
 $(GENERATED): $(DATA) ../scripts/yaml_to_tex_data.py
 	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) --output $(GENERATED)
@@ -33,7 +33,7 @@ $(SITE_CV): $(MAIN).pdf
 
 install: $(SITE_CV)
 
-resume: resume-install
+resume: resume-pdf
 
 $(RESUME).pdf: $(RESUME).tex $(GENERATED) $(BIB)
 	latexmk -pdf $(RESUME)
@@ -46,15 +46,13 @@ $(SITE_RESUME): $(RESUME).pdf
 
 resume-install: $(SITE_RESUME)
 
+commit: install resume-install
+
 force: $(GENERATED)
 	latexmk -pdf -g $(MAIN)
-	mkdir -p $(dir $(SITE_CV))
-	cp $(MAIN).pdf $(SITE_CV)
 
 force-resume: $(GENERATED)
 	latexmk -pdf -g $(RESUME)
-	mkdir -p $(dir $(SITE_RESUME))
-	cp $(RESUME).pdf $(SITE_RESUME)
 
 # Without this make treats the variant data as an intermediate and deletes it
 # after each build, which forces a full regenerate-and-typeset every time.

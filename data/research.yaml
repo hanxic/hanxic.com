@@ -1,41 +1,39 @@
 ---
 entries:
-  - role: Research Assistant
+  - role: Graduate Researcher
     group: Cornell PL Group
     supervisors:
       - Prof. Alexandra Silva
       - Prof. Andrew C. Myers
     period: Sep 2025 -- Present
     institution: Cornell University
-    unit: Computer Science
     bullets:
       - Working toward end-to-end security for probabilistic and concurrent systems, from adversary models to semantics-preserving compilation.
       - Developed Oblivious Probabilistic Outcome Logic (opOL), a logic for probabilistic nondeterministic programs with oblivious adversaries; used schedule consumption and probabilistic independence to verify randomized caching and leader-election protocols.
       - Mechanized opOL in Lean 4, formalizing monadic semantics, probability-space constructions, probabilistic assertions, semantic and syntactic outcome triples, soundness proofs, and verified case studies.
       - Led the Lean mechanization of Type-Confusion Security, proving type safety for the static and dynamic information-flow checks that protect decentralized systems whose untrusted components can misrepresent dynamic types.
     resume_bullets:
-      - Developed Oblivious Probabilistic Outcome Logic (opOL), a separation logic for probabilistic nondeterministic programs with oblivious adversaries, supporting compositional reasoning about probabilistic independence and unbounded loops.
+      - Developed Oblivious Probabilistic Outcome Logic (opOL), a separation logic for probabilistic nondeterministic programs with oblivious adversaries, supporting compositional reasoning about probabilistic independence, entropy leakage, and probabilistic liveness.
       - Mechanized opOL's metatheory in Lean 4 and verified case studies inspired by randomized caching and leader-election protocols.
-      - Co-developed a theory of type-confusion security for decentralized systems, where untrusted components misrepresent dynamic types; led its Lean mechanization and prove type safety for static and dynamic checks under ideal-world and real-world attacker models.
+      - "Co-developing a formal foundation for type-confusion security with Dr. Silei Ren: type-safe real- and ideal-world languages and a compiler for proving real--ideal attacker-power equivalence under dynamic checks, all mechanized in Lean 4."
+      - Exploring an intermediate representation for structured LLM mathematical reasoning with researchers at Arizona State University.
   - role: Research Mentor
     group: Cornell Math+AI
     supervisors:
       - Prof. Daniel Halpern-Leistner
     period: Jan 2026 -- Present
     institution: Cornell University
-    unit: Mathematics
     bullets:
       - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and LaTeX-to-Lean translation tools with interactive dependency graphs; now also directing a newer project on large language models for program reasoning.
     resume_bullets:
-      - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and MathCopilot.org, a LaTeX-to-Lean translation tools with interactive dependency graphs
-      - Also mentoring a second team building agentic framework for synthesizing invariants for program logics in software engineering.
-  - role: Research Assistant
+      - Mentored an eight-month autoformalization project that produced a proof-quality evaluation platform and MathCopilot.org, a LaTeX-to-Lean tool with interactive dependency graphs.
+      - Mentor a second team developing agentic invariant-synthesis framework to integrate expressive program logics to software engineering.
+  - role: Researcher
     group: PLClub
     supervisors:
       - Prof. Steve Zdancewic
     period: Jun 2021 -- Aug 2025
     institution: University of Pennsylvania
-    unit: Computer and Information Science
     bullets:
       - Contributed to the ICFP 2024 Vellvm memory-model paper in Prof. Steve Zdancewic's group, helping design a low-level memory model for LLVM optimization reasoning, verifying serialization lemmas in Rocq, and implementing tests for the memory model.
       - Built Rocq/OCaml validation tools for testing Vellvm's semantic faithfulness against LLVM implementations, including QuickChick generators for UB-free LLVM programs, interpreter-based traces, and a differential-testing framework that found novel LLVM bugs.
@@ -45,13 +43,13 @@ entries:
     # lead in bold. The thesis titles use the map form: on multi-author papers
     # they answer "which part was his?" in a way a verb phrase cannot.
     resume_bullets:
-      - A main contributor to the Verified LLVM Project (Vellvm), which develops formal semantics for LLVM IR in Rocq using interaction tree and coinduction; co-authored its ICFP 2024 paper, helping design a low-level memory model for optimization reasoning.
+      - Core contributor to the Verified LLVM Project (Vellvm), which develops formal semantics for LLVM IR in Rocq using interaction trees and coinduction; co-authored its ICFP 2024 paper, helping design a low-level memory model for optimization reasoning.
       - lead: Random Testing at IR Level
         note: senior thesis
         text: built a Rocq/OCaml differential-testing framework validating Vellvm against real LLVM, with QuickChick generators for UB-free programs; found previously unreported LLVM bugs.
-      - Developed Rocq infrastructure for permutation reasoning and list AC unification, then developed a Rocq formalization for polymorphic, multiplicative-exponential linear logic with cut elimination.
+      - Developed Rocq infrastructure using metaprogramming for permutation reasoning and list AC unification, then developed a Rocq formalization for polymorphic, multiplicative-exponential linear logic with cut elimination.
       - Contributed to DeepSpec Software Foundations material presented at the Oregon Programming Languages Summer School 2024.
-  - role: Research Assistant
+  - role: Researcher
     group: Wharton Research Scholars
     supervisors:
       - Prof. Sanjeev Khanna
@@ -67,7 +65,7 @@ entries:
       - lead: Knapsack Problem with Precedence Constraints
         note: Wharton Research Scholars thesis
         text: designed pseudo-polynomial algorithms on structured poset classes -- unions of three paths and one-directional bipartite posets with consecutive children.
-  # - role: Research Assistant
+  # - role: Researcher
   #   group: Penn Computational Intelligence Lab
   #   supervisors:
   #     - Prof. Jing Li
