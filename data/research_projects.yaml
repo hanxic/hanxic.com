@@ -17,7 +17,7 @@ sections:
           subtle to reason about. opOL develops a program logic, mechanized in Lean for verifying probabilistic programs against
           oblivious adversaries.
         refs:
-          - chen2026obliviousprobabilisticoutcomelogic
+          - chen2026oblivious
 
       - id: type-confusion-security
         title: Type-Confusion Security
@@ -61,9 +61,9 @@ sections:
           including a memory model for optimization reasoning and differential
           testing to validate the semantics and find LLVM bugs.
         refs:
-          - beck2025a
-          - beck2025b
-          - beck2024
+          - beck2025vellvm
+          - beck2025vellvmb
+          - beck2024two
           - beck2025genllvm
           - chen2024cis
 

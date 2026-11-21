@@ -1,108 +1,222 @@
-@inproceedings{beck2025a,
-  author       = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
+@inproceedings{beck2025vellvm,
+  author = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
   firstauthors = {Hanxi Chen and Calvin Beck},
-  title        = {Vellvm: Formalizing the Informal LLVM (An Experience Report)},
-  booktitle    = {NASA Formal Methods: 17th International Symposium (NFM)},
-  year         = {2025},
-  month        = {6},
-  pages        = {91--99},
-  publisher    = {Springer Nature Switzerland},
-  doi          = {10.1007/978-3-031-93706-4_6},
-  url          = {https://doi.org/10.1007/978-3-031-93706-4_6},
-  tag          = {NFM'25},
-  keywords     = {publication,refereed},
-  abstract     = {This report presents our methodology for and experience with formalizing a specification of LLVM IR in the Verified LLVM Project (Vellvm). Vellvm provides a specification for a large, practical subset of LLVM IR in the Rocq Proof Assistant in the support of verified compilers and program transformations. Program transformations often rely on the subtle details, and as a result Vellvm's semantics are quite comprehensive: for instance we provide a sophisticated low-level memory model to support low-level operations, such as casts between pointers and integers, and justify optimizations in their presence. Our approach implements the semantics via monadic interpreters, which rely on a coinductively-defined data structure called ITrees. Crucially, this methodology supports the extraction of an executable interpreter, proved to refine the specification. We use the reference interpreter to validate the accuracy of the formalization, employing random differential testing between Clang and Vellvm implemented in our own LLVM IR program generator (GenLLVM), as well as via state-of-the-art C compiler testing frameworks (CSmith and YARPGen). Such testing has found bugs in both the Vellvm semantics and Clang. We believe that tools from the Vellvm project can be useful for other LLVM IR-related projects, and that the overall methodology applies to other formal verification efforts.}
+  title = {Vellvm: Formalizing the Informal LLVM (An Experience Report)},
+  booktitle = {NASA Formal Methods: 17th International Symposium (NFM)},
+  year = {2025},
+  month = {6},
+  pages = {91--99},
+  publisher = {Springer Nature Switzerland},
+  doi = {10.1007/978-3-031-93706-4_6},
+  url = {https://doi.org/10.1007/978-3-031-93706-4_6},
+  tag = {NFM'25},
+  keywords = {publication,refereed},
+  abstract = {This report presents our methodology for and experience with
+              formalizing a specification of LLVM IR in the Verified LLVM Project
+              (Vellvm). Vellvm provides a specification for a large, practical
+              subset of LLVM IR in the Rocq Proof Assistant in the support of
+              verified compilers and program transformations. Program
+              transformations often rely on the subtle details, and as a result
+              Vellvm's semantics are quite comprehensive: for instance we provide
+              a sophisticated low-level memory model to support low-level
+              operations, such as casts between pointers and integers, and
+              justify optimizations in their presence. Our approach implements
+              the semantics via monadic interpreters, which rely on a
+              coinductively-defined data structure called ITrees. Crucially, this
+              methodology supports the extraction of an executable interpreter,
+              proved to refine the specification. We use the reference
+              interpreter to validate the accuracy of the formalization,
+              employing random differential testing between Clang and Vellvm
+              implemented in our own LLVM IR program generator (GenLLVM), as well
+              as via state-of-the-art C compiler testing frameworks (CSmith and
+              YARPGen). Such testing has found bugs in both the Vellvm semantics
+              and Clang. We believe that tools from the Vellvm project can be
+              useful for other LLVM IR-related projects, and that the overall
+              methodology applies to other formal verification efforts.},
 }
 
-@inproceedings{beck2025b,
-  author       = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
+@inproceedings{beck2025vellvmb,
+  author = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
   firstauthors = {Hanxi Chen and Calvin Beck},
-  title        = {Vellvm: Formalizing the Informal},
-  booktitle    = {The Eleventh International Workshop on Coq for Programming Languages (CoqPL)},
-  year         = {2025},
-  month        = {1},
-  day          = {25},
-  note         = {Presentation, published, Denver, CO, USA},
-  url          = {https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal},
-  urlconference = {https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal},
-  urlslides    = {/slides/coqpl-2025-vellvm.pdf},
-  talk         = {Presented with Calvin Beck; also given at PLClub, University of Pennsylvania, Jan 2025},
-  tag          = {CoqPL'25},
-  keywords     = {publication,refereed},
-  type         = {presentation},
-  abstract     = {The Vellvm project is an extensive undertaking to formalize a large subset of LLVM IR in the Coq proof assistant. LLVM IR is an intermediate language that is widely used as a common target for front-end compilers. Compilers for different languages can share the LLVM infrastructure for performing optimizations and generating target code for various instruction set architectures. The bedrock of many languages is LLVM IR, and formalizing it gives us an important tool for compiler verification efforts. In this talk we will explore the difficulties that come up when attempting to formalize a large real world language. We'll touch upon how proof assistants like Coq can reveal issues in informal specifications, how testing tools like QuickChick can help bridge the gap between informal real world implementations and our formal Coq semantics, and we will also touch upon aspects of the LLVM IR could be updated to better suit verification efforts. Furthermore, we'll discuss some of the challenges we have encountered along the way, including limitations with the Coq type system, extraction bugs, and performance issues for proofs and extracted code.}
+  title = {Vellvm: Formalizing the Informal},
+  booktitle = {The Eleventh International Workshop on Coq for Programming
+               Languages (CoqPL)},
+  year = {2025},
+  month = {1},
+  day = {25},
+  note = {Presentation, published, Denver, CO, USA},
+  url = {
+         https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal
+         },
+  urlconference = {
+                   https://popl25.sigplan.org/details/CoqPL-2025-papers/9/Vellvm-Formalizing-the-Informal
+                   },
+  urlslides = {/slides/coqpl-2025-vellvm.pdf},
+  talk = {Presented with Calvin Beck; also given at PLClub, University of
+          Pennsylvania, Jan 2025},
+  tag = {CoqPL'25},
+  keywords = {publication,refereed},
+  type = {presentation},
+  abstract = {The Vellvm project is an extensive undertaking to formalize a
+              large subset of LLVM IR in the Coq proof assistant. LLVM IR is an
+              intermediate language that is widely used as a common target for
+              front-end compilers. Compilers for different languages can share
+              the LLVM infrastructure for performing optimizations and generating
+              target code for various instruction set architectures. The bedrock
+              of many languages is LLVM IR, and formalizing it gives us an
+              important tool for compiler verification efforts. In this talk we
+              will explore the difficulties that come up when attempting to
+              formalize a large real world language. We'll touch upon how proof
+              assistants like Coq can reveal issues in informal specifications,
+              how testing tools like QuickChick can help bridge the gap between
+              informal real world implementations and our formal Coq semantics,
+              and we will also touch upon aspects of the LLVM IR could be updated
+              to better suit verification efforts. Furthermore, we'll discuss
+              some of the challenges we have encountered along the way, including
+              limitations with the Coq type system, extraction bugs, and
+              performance issues for proofs and extracted code.},
 }
 
-@article{beck2024,
-  author       = {Calvin Beck and Irene Yoon and Hanxi Chen and Yannick Zakowski and Steve Zdancewic},
+@article{beck2024two,
+  author = {Calvin Beck and Irene Yoon and Hanxi Chen and Yannick Zakowski and
+            Steve Zdancewic},
   firstauthors = {Calvin Beck},
-  title        = {A Two-Phase Infinite/Finite Low-Level Memory Model: Reconciling Integer--Pointer Casts, Finite Space, and undef at the LLVM IR Level of Abstraction},
+  title = {A Two-Phase Infinite/Finite Low-Level Memory Model: Reconciling
+           Integer--Pointer Casts, Finite Space, and undef at the LLVM IR Level
+           of Abstraction},
   journaltitle = {Proceedings of the ACM on Programming Languages, 8 (ICFP)},
-  year         = {2024},
-  month        = {9},
-  pages        = {789--817},
-  doi          = {10.1145/3674652},
-  url          = {https://doi.org/10.1145/3674652},
-  urlarxiv     = {https://arxiv.org/abs/2404.16143},
-  tag          = {ICFP'24},
-  keywords     = {publication,refereed},
-  type         = {article},
-  award        = {MIT PL Review 2025},
-  abstract     = {This paper provides a novel approach to reconciling complex low-level memory model features, such as pointer--integer casts, with desired refinements that are needed to justify the correctness of program transformations. The idea is to use a "two-phase" memory model, one with an unbounded memory and corresponding unbounded integer type, and one with a finite memory; the connection between the two levels is made explicit by a notion of refinement that handles out-of-memory behaviors. This approach allows for more optimizations to be performed and establishes a clear boundary between the idealized semantics of a program and the implementation of that program on finite hardware. The two-phase memory model has been incorporated into an LLVM IR semantics, demonstrating its utility in practice in the context of a low-level language with features like undef and bitcast. This yields infinite and finite memory versions of the language semantics that are proven to be in refinement with respect to out-of-memory behaviors. Each semantics is accompanied by a verified executable reference interpreter. The semantics justify optimizations, such as dead-alloca-elimination, that were previously impossible or difficult to prove correct.}
+  year = {2024},
+  month = {9},
+  pages = {789--817},
+  doi = {10.1145/3674652},
+  url = {https://doi.org/10.1145/3674652},
+  urlarxiv = {https://arxiv.org/abs/2404.16143},
+  tag = {ICFP'24},
+  keywords = {publication,refereed},
+  type = {article},
+  award = {MIT PL Review 2025},
+  abstract = {This paper provides a novel approach to reconciling complex
+              low-level memory model features, such as pointer--integer casts,
+              with desired refinements that are needed to justify the correctness
+              of program transformations. The idea is to use a "two-phase" memory
+              model, one with an unbounded memory and corresponding unbounded
+              integer type, and one with a finite memory; the connection between
+              the two levels is made explicit by a notion of refinement that
+              handles out-of-memory behaviors. This approach allows for more
+              optimizations to be performed and establishes a clear boundary
+              between the idealized semantics of a program and the implementation
+              of that program on finite hardware. The two-phase memory model has
+              been incorporated into an LLVM IR semantics, demonstrating its
+              utility in practice in the context of a low-level language with
+              features like undef and bitcast. This yields infinite and finite
+              memory versions of the language semantics that are proven to be in
+              refinement with respect to out-of-memory behaviors. Each semantics
+              is accompanied by a verified executable reference interpreter. The
+              semantics justify optimizations, such as dead-alloca-elimination,
+              that were previously impossible or difficult to prove correct.},
 }
 
-@misc{chen2026obliviousprobabilisticoutcomelogic,
-      title={Oblivious Probabilistic Outcome Logic: Verifying Probabilistic Programs with an Oblivious Adversary},
-      author={Hanxi Chen and Noam Zilberstein and Andrew C. Myers and Alexandra Silva},
-      year={2026},
-      month={7},
-      eprint={2607.16533},
-      archivePrefix={arXiv},
-      primaryClass={cs.PL},
-      url={https://arxiv.org/abs/2607.16533},
-      urlarxiv={https://arxiv.org/abs/2607.16533},
-      urlslides={/slides/pldg-2026-opol.pdf},
-      talk={Presented at the Cornell PL Seminar (PLDG), Sep 2026},
-      tag={arXiv},
-      keywords={publication,preprint},
-      abstract={In the context of probabilistic programs, an oblivious adversary resolves nondeterminism without seeing the outcomes of random draws. Obliviousness is a common assumption in online algorithms and distributed protocols, but the complex interaction between random draws and adversarial choices makes it challenging to reason about correctness. While there has been significant progress toward reasoning about programs that combine randomization with nondeterminism, most of the work has focused on the adaptive model, whose omniscient view of program state is too powerful to establish correctness for certain classes of programs. We introduce Oblivious Probabilistic Outcome Logic (opOL), a new logic for reasoning about probabilistic programs with nondeterminism controlled by an oblivious adversary. Building on Outcome Logic and Probabilistic Separation Logic, opOL models adversarial choice as a resource and uses probabilistic independence to ensure that random outcomes are hidden from the adversary. The opOL proof system provides expressive and compositional rules for case analysis on both random and nondeterministic outcomes, and for proving almost-sure termination. Expressivity is tested through several case studies, including a paging algorithm and a leader election protocol. The opOL metatheory and case studies are mechanized in Lean 4.},
+@misc{chen2026oblivious,
+  title = {Oblivious Probabilistic Outcome Logic: Verifying Probabilistic
+           Programs with an Oblivious Adversary},
+  author = {Hanxi Chen and Noam Zilberstein and Andrew C. Myers and Alexandra
+            Silva},
+  year = {2026},
+  month = {7},
+  eprint = {2607.16533},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.PL},
+  url = {https://arxiv.org/abs/2607.16533},
+  urlarxiv = {https://arxiv.org/abs/2607.16533},
+  urlslides = {/slides/pldg-2026-opol.pdf},
+  talk = {Presented at the Cornell PL Seminar (PLDG), Sep 2026},
+  tag = {arXiv},
+  keywords = {publication,preprint},
+  abstract = {In the context of probabilistic programs, an oblivious adversary
+              resolves nondeterminism without seeing the outcomes of random
+              draws. Obliviousness is a common assumption in online algorithms
+              and distributed protocols, but the complex interaction between
+              random draws and adversarial choices makes it challenging to reason
+              about correctness. While there has been significant progress toward
+              reasoning about programs that combine randomization with
+              nondeterminism, most of the work has focused on the adaptive model,
+              whose omniscient view of program state is too powerful to establish
+              correctness for certain classes of programs. We introduce Oblivious
+              Probabilistic Outcome Logic (opOL), a new logic for reasoning about
+              probabilistic programs with nondeterminism controlled by an
+              oblivious adversary. Building on Outcome Logic and Probabilistic
+              Separation Logic, opOL models adversarial choice as a resource and
+              uses probabilistic independence to ensure that random outcomes are
+              hidden from the adversary. The opOL proof system provides
+              expressive and compositional rules for case analysis on both random
+              and nondeterministic outcomes, and for proving almost-sure
+              termination. Expressivity is tested through several case studies,
+              including a paging algorithm and a leader election protocol. The
+              opOL metatheory and case studies are mechanized in Lean 4.},
+}
+
+@misc{ren2026type,
+  title = {Type-Confusion Security},
+  author = {Silei Ren and Hanxi Chen and Suraaj Kanniwadi and Andrew C. Myers},
+  firstauthors = {Silei Ren and Hanxi Chen},
+  year = {2026},
+  month = {11},
+  eprint = {2611.20298},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.PL},
+  url = {https://arxiv.org/abs/2611.20298},
+  urlarxiv = {https://arxiv.org/abs/2611.20298},
+  keywords = {publication,preprint},
+  tag = {arXiv},
+  abstract = {Type systems are a lightweight way to obtain formal assurance that
+              code upholds security properties. However, decentralized systems,
+              such as smart contracts and Model Context Protocol ecosystems, have
+              limited ability to constrain the behavior of untrusted code. In
+              such systems, attackers may attempt to confuse trusted code by
+              supplying values that do not behave according to their advertised
+              types, an attack that we call type confusion. Well-known attacks
+              such as confused deputy attacks, reentrancy attacks, and
+              control-flow hijacking can be understood as instances of type
+              confusion. We define type confusion security as the property that
+              unrestricted attackers who need not follow the type system have no
+              more power than limited attackers who fully obey it. We formally
+              define type confusion security as a real--ideal emulation, and in
+              the context of an information-flow-typed core calculus that
+              statically enforces security against well-typed attackers, prove
+              that its run-time checks also enforce security against ill-typed
+              attackers. In this system, programmers can write code while
+              reasoning about security only against well-typed attackers; the
+              security guarantees enforced by the type system still hold. We
+              mechanize a proof of type confusion security in Lean.},
 }
 
 @thesis{chen2024cis,
-  author      = {Hanxi Chen},
-  title       = {Random Differential Testing at the LLVM IR Level},
-  type        = {CIS Undergraduate Thesis},
+  author = {Hanxi Chen},
+  title = {Random Differential Testing at the LLVM IR Level},
+  type = {CIS Undergraduate Thesis},
   institution = {University of Pennsylvania},
-  year        = {2024},
-  keywords    = {thesis},
-  tag         = {Thesis},
-  note        = {Reviewed by Prof. Steve Zdancewic (advisor) and Prof. Benjamin C. Pierce.}
+  year = {2024},
+  keywords = {thesis},
+  tag = {Thesis},
+  note = {Reviewed by Prof. Steve Zdancewic (advisor) and Prof. Benjamin C.
+          Pierce.},
 }
 
 @thesis{chen2024wharton,
-  author      = {Hanxi Chen},
-  title       = {Knapsack Problems with Precedence Constraints},
-  type        = {Wharton Undergraduate Thesis},
+  author = {Hanxi Chen},
+  title = {Knapsack Problems with Precedence Constraints},
+  type = {Wharton Undergraduate Thesis},
   institution = {University of Pennsylvania},
-  year        = {2024},
-  keywords    = {thesis},
-  tag         = {Thesis},
-  note        = {Supervised by Prof. Sanjeev Khanna.}
+  year = {2024},
+  keywords = {thesis},
+  tag = {Thesis},
+  note = {Supervised by Prof. Sanjeev Khanna.},
 }
 
 @inprogress{beck2025genllvm,
-  author   = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
-  title    = {GenLLVM: Randomized Differential Testing for LLVM IR},
-  year     = {2025},
+  author = {Calvin Beck and Hanxi Chen and Steve Zdancewic},
+  title = {GenLLVM: Randomized Differential Testing for LLVM IR},
+  year = {2025},
   keywords = {manuscript},
-  tag      = {Manuscript}
-}
-
-@inprogress{ren2026type,
-  author   = {Silei Ren and Suraaj Kanniwadi and Hanxi Chen and Andrew C. Myers},
-  title    = {Type-Confusion Security},
-  year     = {2026},
-  keywords = {manuscript},
-  tag      = {Manuscript},
-  note     = {Resubmit to POPL}
+  tag = {Manuscript},
 }
