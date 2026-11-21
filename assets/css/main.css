@@ -1282,3 +1282,14 @@ footer * {
         transition: color 0.18s ease;
     }
 }
+/* Joint first authorship. The star rides on the name it qualifies, in the
+   author line's own ink, and the key sits once under the list -- the resume's
+   convention, so the two documents mark the same thing the same way. */
+#publications .cofirst {
+    line-height: 0;
+}
+#publications .cofirst-note {
+    color: var(--ink-soft);
+    font-size: 0.75rem;
+    margin-top: 0.75rem;
+}

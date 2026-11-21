@@ -213,6 +213,12 @@ def publication_from_entry(entry: BibEntry) -> tuple[str, dict[str, Any]] | None
     publication: dict[str, Any] = {"id": entry.key}
     if "author" in fields:
         publication["authors"] = split_authors(fields["author"])
+    # firstauthors names everyone sharing the first slot. Only two or more names
+    # make it joint first authorship; a lone name (beck2024two) marks nothing.
+    # Matched by name, not position, since the list need not lead the authors.
+    cofirst = split_authors(fields.get("firstauthors", ""))
+    if len(cofirst) > 1:
+        publication["cofirst"] = cofirst
     if "title" in fields:
         publication["title"] = display_text(fields["title"])
     if "year" in fields:
@@ -238,6 +244,10 @@ def publication_from_entry(entry: BibEntry) -> tuple[str, dict[str, Any]] | None
         publication["status"] = status
     if "tag" in fields:
         publication["tag"] = fields["tag"]
+    # biblatex's pubstate ("Under submission"), shown beside the venue tag. Kept
+    # apart from status, which names the section an entry is filed under.
+    if "pubstate" in fields:
+        publication["pubstate"] = display_text(fields["pubstate"])
     if "abstract" in fields:
         publication["abstract"] = display_text(fields["abstract"])
 

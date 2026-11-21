@@ -11,11 +11,16 @@ sections:
         image: image/opol.png
         keywords: [Lean 4, Program logic, Probabilistic programming]
         description: >
-          Practical randomized protocols in distributed systems and hardware
-          often rely on oblivious adversaries, but randomization + control flow can
-          leak entropy through schedule consumption, making their correctness
-          subtle to reason about. opOL develops a program logic, mechanized in Lean for verifying probabilistic programs against
-          oblivious adversaries.
+          Practical randomized protocols in distributed systems and
+          hardware often rely on oblivious adversaries, but
+          randomization + control flow can leak entropy through
+          schedule consumption, making their correctness subtle to
+          reason about. opOL develops a program logic, mechanized in
+          Lean for verifying probabilistic programs against oblivious
+          adversaries. Joint work with [Prof. Noam
+          Zilberstein](https://zilberstein.github.io/), [Prof.
+          Andrew C. Myers](https://www.cs.cornell.edu/andru/), and
+          [Prof. Alexandra Silva](https://alexandrasilva.org/).
         refs:
           - chen2026oblivious
 
@@ -24,11 +29,19 @@ sections:
         image: image/type-confusion.png
         keywords: [Information flow, Type systems, Security]
         description: >
-          In decentralized systems, untrusted components can ignore the type
-          system and lie about the interfaces they provide, causing type
-          confusion to surface as confused-deputy and reentrancy attacks.
-          This project, led by [Dr. Silei Ren](https://www.sileiren.com/), develops a formal notion of type-confusion security,
-          along with static and dynamic information-flow checks to enforce it.
+          In decentralized systems, untrusted components can ignore
+          the type system and lie about the interfaces they provide.
+          Type-confusion security is a [real–ideal
+          emulation](https://arxiv.org/abs/2611.05695) definition
+          stating that ill-typed attackers have no more power than
+          well-typed ones. It captures confused-deputy and reentrancy
+          attacks. In an information-flow-typed core calculus,
+          run-time checks extend the type system's static protection
+          to ill-typed attackers. We mechanized it in Lean 4 as an
+          extensible, executable framework for modeling other attacks.
+          Joint work with [Dr. Silei Ren](https://www.sileiren.com/),
+          [Suraaj Kanniwadi](https://www.cs.cornell.edu/~suraaj/), and
+          [Prof. Andrew C. Myers](https://www.cs.cornell.edu/andru/).
         refs:
           - ren2026type
 
@@ -38,10 +51,13 @@ sections:
         keywords: [Lean 4, AI for Mathematics]
         description: >
           Autoformalization asks AI systems to translate mathematical
-          statements and proofs into Lean code. Cornell's ongoing Math+AI project, led by [Prof. Daniel Halpern-Leistner](https://danielhl.github.io/),
-          develops challenging research-level benchmarks, a survey for comparing
-          Lean proofs, a collection of formalization problems, and
-          LaTeX-to-Lean proof tooling.
+          statements and proofs into Lean code. Cornell's ongoing
+          Math+AI project develops challenging research-level
+          benchmarks, a survey for comparing Lean proofs, a collection
+          of formalization problems, and LaTeX-to-Lean proof tooling.
+          Joint work with [Prof. Daniel
+          Halpern-Leistner](https://danielhl.github.io/) (Cornell
+          Mathematics).
         links:
           - label: Math+AI
             url: https://danielhl.github.io/math-ai.html
@@ -55,11 +71,14 @@ sections:
         image: image/VellvmSlide-new.svg
         keywords: [Rocq, LLVM IR, Differential testing]
         description: >
-          LLVM IR is a widely used compiler intermediate representation whose
-          official semantics are informal. Developed in [Prof. Steve Zdancewic](https://www.cis.upenn.edu/~stevez/)'s
-          group, [Vellvm](https://vellvm.github.io/vellvm/) formalizes a practical subset of LLVM IR in Rocq,
-          including a memory model for optimization reasoning and differential
-          testing to validate the semantics and find LLVM bugs.
+          LLVM IR is a widely used compiler intermediate
+          representation whose official semantics are informal.
+          [Vellvm](https://vellvm.github.io/vellvm/) formalizes a
+          practical subset of LLVM IR in Rocq, including a memory
+          model for optimization reasoning and differential testing to
+          validate the semantics and find LLVM bugs. Joint work with
+          [Calvin Beck](https://github.com/Chobbes) and [Prof. Steve
+          Zdancewic](https://www.cis.upenn.edu/~stevez/).
         refs:
           - beck2025vellvm
           - beck2025vellvmb
@@ -72,11 +91,13 @@ sections:
         image: image/precedence.png
         keywords: [Algorithms]
         description: >
-          Real-world knapsack problems, including cryptocurrency mining and
-          inventory planning, often involve dependencies. However,
-          precedence-constrained knapsack is strongly NP-hard in general. This
-          project studies special graph classes where exact pseudo-polynomial
-          algorithms are possible.
+          Real-world knapsack problems, including cryptocurrency
+          mining and inventory planning, often involve dependencies.
+          However, precedence-constrained knapsack is strongly NP-hard
+          in general. This project studies special graph classes where
+          exact pseudo-polynomial algorithms are possible. Joint work
+          with [Prof. Sanjeev
+          Khanna](https://sanjeevkhanna.org/) (now at NYU).
         refs:
           - chen2024wharton
 ...

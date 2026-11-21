@@ -326,6 +326,7 @@
     \iffieldundef{eprinttype}{}{\printfield{eprinttype}\space preprint\addcomma\space}%
   }{\printfield{usera}\space preprint\addcomma\space}%
   \printfield{year}\adddot
+  \iffieldundef{pubstate}{}{\space\printfield{pubstate}\adddot}%
   \PrintTalk
 }
 \DeclareBibliographyAlias{inprogress}{misc}

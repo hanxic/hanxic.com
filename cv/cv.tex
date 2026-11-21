@@ -207,6 +207,7 @@
   \printfield{title}\adddot\space
   \printfield{booktitle}\addcomma\space
   \printfield{year}\adddot
+  \iffieldundef{pubstate}{}{\space\printfield{pubstate}\adddot}%
   \PrintTalk
   \PrintAward
 }
@@ -223,6 +224,7 @@
   \printfield{title}\adddot\space
   \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
   \printfield{year}\adddot
+  \iffieldundef{pubstate}{}{\space\printfield{pubstate}\adddot}%
   \PrintTalk
   \PrintAward
 }
