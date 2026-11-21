@@ -1,0 +1,7 @@
+{{- /* A person entry ({name, note?}) as "Title Name", linked to their homepage.
+       Title and url come from data/people.yaml, keyed by the exact name. */ -}}
+{{- $p := index site.Data.people.people .name -}}
+{{- if not $p }}{{ warnf "person.html: %q is not in data/people.yaml" .name }}{{ $p = dict }}{{ end -}}
+{{- $label := .name -}}
+{{- with $p.title }}{{ $label = printf "%s %s" . $label }}{{ end -}}
+{{- with $p.url }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener">{{ $label }}</a>{{ else }}{{ $label }}{{ end -}}

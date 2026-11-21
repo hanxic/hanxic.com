@@ -43,7 +43,6 @@ entries:
   - title: Streaming FIX Log Processor
     technologies:
       - OCaml
-      - Core
       - Dune
     period: "2024"
     bullets:
@@ -51,7 +50,7 @@ entries:
       - Designed a single streaming combinator capable of expressing each of the required queries as a fold, using the protocol's BodyLength header for exact-length reads rather than scanning for field separators.
       - Cross-validated the streaming results against a naive in-memory implementation, and verified the message-ordering and routing assumptions the streaming design depends on.
     resume_bullets:
-      - Reduced Financial Information eXchange (FIX) trading-protocol log queries from linear space to the open order book's size.
+      - Reduced memory for Financial Information eXchange (FIX) trading-log queries from the log's size to the number of open orders.
       - Designed one streaming combinator capable of expressing a range of queries; cross-checked against an in-memory reference.
   - title: Oat Compiler
     technologies:

@@ -5,7 +5,8 @@
     {{ if ne .id "publication" }}
     <h3>{{ .title }}</h3>
     {{ end }}
-    {{ range .entries }}
+    {{ $entries := .entries }}
+    {{ range $entries }}
     <article class="publication" id="pub-{{ .id }}">
       <header>
         <span class="tag">
@@ -14,13 +15,16 @@
           {{ else }}
           [Self]
           {{ end }}
+          {{- with .pubstate }} <span class="pubstate">· {{ . }}</span>{{ end }}
         </span>
         <span class="title">{{ .title }}</span>
       </header>
       <div class="authors">
         {{ $authors := .authors }}
+        {{ $cofirst := .cofirst | default slice }}
         {{ range $i, $a := $authors }}
         {{- if eq $a $me }}<strong class="myname">{{ $a }}</strong>{{ else }}{{ $a }}{{ end -}}
+        {{- if in $cofirst $a }}<sup class="cofirst" title="Equal contribution">*</sup>{{ end -}}
         {{- if lt (add $i 1) (len $authors) }}, {{ end -}}
         {{ end }}
       </div>
@@ -53,6 +57,10 @@
       </details>
       {{ end }}
     </article>
+    {{ end }}
+    {{/* One key per list, as in the resume, rather than a note on every entry. */}}
+    {{ if where $entries "cofirst" "!=" nil }}
+    <p class="cofirst-note"><sup>*</sup>Equal contribution</p>
     {{ end }}
   {{ end }}
 </section>

@@ -32,7 +32,7 @@
       <p class="education-outcome">{{ with .distinction }}<span class="education-distinction">{{ . }}</span>{{ end }}{{ if and .distinction .gpa }}<span class="education-separator" aria-hidden="true">·</span>{{ end }}{{ with .gpa }}<span>{{ . }}</span>{{ end }}</p>
       {{ end }}
       {{ if .advisors }}
-      <p class="education-advising">Advised by {{ range $advisorIndex, $advisor := .advisors }}{{ if $advisorIndex }}{{ if eq $advisorIndex (sub (len $entry.advisors) 1) }} and {{ else }}, {{ end }}{{ end }}{{ if $advisor.url }}<a href="{{ $advisor.url }}">{{ $advisor.title }} {{ $advisor.name }}</a>{{ else }}{{ $advisor.title }} {{ $advisor.name }}{{ end }}{{ end }}.</p>
+      <p class="education-advising">Advised by {{ range $advisorIndex, $advisor := .advisors }}{{ if $advisorIndex }}{{ if eq $advisorIndex (sub (len $entry.advisors) 1) }} and {{ else }}, {{ end }}{{ end }}{{ partial "person.html" $advisor }}{{ end }}.</p>
       {{ end }}
       {{ with .site_recognition }}
       <div class="education-recognition">

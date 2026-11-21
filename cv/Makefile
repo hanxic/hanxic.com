@@ -8,12 +8,8 @@ DATA=$(filter-out $(DATA_DIR)/publications.yaml,$(wildcard $(DATA_DIR)/*.yaml))
 BIB=../assets/data/refs.bib
 SITE_CV=../static/cv/hanxi-chen-cv.pdf
 SITE_RESUME=../static/cv/hanxi-chen-resume.pdf
-# A variant is a directory of sparse YAML overlaid on ../data -- one per tailored
-# application. `make resume-amazon.pdf` builds data-variants/amazon. Variant PDFs
-# stay in cv/ and are never copied to static/: the site publishes the master only.
-VARIANT_DIR=../data-variants
 
-.PHONY: all generate pdf install resume resume-pdf resume-install commit force force-resume variants clean
+.PHONY: all generate pdf install resume resume-pdf resume-install commit force force-resume clean
 
 all: pdf resume-pdf
 
@@ -53,23 +49,6 @@ force: $(GENERATED)
 
 force-resume: $(GENERATED)
 	latexmk -pdf -g $(RESUME)
-
-# Without this make treats the variant data as an intermediate and deletes it
-# after each build, which forces a full regenerate-and-typeset every time.
-.PRECIOUS: generated/data-%.tex
-
-generated/data-%.tex: $(DATA) ../scripts/yaml_to_tex_data.py $(wildcard $(VARIANT_DIR)/%/*.yaml)
-	python3 ../scripts/yaml_to_tex_data.py --data-dir $(DATA_DIR) \
-	  --overlay-dir $(VARIANT_DIR)/$* --output $@
-
-# -jobname keeps each variant's aux/bcf/pdf separate, so biber and latexmk never
-# see the master's state. %S is the source file; the \def wins over resume.tex's
-# \providecommand and redirects it at the overlaid data.
-$(RESUME)-%.pdf: $(RESUME).tex generated/data-%.tex $(BIB)
-	latexmk -pdf -jobname=$(RESUME)-$* \
-	  -pdflatex='pdflatex %O "\def\CVDataFile{generated/data-$*.tex}\input{%S}"' $(RESUME).tex
-
-variants: $(patsubst $(VARIANT_DIR)/%,$(RESUME)-%.pdf,$(wildcard $(VARIANT_DIR)/*))
 
 clean:
 	latexmk -C $(MAIN)

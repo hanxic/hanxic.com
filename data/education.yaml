@@ -27,12 +27,8 @@ entries:
         focus: Programming Languages
     advisors:
       - name: Alexandra Silva
-        title: Prof.
-        url: https://alexandrasilva.org/
       - name: Andrew C. Myers
-        title: Prof.
-        url: https://www.cs.cornell.edu/andru/
-    resume_leadership: Cornell PL Seminar Czar
+    resume_leadership: Cornell PL Seminar (PLDG) Co-Czar
   - id: penn
     school: University of Pennsylvania
     note: Penn Engineering & The Wharton School
@@ -59,9 +55,9 @@ entries:
     # school line as the one date for the institution.
     resume_years: 2020 -- 2025
     # resume_row assigns degrees to lines in the resume (default 1). Degrees
-    # sharing a row print on one line separated by semicolons; here each Penn
-    # degree gets its own row, so the three read as three credentials rather
-    # than a run-on. GPA and awards follow on a line of their own.
+    # sharing a row print on one line separated by semicolons. The two
+    # engineering degrees share a row as one CS track; Economics keeps its own
+    # so the Wharton degree stands apart. GPA and awards follow on their own line.
     degrees:
       # TODO: add cv_date to the two bachelor's degrees once confirmed.
       - title: M.S.E. in Computer and Information Science
@@ -69,7 +65,7 @@ entries:
         resume_row: 1
       - title: B.S.E. in Computer Science
         focus: Mathematics minor
-        resume_row: 2
+        resume_row: 1
         attributes:
         - Mathematics Minor
         site_note: CIS Senior Thesis
@@ -81,11 +77,7 @@ entries:
         site_note: Wharton Research Scholars
     advisors:
       - name: Steve Zdancewic
-        title: Prof.
-        url: https://www.cis.upenn.edu/~stevez/
       - name: Sanjeev Khanna
-        title: Prof.
-        url: https://www.cis.upenn.edu/~sanjeev/
     site_recognition:
       teaching:
         - MCIT TA Award

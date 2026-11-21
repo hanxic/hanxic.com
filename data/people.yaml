@@ -1,0 +1,50 @@
+---
+# One place for each person's title and homepage. Other files list a person
+# by `name:` alone (advisors, collaborators, instructors); the site partial
+# person.html and scripts/yaml_to_tex_data.py fill in the rest from here.
+# Keys must match those names exactly.
+_tex:
+  skip: true
+people:
+  Alexandra Silva:
+    title: Prof.
+    url: https://alexandrasilva.org/
+  Andrew C. Myers:
+    title: Prof.
+    url: https://www.cs.cornell.edu/andru/
+  Benjamin C. Pierce:
+    title: Prof.
+    url: https://www.cis.upenn.edu/~bcpierce/
+  Calvin Beck:
+    title: Dr.
+    url: https://github.com/Chobbes
+  Daniel Halpern-Leistner:
+    title: Prof.
+    url: https://danielhl.github.io/
+  Michael Clarkson:
+    title: Prof.
+    url: https://www.cs.cornell.edu/~clarkson/
+  Nate Foster:
+    title: Prof.
+    url: https://www.cs.cornell.edu/~jnfoster/
+  Noam Zilberstein:
+    title: Prof.
+    url: https://zilberstein.github.io/
+  Sanjeev Khanna:
+    title: Prof.
+    url: https://sanjeevkhanna.org/
+  Silei Ren:
+    title: Dr.
+    url: https://www.sileiren.com/
+  Stephanie Weirich:
+    title: Prof.
+    url: https://www.cis.upenn.edu/~sweirich/
+  Steve Zdancewic:
+    title: Prof.
+    url: https://www.cis.upenn.edu/~stevez/
+  Suraaj Kanniwadi:
+    url: https://www.cs.cornell.edu/~suraaj/
+  Victor Preciado:
+    title: Prof.
+    url: https://www.seas.upenn.edu/~preciado/
+...

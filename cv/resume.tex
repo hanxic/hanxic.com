@@ -1,6 +1,6 @@
 \documentclass[9pt]{extarticle}
 
-\usepackage[letterpaper,top=0.38in,bottom=0.38in,left=0.65in,right=0.65in]{geometry}
+\usepackage[letterpaper,top=0.38in,bottom=0.38in,left=0.6in,right=0.6in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{libertine}
@@ -14,21 +14,15 @@
 \usepackage{ifthen}
 \usepackage{pgffor}
 
-% Indirect so a tailored variant can be built from the same source: the Makefile
-% passes \def\CVDataFile{generated/data-<variant>.tex} on the pdflatex command
-% line, which wins because \providecommand only fires when undefined. The
-% variant data is data/ overlaid with data-variants/<variant>/, so a variant
-% never forks this file and never touches the CV or the site.
-\providecommand{\CVDataFile}{generated/data.tex}
-\input{\CVDataFile}
+\input{generated/data.tex}
 
 \hypersetup{
   pdftitle={\CVData{profile.name.short} Resume},
   pdfauthor={\CVData{profile.name.short}}
 }
 
-% extsizes has no 9.5pt option and 10pt runs to a second page.
-\AtBeginDocument{\fontsize{9.5}{11.5}\selectfont}
+% extsizes has no 9.6pt option and 10pt runs to a second page.
+\AtBeginDocument{\fontsize{9.6}{11.5}\selectfont}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \pagestyle{empty}
@@ -254,9 +248,12 @@
       % in a scratch field before printing bibliography entries.
       \step[fieldsource=award,fieldtarget=userb]
       \step[fieldsource=talk,fieldtarget=userc]
+      % Education's leadership line already spells out "Cornell PL Seminar
+      % (PLDG)", so the talk note, which comes later, uses the short name.
+      \step[fieldsource=userc,match=\regexp{the\s+Cornell\s+PL\s+Seminar\s+\(PLDG\)},replace={PLDG}]
       % firstauthors names everyone sharing the first slot. Mapped onto namea it
       % parses as a name list, so its length is what distinguishes a lone first
-      % author (beck2024) from joint ones (beck2025a, beck2025b).
+      % author (beck2024two) from joint ones (beck2025vellvm, beck2025vellvmb).
       \step[fieldsource=firstauthors,fieldtarget=namea]
     }
   }
@@ -329,6 +326,7 @@
     \iffieldundef{eprinttype}{}{\printfield{eprinttype}\space preprint\addcomma\space}%
   }{\printfield{usera}\space preprint\addcomma\space}%
   \printfield{year}\adddot
+  \iffieldundef{pubstate}{}{\space\printfield{pubstate}\adddot}%
   \PrintTalk
 }
 \DeclareBibliographyAlias{inprogress}{misc}
@@ -397,7 +395,7 @@
   }%
 }
 
-\newcommand{\ResumeProjectAttributionBody}[1]{%
+\newcommand{\ResumeProjectAttribution}[1]{%
   \CVIfSet{projects.entries.#1.institution}{%
     \textbf{\CVData{projects.entries.#1.institution}}%
     \CVIfSet{projects.entries.#1.supervisor}{, advised by \CVData{projects.entries.#1.supervisor}}{}
@@ -409,23 +407,12 @@
   }%
 }
 
-\newcommand{\ResumeProjectAttribution}[1]{%
-  \CVIfSet{projects.entries.#1.resume_attribution}{%
-    \ifnum\pdfstrcmp{\CVRawData{projects.entries.#1.resume_attribution}}{false}=0
-    \else
-      \ResumeProjectAttributionBody{#1}%
-    \fi
-  }{\ResumeProjectAttributionBody{#1}}%
-}
-
 \newcommand{\ResumeProjectEntry}[1]{%
   \begin{minipage}{\textwidth}
     \textbf{\CVData{projects.entries.#1.title}} -- \emph{\CVData{projects.entries.#1.technologies.@joined}}%
     \hfill \CVData{projects.entries.#1.period}
 
-    % The master prints institution/advisor attribution while a tailored
-    % variant may suppress it to spend the line on posting-specific evidence.
-    % Unaffiliated work sets neither key and prints no line.
+    % Unaffiliated work sets neither institution nor supervisor and prints no line.
     \ResumeProjectAttribution{#1}%
     \begin{itemize}
       \ResumeProjectBullets{#1}

@@ -30,7 +30,7 @@ entries:
         location: Cornell University
         description: An undergraduate/graduate course on formal verification and mechanization in Rocq. Topics include logic, programming language semantics, and verification of algorithms and data structures.
         instructors:
-          - Prof. Michael Clarkson
+          - name: Michael Clarkson
         positions:
         - type: Graduate Teaching Assistant
           terms:
@@ -42,7 +42,7 @@ entries:
         location: Cornell University
         description: An undergraduate/graduate course on the theory, design, and implementation of programming languages. Topics include operational semantics, denotational semantics, axiomatic semantics, program logics, lambda calculus, dependent type systems, type safety, and logical relations.
         instructors:
-          - Prof. Nate Foster
+          - name: Nate Foster
         positions:
         - type: Graduate Teaching Assistant
           terms:
@@ -55,7 +55,7 @@ entries:
         location: University of Pennsylvania
         description: A graduate course on compilers in OCaml. Topics include lexical analysis, grammars, parsing, intermediate representations, syntax- directed translation, code generation, type checking, dataflow and control-flow analyses, and optimizations.
         instructors:
-          - Prof. Steve Zdancewic
+          - name: Steve Zdancewic
         positions:
           - type: "Teaching Assistant"
             terms:
@@ -67,7 +67,7 @@ entries:
         description: A graduate course on Haskell and programming paradigms. Topics include functional programming, type class, functor, applicative, monad, monad transformers. Taught 4 lectures.
         cv_description: Taught four lectures and mentored four final-project groups.
         instructors:
-          - Prof. Stephanie Weirich
+          - name: Stephanie Weirich
         positions:
           - type: "Teaching Assistant"
             terms:
@@ -81,7 +81,7 @@ entries:
         description: A (graduate) class on the paradigms for design and analysis of algorithms. Topics include dynamic programming, graph algorithms, flow and combinatorial optimization algorithms, linear programming, randomization, intractability, and approximation algorithms.
         cv_description: Teaching Assistant for the course in Summer 2022 and Fall 2022. Led TA staff and student support across six terms; received the 2024 MCIT TA Award.
         instructors:
-          - Prof. Sanjeev Khanna
+          - name: Sanjeev Khanna
         cv_role: Head Teaching Assistant
         cv_terms:
           - Spring 2023
@@ -105,7 +105,7 @@ entries:
         location: University of Pennsylvania
         description: A course on network and data science. Topics include graph theory, social network analysis, graph machine learning, knowledge graphs, and graph generation.
         instructors:
-          - Prof. Victor Preciado
+          - name: Victor Preciado
         positions:
           - type: "Head Teaching Assistant"
             terms:
@@ -117,7 +117,7 @@ entries:
         description: A graduate course on basic concepts and techniques of programming languages. Topics include operational techniques for formal definition of language features, type systems and type safety properties, polymorphism, constructive logic, and the Rocq Proof Assistant.
         cv_description: Taught one lecture on maps in Rocq mechanization.
         instructors:
-          - Prof. Benjamin C. Pierce
+          - name: Benjamin C. Pierce
         positions:
           - type: "Teaching Assistant"
             terms:

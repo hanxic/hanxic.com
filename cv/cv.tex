@@ -56,6 +56,15 @@
   }%
 }
 
+% A list of people entries as "Title~Name", joined by #2 (title and url come
+% from data/people.yaml via the generator).
+\newcommand{\CVPeople}[2]{%
+  \foreach \cvitem in {1,...,\CVLen{#1}}{%
+    \CVIfSet{#1.\cvitem.title}{\CVData{#1.\cvitem.title}~}{}\CVData{#1.\cvitem.name}%
+    \ifnum\cvitem<\CVLen{#1}\relax#2\fi
+  }%
+}
+
 \newcommand{\CVLink}[2]{%
   \CVIfSet{profile.contact.#1}{%
     \;\textbar{}\;
@@ -207,6 +216,7 @@
   \printfield{title}\adddot\space
   \printfield{booktitle}\addcomma\space
   \printfield{year}\adddot
+  \iffieldundef{pubstate}{}{\space\printfield{pubstate}\adddot}%
   \PrintTalk
   \PrintAward
 }
@@ -223,6 +233,7 @@
   \printfield{title}\adddot\space
   \iffieldundef{eprinttype}{}{\printfield{eprinttype}\addcomma\space}%
   \printfield{year}\adddot
+  \iffieldundef{pubstate}{}{\space\printfield{pubstate}\adddot}%
   \PrintTalk
   \PrintAward
 }
@@ -368,7 +379,7 @@
 \par
 
     \TeachingInstitution{#1}{#2}. %
-    \CVIfSet{teaching.entries.#1.courses.#2.instructors.@len}{Instructor: \CVPrintList{teaching.entries.#1.courses.#2.instructors}{ and }. }{}%
+    \CVIfSet{teaching.entries.#1.courses.#2.instructors.@len}{Instructor: \CVPeople{teaching.entries.#1.courses.#2.instructors}{ and }. }{}%
     Terms: \CVIfSet{teaching.entries.#1.courses.#2.cv_terms.@len}{\CVPrintList{teaching.entries.#1.courses.#2.cv_terms}{, }}{\CVData{teaching.entries.#1.courses.#2.positions.1.terms.@joined}}.%
 \par
 
