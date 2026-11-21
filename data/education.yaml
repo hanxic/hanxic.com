@@ -32,7 +32,7 @@ entries:
       - name: Andrew C. Myers
         title: Prof.
         url: https://www.cs.cornell.edu/andru/
-    resume_leadership: Cornell PL Seminar Czar
+    resume_leadership: Cornell PL Seminar (PLDG) Czar
   - id: penn
     school: University of Pennsylvania
     note: Penn Engineering & The Wharton School

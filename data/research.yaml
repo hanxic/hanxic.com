@@ -14,9 +14,9 @@ entries:
       - Led the Lean mechanization of Type-Confusion Security, proving type safety for the static and dynamic information-flow checks that protect decentralized systems whose untrusted components can misrepresent dynamic types.
     resume_bullets:
       - Developed Oblivious Probabilistic Outcome Logic (opOL), a separation logic for probabilistic nondeterministic programs with oblivious adversaries, supporting compositional reasoning about probabilistic independence, entropy leakage, and probabilistic liveness.
-      - Mechanized opOL's metatheory in Lean 4 and verified case studies inspired by randomized caching and leader-election protocols.
-      - "Co-developing a formal foundation for type-confusion security with Dr. Silei Ren: type-safe real- and ideal-world languages and a compiler for proving real--ideal attacker-power equivalence under dynamic checks, all mechanized in Lean 4."
-      - Exploring an intermediate representation for structured LLM mathematical reasoning with researchers at Arizona State University.
+      - Mechanized opOL's metatheory in Lean 4 and developed an Iris-based verification framework for randomized online algorithms and protocols, proving competitive bounds for paging and liveness, validity, and agreement for leader election and consensus.
+      - With Dr. Silei Ren, I co-developed Type-Confusion Security and led its Lean 4 mechanization, establishing that decentralized systems remain type-safe and attackers gain no additional power even when untrusted components lie about their types.
+      - Exploring an intermediate representation for analyzing and understanding LLM reasoning with researchers at Arizona State University.
   - role: Research Mentor
     group: Cornell Math+AI
     supervisors:
@@ -26,7 +26,7 @@ entries:
     bullets:
       - Mentored the Jan--Aug 2026 iteration of an autoformalization project, producing a proof-quality evaluation platform and LaTeX-to-Lean translation tools with interactive dependency graphs; now also directing a newer project on large language models for program reasoning.
     resume_bullets:
-      - Mentored an eight-month autoformalization project that produced a proof-quality evaluation platform and MathCopilot.org, a LaTeX-to-Lean tool with interactive dependency graphs.
+      - Mentored a team building MathCopilot.org, a LaTeX-to-Lean tool with proof-quality evaluation and interactive dependency graphs.
       - Mentor a second team developing agentic invariant-synthesis framework to integrate expressive program logics to software engineering.
   - role: Researcher
     group: PLClub
