@@ -17,10 +17,12 @@ sections:
           schedule consumption, making their correctness subtle to
           reason about. opOL develops a program logic, mechanized in
           Lean for verifying probabilistic programs against oblivious
-          adversaries. Joint work with [Prof. Noam
-          Zilberstein](https://zilberstein.github.io/), [Prof.
-          Andrew C. Myers](https://www.cs.cornell.edu/andru/), and
-          [Prof. Alexandra Silva](https://alexandrasilva.org/).
+          adversaries.
+        collaborators:
+          - name: Noam Zilberstein
+            note: now at Stevens
+          - name: Andrew C. Myers
+          - name: Alexandra Silva
         refs:
           - chen2026oblivious
 
@@ -39,9 +41,10 @@ sections:
           run-time checks extend the type system's static protection
           to ill-typed attackers. We mechanized it in Lean 4 as an
           extensible, executable framework for modeling other attacks.
-          Joint work with [Dr. Silei Ren](https://www.sileiren.com/),
-          [Suraaj Kanniwadi](https://www.cs.cornell.edu/~suraaj/), and
-          [Prof. Andrew C. Myers](https://www.cs.cornell.edu/andru/).
+        collaborators:
+          - name: Silei Ren
+          - name: Suraaj Kanniwadi
+          - name: Andrew C. Myers
         refs:
           - ren2026type
 
@@ -55,9 +58,9 @@ sections:
           Math+AI project develops challenging research-level
           benchmarks, a survey for comparing Lean proofs, a collection
           of formalization problems, and LaTeX-to-Lean proof tooling.
-          Joint work with [Prof. Daniel
-          Halpern-Leistner](https://danielhl.github.io/) (Cornell
-          Mathematics).
+        collaborators:
+          - name: Daniel Halpern-Leistner
+            note: Cornell Mathematics
         links:
           - label: Math+AI
             url: https://danielhl.github.io/math-ai.html
@@ -76,9 +79,10 @@ sections:
           [Vellvm](https://vellvm.github.io/vellvm/) formalizes a
           practical subset of LLVM IR in Rocq, including a memory
           model for optimization reasoning and differential testing to
-          validate the semantics and find LLVM bugs. Joint work with
-          [Calvin Beck](https://github.com/Chobbes) and [Prof. Steve
-          Zdancewic](https://www.cis.upenn.edu/~stevez/).
+          validate the semantics and find LLVM bugs.
+        collaborators:
+          - name: Calvin Beck
+          - name: Steve Zdancewic
         refs:
           - beck2025vellvm
           - beck2025vellvmb
@@ -95,9 +99,10 @@ sections:
           mining and inventory planning, often involve dependencies.
           However, precedence-constrained knapsack is strongly NP-hard
           in general. This project studies special graph classes where
-          exact pseudo-polynomial algorithms are possible. Joint work
-          with [Prof. Sanjeev
-          Khanna](https://sanjeevkhanna.org/) (now at NYU).
+          exact pseudo-polynomial algorithms are possible.
+        collaborators:
+          - name: Sanjeev Khanna
+            note: now at NYU
         refs:
           - chen2024wharton
 ...

@@ -56,6 +56,16 @@
         {{ with .description }}
         <div class="research-project-description">{{ . | markdownify }}</div>
         {{ end }}
+        {{ with .collaborators }}
+        {{ $n := len . }}
+        <p class="research-project-collaborators">Joint work with
+          {{- range $i, $c := . -}}
+            {{- if $i }}{{ if eq (add $i 1) $n }}{{ if gt $n 2 }},{{ end }} and{{ else }},{{ end }}{{ end }}
+            {{ partial "person.html" $c }}
+            {{- with $c.note }} ({{ . }}){{ end }}
+          {{- end }}.
+        </p>
+        {{ end }}
         {{ if or .refs .links }}
         <div class="research-project-links">
           {{ range .refs }}

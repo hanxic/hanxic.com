@@ -27,12 +27,8 @@ entries:
         focus: Programming Languages
     advisors:
       - name: Alexandra Silva
-        title: Prof.
-        url: https://alexandrasilva.org/
       - name: Andrew C. Myers
-        title: Prof.
-        url: https://www.cs.cornell.edu/andru/
-    resume_leadership: Cornell PL Seminar (PLDG) Czar
+    resume_leadership: Cornell PL Seminar (PLDG) Co-Czar
   - id: penn
     school: University of Pennsylvania
     note: Penn Engineering & The Wharton School
@@ -81,11 +77,7 @@ entries:
         site_note: Wharton Research Scholars
     advisors:
       - name: Steve Zdancewic
-        title: Prof.
-        url: https://www.cis.upenn.edu/~stevez/
       - name: Sanjeev Khanna
-        title: Prof.
-        url: https://www.cis.upenn.edu/~sanjeev/
     site_recognition:
       teaching:
         - MCIT TA Award

@@ -11,6 +11,15 @@
         <span class="teaching-course-code">{{ delimit .numbers " / " }}</span>
         <div class="teaching-course-content">
           <h4 class="teaching-course-title">{{ .name }}</h4>
+          {{ with .instructors }}
+          {{ $n := len . }}
+          <p class="teaching-instructors">with
+            {{- range $i, $c := . -}}
+              {{- if $i }}{{ if eq (add $i 1) $n }}{{ if gt $n 2 }},{{ end }} and{{ else }},{{ end }}{{ end }}
+              {{ partial "person.html" $c }}
+            {{- end }}
+          </p>
+          {{ end }}
           {{ with .positions }}
           <ul class="teaching-positions">
             {{ range . }}
